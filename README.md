@@ -161,12 +161,14 @@ The wearable band connects over **Wi-Fi** and sends sensor data to the backend e
 - **Educational & Screening Tool:** Neuro-Track is intended as a non-invasive preliminary wellness monitor and self-care guide. It does not replace professional medical or psychiatric diagnosis.
 - **Authority Supervised Access:** Students can only log in after a verified school authority issues a unique User ID and 4-digit PIN.
 
----
+## 👥 Contributors
 
-## 👨‍💻 Developed By
-- **Anwesha Mondal** ([@suman-karmakar-01](https://github.com/AnweshaArc))
-- **Avik Mallick** ([@suman-karmakar-01](https://github.com/Avikmallick27))
-- **Arkajit Roy** ([@suman-karmakar-01](https://github.com/arkajit-roy))
-- **Suman Karmakar** ([@suman-karmakar-01](https://github.com/suman-karmakar-01))
-- **Monali De** ([@suman-karmakar-01](https://github.com/...))
-- Open-source student initiative for youth health and wellness.
+This project was developed and maintained by:
+
+- **Suman Karmakar** — [@suman-karmakar-01](https://github.com/suman-karmakar-01)
+- **Anwesha Mondal** — [@AnweshaArc](https://github.com/AnweshaArc)
+- **Avik Mallick** — [@Avikmallick27](https://github.com/Avikmallick27)
+- **Arkajit Roy** — [@arkajit-roy](https://github.com/arkajit-roy)
+- **Monali De**
+
+*An open-source student initiative for youth health, wellness, and physiological telemetry.*
