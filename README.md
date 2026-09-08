@@ -164,5 +164,9 @@ The wearable band connects over **Wi-Fi** and sends sensor data to the backend e
 ---
 
 ## 👨‍💻 Developed By
+- **Anwesha Mondal** ([@suman-karmakar-01](https://github.com/AnweshaArc))
+- **Avik Mallick** ([@suman-karmakar-01](https://github.com/Avikmallick27))
+- **Arkajit Roy** ([@suman-karmakar-01](https://github.com/arkajit-roy))
 - **Suman Karmakar** ([@suman-karmakar-01](https://github.com/suman-karmakar-01))
+- **Monali De** ([@suman-karmakar-01](https://github.com/...))
 - Open-source student initiative for youth health and wellness.
