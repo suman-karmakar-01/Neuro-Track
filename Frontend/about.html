@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | About</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="session-intro.html" class="nav-link">Session</a>
+        <a href="data-live.html" class="nav-link">Data / Live</a>
+        <a href="login.html" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" title="User Profile">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- User Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Dashboard Sidebar -->
+      <aside class="dashboard-sidebar">
+        <div class="user-greeting-block">
+          <span class="greeting-sub">Hello,</span>
+          <h2 class="greeting-username">User</h2>
+          <p class="greeting-quote">Take care of your mind today.</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="session-intro.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span>Session</span>
+          </a>
+
+          <a href="data-live.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span>Data / Live</span>
+          </a>
+
+          <a href="history.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </a>
+
+          <a href="statistics.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Statistics</span>
+          </a>
+
+          <a href="profile.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+          </a>
+
+          <a href="about.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>About</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main About Content Area -->
+      <section class="dashboard-main-content">
+        <!-- Page Title Bar -->
+        <div class="content-header-row">
+          <div>
+            <h1 class="page-title">About Neuro Tech</h1>
+            <p class="page-subtitle">A student initiative focused on using technology to support mental well-being.</p>
+          </div>
+
+          <div class="initiative-badge">
+            <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            <span>Student Initiative</span>
+          </div>
+        </div>
+
+        <!-- Banner Card -->
+        <div class="about-hero-banner">
+          <div class="banner-text-column">
+            <span class="banner-tagline">TECHNOLOGY FOR A CALMER TOMORROW</span>
+            <h2 class="banner-heading">Making mental well-being more accessible.</h2>
+            <p class="banner-desc">
+              Neuro Tech combines self-assessments and real-time wearable data to help you understand your well-being and build healthier habits, one step at a time.
+            </p>
+          </div>
+
+          <div class="banner-graphic-column">
+            <!-- Brain Silhouette Graphic -->
+            <div class="brain-graphic-wrapper">
+              <svg viewBox="0 0 200 180" fill="none" class="about-brain-svg">
+                <!-- Head outline -->
+                <path d="M60 160c-15-10-25-30-25-50 0-35 25-60 60-60 30 0 55 20 60 50 5 30-10 55-30 65" stroke="#3B82F6" stroke-width="4" stroke-linecap="round"/>
+                <!-- Brain folds inside -->
+                <path d="M80 80c-5-10 0-20 15-20 15 0 20 15 15 25-5 10 5 15 10 15s15-5 15-15c0-10 10-15 20-5 10 10 5 25-5 30-10 5-5 15 5 20" stroke="#60A5FA" stroke-width="3" stroke-linecap="round"/>
+                <!-- Sparkle rays -->
+                <line x1="165" y1="45" x2="175" y2="35" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                <line x1="175" y1="60" x2="190" y2="55" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="banner-list-column">
+            <ul class="benefit-points-list">
+              <li>Understand yourself better</li>
+              <li>Track progress</li>
+              <li>Build healthier habits</li>
+              <li class="muted-point">A calmer tomorrow</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3 Pillars Grid: Mission, Vision, Approach -->
+        <div class="about-pillars-grid">
+          <!-- Mission -->
+          <div class="pillar-card">
+            <div class="pillar-icon-box icon-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Our Mission</h3>
+            <p class="pillar-text">
+              To make mental well-being more accessible through simple, data-driven tools that empower individuals to take charge of their health.
+            </p>
+          </div>
+
+          <!-- Vision -->
+          <div class="pillar-card">
+            <div class="pillar-icon-box icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Our Vision</h3>
+            <p class="pillar-text">
+              A future where technology helps create a more mindful, healthier, and happier society.
+            </p>
+          </div>
+
+          <!-- Approach -->
+          <div class="pillar-card">
+            <div class="pillar-icon-box icon-purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Our Approach</h3>
+            <p class="pillar-text">
+              We combine self-reported assessments with real-time data from wearable devices to provide meaningful insights and encourage positive change.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Disclaimer and Take Care Callout -->
+        <div class="about-disclaimer-banner">
+          <div class="disclaimer-left">
+            <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <div class="disclaimer-text">
+              <strong>Disclaimer</strong>
+              <p>
+                Neuro Tech is a student project and is intended for educational and research purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing severe or persistent mental health issues, please seek help from a qualified healthcare professional.
+              </p>
+            </div>
+          </div>
+
+          <div class="take-care-right">
+            <svg class="heart-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <div>
+              <strong>Take care.</strong>
+              <small>Small steps make a big difference.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Mental health is a journey, not a destination.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Data / Live</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="session-intro.html" class="nav-link">Session</a>
+        <a href="data-live.html" class="nav-link active">Data / Live</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="#" id="navLogoutBtn" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" id="navUserAvatar" title="User Profile">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- User Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Dashboard Sidebar -->
+      <aside class="dashboard-sidebar">
+        <div class="user-greeting-block">
+          <span class="greeting-sub">Hello,</span>
+          <h2 class="greeting-username" id="dataLiveGreetingName">User</h2>
+          <p class="greeting-quote" id="dataLiveUidDisplay">ESP32 Telemetry Monitor</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="session-intro.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span>Session</span>
+          </a>
+
+          <a href="data-live.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span>Data / Live</span>
+          </a>
+
+          <a href="history.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </a>
+
+          <a href="statistics.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Statistics</span>
+          </a>
+
+          <a href="profile.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Live Data Content -->
+      <section class="dashboard-main-content">
+        <!-- Page Header with Device Status -->
+        <div class="content-header-row">
+          <div>
+            <h1 class="page-title">Live Health Data</h1>
+            <p class="page-subtitle">Real-time telemetry and resting baseline monitor.</p>
+          </div>
+
+          <div class="device-connection-badge">
+            <div class="status-indicator">
+              <span class="status-dot" id="deviceStatusDot" style="background: #94A3B8;"></span>
+              <div class="status-text">
+                <strong id="deviceStatusHeading">Hardware Disconnected</strong>
+                <small id="deviceStatusSub">ESP32 • No Stream Detected</small>
+              </div>
+            </div>
+            <button type="button" class="btn btn-disconnect" id="toggleDeviceBtn">Check Status</button>
+          </div>
+        </div>
+
+        <!-- Real-Time Metrics & Charts Grid (2 Cards) -->
+        <div class="live-charts-grid">
+          <!-- Heart Rate Chart Card -->
+          <div class="live-card">
+            <div class="live-card-header">
+              <div class="metric-title-group">
+                <div class="metric-icon-box heart-box">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="live-metric-name">Heart Rate</span>
+                  <div class="live-metric-value">
+                    <strong id="liveHrValue" style="color: #64748B;">Not Applicable</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="metric-status-group">
+                <span class="badge" id="liveHrBadge" style="background: #F1F5F9; color: #64748B;">Not Connected</span>
+                <span class="metric-range">60 – 100 bpm</span>
+              </div>
+            </div>
+
+            <!-- SVG Chart with Dynamic Points -->
+            <div class="chart-wrapper">
+              <svg class="live-chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
+                <!-- Grid Lines -->
+                <line x1="40" y1="20" x2="490" y2="20" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="55" x2="490" y2="55" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="90" x2="490" y2="90" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="125" x2="490" y2="125" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="160" x2="490" y2="160" stroke="#E2E8F0"/>
+
+                <!-- Y Axis Labels -->
+                <text x="10" y="25" class="chart-axis-label">120</text>
+                <text x="10" y="60" class="chart-axis-label">100</text>
+                <text x="10" y="95" class="chart-axis-label">80</text>
+                <text x="10" y="130" class="chart-axis-label">60</text>
+                <text x="10" y="165" class="chart-axis-label">40</text>
+
+                <!-- Gradient Definition -->
+                <defs>
+                  <linearGradient id="hrGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#EF4444" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#EF4444" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Dynamic Area Fill & Line (Flatline Standby) -->
+                <polygon id="hrPolygon" points="40,160 490,160 490,160 40,160" fill="url(#hrGrad)" fill-opacity="0"/>
+                <polyline id="hrPolyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <!-- X Axis Labels -->
+              <div class="chart-x-axis" id="hrXAxisLabels">
+                <span>Standby</span>
+                <span>Standby</span>
+                <span>Standby</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SpO2 Chart Card -->
+          <div class="live-card">
+            <div class="live-card-header">
+              <div class="metric-title-group">
+                <div class="metric-icon-box spo2-box">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="live-metric-name">SpO<sub>2</sub></span>
+                  <div class="live-metric-value">
+                    <strong id="liveSpo2Value" style="color: #64748B;">Not Applicable</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="metric-status-group">
+                <span class="badge" id="liveSpo2Badge" style="background: #F1F5F9; color: #64748B;">Not Connected</span>
+                <span class="metric-range">95 – 100 %</span>
+              </div>
+            </div>
+
+            <!-- SVG Chart with Dynamic Points -->
+            <div class="chart-wrapper">
+              <svg class="live-chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
+                <!-- Grid Lines -->
+                <line x1="40" y1="20" x2="490" y2="20" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="55" x2="490" y2="55" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="90" x2="490" y2="90" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="125" x2="490" y2="125" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <line x1="40" y1="160" x2="490" y2="160" stroke="#E2E8F0"/>
+
+                <!-- Y Axis Labels -->
+                <text x="10" y="25" class="chart-axis-label">100</text>
+                <text x="10" y="60" class="chart-axis-label">95</text>
+                <text x="10" y="95" class="chart-axis-label">90</text>
+                <text x="10" y="130" class="chart-axis-label">85</text>
+                <text x="10" y="165" class="chart-axis-label">80</text>
+
+                <!-- Gradient Definition -->
+                <defs>
+                  <linearGradient id="spo2Grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0284C7" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#0284C7" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Dynamic Area Fill & Line (Flatline Standby) -->
+                <polygon id="spo2Polygon" points="40,160 490,160 490,160 40,160" fill="url(#spo2Grad)" fill-opacity="0"/>
+                <polyline id="spo2Polyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <!-- X Axis Labels -->
+              <div class="chart-x-axis" id="spo2XAxisLabels">
+                <span>Standby</span>
+                <span>Standby</span>
+                <span>Standby</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Physiological & Rest Metrics Row (Body Temp & Sleep Monitor) -->
+        <div class="live-charts-grid" style="margin-bottom: 24px;">
+          <!-- Body Temperature Card -->
+          <div class="live-card">
+            <div class="live-card-header">
+              <div class="metric-title-group">
+                <div class="metric-icon-box temp-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="live-metric-name">Body Temperature</span>
+                  <div class="live-metric-value">
+                    <strong id="liveTempVal" style="color: #64748B;">Not Applicable</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="metric-status-group">
+                <span class="badge" id="liveTempBadge" style="background: #F1F5F9; color: #64748B;">Not Connected</span>
+                <span class="metric-range">36.1 – 37.2 °C (Normal)</span>
+              </div>
+            </div>
+            <div style="background-color: #F8FAFC; border: 1px solid var(--border-color-light); border-radius: var(--radius-md); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-size: 0.8rem; color: #64748B; display: block;">Sensor Hardware</span>
+                <strong style="font-size: 0.95rem; color: #0F172A;" id="tempSensorType">DS18B20 Digital Temp Sensor</strong>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 0.8rem; color: #64748B; display: block;">Average Body Temp</span>
+                <strong style="font-size: 0.95rem; color: #0F172A;" id="liveAvgTempVal">--</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sleep Monitoring Card (Gyroscope Rest Analysis) -->
+          <div class="live-card">
+            <div class="live-card-header">
+              <div class="metric-title-group">
+                <div class="metric-icon-box sleep-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="live-metric-name">Sleep Monitoring (Today)</span>
+                  <div class="live-metric-value">
+                    <strong id="liveSleepVal" style="color: #64748B;">Not Applicable</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="metric-status-group">
+                <span class="badge" id="liveSleepBadge" style="background: #F1F5F9; color: #64748B;">Not Connected</span>
+                <span class="metric-range">Target: 7 – 9 hours</span>
+              </div>
+            </div>
+            <div style="background-color: #F8FAFC; border: 1px solid var(--border-color-light); border-radius: var(--radius-md); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-size: 0.8rem; color: #64748B; display: block;">Rest Index (Gyroscope)</span>
+                <strong style="font-size: 0.95rem; color: #0F172A;" id="liveSleepQuality">No data recorded</strong>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 0.8rem; color: #64748B; display: block;">Sleep Efficiency</span>
+                <strong style="font-size: 0.95rem; color: #0F172A;" id="liveSleepEfficiency">--</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Grid: Recent Readings & Device Details -->
+        <div class="live-details-grid">
+          <!-- Recent Readings Table -->
+          <div class="details-card">
+            <div class="details-card-header">
+              <h3 class="card-section-title">Recent Telemetry Readings</h3>
+              <a href="history.html" class="view-all-link">View All</a>
+            </div>
+
+            <table class="readings-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Heart Rate (bpm)</th>
+                  <th>SpO<sub>2</sub> (%)</th>
+                  <th>Body Temp (°C)</th>
+                  <th>Sleep / Motion State</th>
+                </tr>
+              </thead>
+              <tbody id="liveReadingsTbody">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 18px;">
+                    Hardware Not Connected — Measurements Not Applicable
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Device Information Card -->
+          <div class="details-card">
+            <div class="details-card-header">
+              <div class="icon-heading-group">
+                <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                  <rect x="9" y="9" width="6" height="6"></rect>
+                  <line x1="9" y1="1" x2="9" y2="4"></line>
+                  <line x1="15" y1="1" x2="15" y2="4"></line>
+                  <line x1="9" y1="20" x2="9" y2="23"></line>
+                  <line x1="15" y1="20" x2="15" y2="23"></line>
+                  <line x1="20" y1="9" x2="23" y2="9"></line>
+                  <line x1="20" y1="14" x2="23" y2="14"></line>
+                  <line x1="1" y1="9" x2="4" y2="9"></line>
+                  <line x1="1" y1="14" x2="4" y2="14"></line>
+                </svg>
+                <h3 class="card-section-title">Device Information</h3>
+              </div>
+            </div>
+
+            <div class="device-specs-list">
+              <div class="spec-row">
+                <span class="spec-key">Device</span>
+                <span class="spec-value">ESP32 Wearable Node</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Biosensors</span>
+                <span class="spec-value" style="font-size: 0.85rem;">MAX30102 • DS18B20 • MPU6050</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Connectivity</span>
+                <span class="spec-value">802.11 b/g/n Wi-Fi (Local Network)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Status</span>
+                <span class="spec-value" id="deviceSpecStatus" style="color: #64748B;">
+                  <span class="status-dot-inline" style="background: #94A3B8;"></span> Hardware Disconnected
+                </span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Serial Number</span>
+                <span class="spec-value">NT-ESP32-001</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Last Updated</span>
+                <span class="spec-value" id="deviceLastUpdated">No signal received</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Battery</span>
+                <div class="battery-wrapper">
+                  <span class="spec-value" id="deviceBatteryVal">N/A</span>
+                  <div class="battery-bar-track">
+                    <div class="battery-bar-fill" id="deviceBatteryFill" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <a href="#" id="footerLogoutBtn">Logout</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Small steps today. A stronger tomorrow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Verify session
+    const currentUser = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
+    if (!currentUser) {
+      window.location.href = 'login.html';
+    }
+
+    const userId = currentUser.userId || currentUser.uid || 'NT1001';
+    const userName = currentUser.fullName || currentUser.name || 'User';
+
+    document.getElementById('dataLiveGreetingName').textContent = userName;
+    document.getElementById('dataLiveUidDisplay').textContent = `User ID: ${userId} • Live Vitals`;
+    const avatarLetter = (userName || 'U')[0].toUpperCase();
+    document.getElementById('navUserAvatar').textContent = avatarLetter;
+
+    // Logout
+    function handleLogout(e) {
+      if (e) e.preventDefault();
+      localStorage.removeItem('neurotech_currentUser');
+      localStorage.removeItem('currentUser');
+      sessionStorage.removeItem('neurotech_latest_result');
+      window.location.href = 'login.html';
+    }
+    document.getElementById('navLogoutBtn').addEventListener('click', handleLogout);
+    document.getElementById('footerLogoutBtn').addEventListener('click', handleLogout);
+
+    let isMonitoring = true;
+
+    // Set flatline baseline and Not Applicable state
+    function setFlatline() {
+      // Metric values
+      const hrEl = document.getElementById('liveHrValue');
+      const spo2El = document.getElementById('liveSpo2Value');
+      const tempEl = document.getElementById('liveTempVal');
+      const sleepEl = document.getElementById('liveSleepVal');
+
+      if (hrEl) {
+        hrEl.textContent = 'Not Applicable';
+        hrEl.style.fontSize = '1.35rem';
+        hrEl.style.color = '#64748B';
+      }
+      if (spo2El) {
+        spo2El.textContent = 'Not Applicable';
+        spo2El.style.fontSize = '1.35rem';
+        spo2El.style.color = '#64748B';
+      }
+      if (tempEl) {
+        tempEl.textContent = 'Not Applicable';
+        tempEl.style.fontSize = '1.35rem';
+        tempEl.style.color = '#64748B';
+      }
+      if (sleepEl) {
+        sleepEl.textContent = 'Not Applicable';
+        sleepEl.style.fontSize = '1.35rem';
+        sleepEl.style.color = '#64748B';
+      }
+
+      // Badges
+      const hrBadge = document.getElementById('liveHrBadge');
+      if (hrBadge) {
+        hrBadge.textContent = 'Not Connected';
+        hrBadge.className = 'badge';
+        hrBadge.style.background = '#F1F5F9';
+        hrBadge.style.color = '#64748B';
+      }
+      const spo2Badge = document.getElementById('liveSpo2Badge');
+      if (spo2Badge) {
+        spo2Badge.textContent = 'Not Connected';
+        spo2Badge.className = 'badge';
+        spo2Badge.style.background = '#F1F5F9';
+        spo2Badge.style.color = '#64748B';
+      }
+      const tempBadge = document.getElementById('liveTempBadge');
+      if (tempBadge) {
+        tempBadge.textContent = 'Not Connected';
+        tempBadge.className = 'badge';
+        tempBadge.style.background = '#F1F5F9';
+        tempBadge.style.color = '#64748B';
+      }
+      const sleepBadge = document.getElementById('liveSleepBadge');
+      if (sleepBadge) {
+        sleepBadge.textContent = 'Not Connected';
+        sleepBadge.className = 'badge';
+        sleepBadge.style.background = '#F1F5F9';
+        sleepBadge.style.color = '#64748B';
+      }
+
+      // Sub-stats
+      const avgTempEl = document.getElementById('liveAvgTempVal');
+      if (avgTempEl) avgTempEl.textContent = '--';
+      const sleepQualEl = document.getElementById('liveSleepQuality');
+      if (sleepQualEl) sleepQualEl.textContent = 'No data recorded';
+      const sleepEffEl = document.getElementById('liveSleepEfficiency');
+      if (sleepEffEl) sleepEffEl.textContent = '--';
+
+      // Flatline charts (baseline at Y = 160)
+      const hrPoly = document.getElementById('hrPolyline');
+      const hrPolyG = document.getElementById('hrPolygon');
+      if (hrPoly) {
+        hrPoly.setAttribute('points', '40,160 490,160');
+        hrPoly.setAttribute('stroke', '#94A3B8');
+      }
+      if (hrPolyG) {
+        hrPolyG.setAttribute('points', '40,160 490,160 490,160 40,160');
+        hrPolyG.setAttribute('fill-opacity', '0');
+      }
+
+      const spo2Poly = document.getElementById('spo2Polyline');
+      const spo2PolyG = document.getElementById('spo2Polygon');
+      if (spo2Poly) {
+        spo2Poly.setAttribute('points', '40,160 490,160');
+        spo2Poly.setAttribute('stroke', '#94A3B8');
+      }
+      if (spo2PolyG) {
+        spo2PolyG.setAttribute('points', '40,160 490,160 490,160 40,160');
+        spo2PolyG.setAttribute('fill-opacity', '0');
+      }
+
+      // Device connection indicator
+      const dot = document.getElementById('deviceStatusDot');
+      if (dot) {
+        dot.className = 'status-dot';
+        dot.style.background = '#94A3B8';
+      }
+      const heading = document.getElementById('deviceStatusHeading');
+      if (heading) heading.textContent = 'Hardware Disconnected';
+      const sub = document.getElementById('deviceStatusSub');
+      if (sub) sub.textContent = 'ESP32 • No Stream Detected';
+
+      const specStatus = document.getElementById('deviceSpecStatus');
+      if (specStatus) specStatus.innerHTML = '<span class="status-dot-inline" style="background:#94A3B8;"></span> Hardware Disconnected';
+      const battVal = document.getElementById('deviceBatteryVal');
+      if (battVal) battVal.textContent = 'N/A';
+      const battFill = document.getElementById('deviceBatteryFill');
+      if (battFill) battFill.style.width = '0%';
+      const lastUp = document.getElementById('deviceLastUpdated');
+      if (lastUp) lastUp.textContent = 'No signal received';
+
+      // Axis labels and readings table
+      const hrLabels = document.getElementById('hrXAxisLabels');
+      if (hrLabels) hrLabels.innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
+      const spo2Labels = document.getElementById('spo2XAxisLabels');
+      if (spo2Labels) spo2Labels.innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
+
+      const tbody = document.getElementById('liveReadingsTbody');
+      if (tbody) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#64748B; padding:20px;">Hardware Not Connected — Measurements Not Applicable</td></tr>';
+      }
+    }
+
+    // Refresh button
+    document.getElementById('toggleDeviceBtn').addEventListener('click', () => {
+      fetchTelemetry();
+    });
+
+    // Render SVG path from array of points
+    function renderSvgGraph(dataPoints, metricKey, minVal, maxVal, polylineId, polygonId, strokeColor) {
+      if (!dataPoints || dataPoints.length === 0) return;
+
+      const totalX = 450; // from 40 to 490
+      const startX = 40;
+      const polyline = document.getElementById(polylineId);
+      const polygon = document.getElementById(polygonId);
+
+      const count = dataPoints.length;
+      const pts = dataPoints.map((item, idx) => {
+        const val = item[metricKey] || minVal;
+        const x = count > 1 ? startX + (idx / (count - 1)) * totalX : startX;
+        // Map val to y (y: 20 at maxVal, y: 160 at minVal)
+        const ratio = (val - minVal) / (maxVal - minVal);
+        const y = Math.max(20, Math.min(160, 160 - (ratio * 140)));
+        return { x: Math.round(x), y: Math.round(y) };
+      });
+
+      const polylineStr = pts.map(p => `${p.x},${p.y}`).join(' ');
+      polyline.setAttribute('points', polylineStr);
+      if (strokeColor) polyline.setAttribute('stroke', strokeColor);
+
+      const firstX = pts[0].x;
+      const lastX = pts[pts.length - 1].x;
+      const polygonStr = `${firstX},160 ${polylineStr} ${lastX},160`;
+      polygon.setAttribute('points', polygonStr);
+      polygon.setAttribute('fill-opacity', '1');
+    }
+
+    // Fetch telemetry from backend
+    async function fetchTelemetry() {
+      if (!isMonitoring) return;
+      try {
+        const res = await fetch(`/api/wearable/live/${userId}`);
+        const data = await res.json();
+        const isHwActive = Boolean(data && data.success && data.isHardwareActive === true && typeof data.telemetry?.heartRate === 'number');
+
+        if (!isHwActive) {
+          setFlatline();
+          return;
+        }
+
+        const tel = data.telemetry;
+
+        // Update live metric displays with active values
+        const hrEl = document.getElementById('liveHrValue');
+        hrEl.innerHTML = `${tel.heartRate} <small style="font-size:0.9rem; color:#64748B;">bpm</small>`;
+        hrEl.style.fontSize = '2.2rem';
+        hrEl.style.color = '#0F172A';
+
+        const spo2El = document.getElementById('liveSpo2Value');
+        spo2El.innerHTML = `${tel.spo2} <small style="font-size:0.9rem; color:#64748B;">%</small>`;
+        spo2El.style.fontSize = '2.2rem';
+        spo2El.style.color = '#0F172A';
+
+        const tempEl = document.getElementById('liveTempVal');
+        tempEl.innerHTML = `${tel.temperature || 36.6} <small style="font-size:0.9rem; color:#64748B;">°C</small>`;
+        tempEl.style.fontSize = '2.2rem';
+        tempEl.style.color = '#0F172A';
+
+        const sleepEl = document.getElementById('liveSleepVal');
+        sleepEl.innerHTML = `${tel.sleepHours || 7.5} <small style="font-size:0.9rem; color:#64748B;">hours</small>`;
+        sleepEl.style.fontSize = '2.2rem';
+        sleepEl.style.color = '#0F172A';
+
+        // Badges
+        const hrBadge = document.getElementById('liveHrBadge');
+        hrBadge.textContent = (tel.heartRate >= 60 && tel.heartRate <= 100) ? 'Normal' : (tel.heartRate > 100 ? 'Elevated' : 'Low');
+        hrBadge.className = 'badge badge-normal';
+        hrBadge.style.background = '';
+        hrBadge.style.color = '';
+
+        const spo2Badge = document.getElementById('liveSpo2Badge');
+        spo2Badge.textContent = tel.spo2 >= 95 ? 'Normal' : 'Low';
+        spo2Badge.className = 'badge badge-normal';
+        spo2Badge.style.background = '';
+        spo2Badge.style.color = '';
+
+        const tempBadge = document.getElementById('liveTempBadge');
+        const tempNum = Number(tel.temperature) || 36.6;
+        tempBadge.textContent = (tempNum >= 36.1 && tempNum <= 37.3) ? 'Normal Range' : (tempNum > 37.3 ? 'Elevated Temp' : 'Sub-Normal');
+        tempBadge.className = 'badge badge-normal';
+        tempBadge.style.background = '';
+        tempBadge.style.color = '';
+
+        const sleepBadge = document.getElementById('liveSleepBadge');
+        sleepBadge.textContent = (tel.sleepHours >= 7 && tel.sleepHours <= 9) ? 'Target Met' : 'Check Duration';
+        sleepBadge.className = 'badge badge-normal';
+        sleepBadge.style.background = '';
+        sleepBadge.style.color = '';
+
+        // Sub-stats
+        document.getElementById('liveAvgTempVal').textContent = `${tempNum.toFixed(1)} °C`;
+        document.getElementById('liveSleepQuality').textContent = tel.sleepQuality || 'Low motion (Restful)';
+        document.getElementById('liveSleepEfficiency').textContent = '89%';
+
+        // Device status indicator
+        const dot = document.getElementById('deviceStatusDot');
+        dot.className = 'status-dot online';
+        dot.style.background = '';
+        document.getElementById('deviceStatusHeading').textContent = 'Live Stream Active';
+        document.getElementById('deviceStatusSub').textContent = 'ESP32 Wi-Fi Node • Serial: NT-ESP32-001';
+        document.getElementById('deviceSpecStatus').innerHTML = '<span class="status-dot-inline green"></span> Live Streaming via Wi-Fi';
+        document.getElementById('deviceBatteryVal').textContent = `${tel.battery || 85}%`;
+        document.getElementById('deviceBatteryFill').style.width = `${tel.battery || 85}%`;
+        document.getElementById('deviceLastUpdated').textContent = new Date().toLocaleTimeString('en-IN');
+
+        // Fetch history data points for graphs
+        const histRes = await fetch(`/api/wearable/history/${userId}`);
+        const histData = await histRes.json();
+        const history = (histData && histData.success && Array.isArray(histData.history)) ? histData.history : [];
+
+        if (history.length > 0 && histData.isHardwareActive === true) {
+          renderSvgGraph(history, 'heartRate', 40, 120, 'hrPolyline', 'hrPolygon', '#EF4444');
+          renderSvgGraph(history, 'spo2', 80, 100, 'spo2Polyline', 'spo2Polygon', '#0284C7');
+
+          const sampleLabels = history.slice(-6).map(h => h.time || '10:00');
+          const hrLabelsDiv = document.getElementById('hrXAxisLabels');
+          const spo2LabelsDiv = document.getElementById('spo2XAxisLabels');
+          if (hrLabelsDiv) hrLabelsDiv.innerHTML = sampleLabels.map(t => `<span>${t}</span>`).join('');
+          if (spo2LabelsDiv) spo2LabelsDiv.innerHTML = sampleLabels.map(t => `<span>${t}</span>`).join('');
+
+          const tbody = document.getElementById('liveReadingsTbody');
+          tbody.innerHTML = '';
+          const rev = [...history].reverse().slice(0, 5);
+          rev.forEach(r => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td><strong>${r.time || '10:24'}</strong></td>
+              <td>${r.heartRate} bpm</td>
+              <td>${r.spo2}%</td>
+              <td>${r.temperature || 36.6} °C</td>
+              <td><span class="badge badge-normal" style="font-size:0.75rem;">${r.sleepQuality || 'Restful'}</span></td>
+            `;
+            tbody.appendChild(tr);
+          });
+        } else {
+          setFlatline();
+        }
+      } catch (err) {
+        setFlatline();
+      }
+    }
+
+    fetchTelemetry();
+    setInterval(fetchTelemetry, 5000);
+  </script>
+</body>
+</html>

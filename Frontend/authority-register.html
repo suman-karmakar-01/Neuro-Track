@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Authority Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="login.html" class="nav-link">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Registration Main Content -->
+  <main class="login-page-section">
+    <div class="login-layout-container" style="max-width: 1040px;">
+      <!-- Left Side Presentation -->
+      <div class="login-intro-column">
+        <span class="tagline">AUTHORITY & COUNSELOR PORTAL</span>
+        <div class="accent-line"></div>
+        <h1 class="intro-title" style="font-size: 2.3rem; line-height: 1.2;">Empower<br>Student<br>Wellness</h1>
+        <h2 class="intro-subtitle">Early Awareness. Professional Care.</h2>
+        <p class="intro-description">
+          Register as an institutional counselor, medical authority, or mental health staff member to manage student screenings, generate access credentials, and review telemetry.
+        </p>
+
+        <!-- Informational Callout Card -->
+        <div class="quote-card" style="margin-top: 24px; border-left: 4px solid var(--color-primary); background: #F8FAFC;">
+          <div style="font-weight: 700; color: var(--color-primary); font-size: 0.9rem; margin-bottom: 6px;">
+            🔑 Important Authority Responsibilities:
+          </div>
+          <ul style="list-style: disc; margin-left: 18px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            <li><strong>User Provisioning:</strong> Students cannot self-register. You issue unique UIDs and PINs.</li>
+            <li><strong>Risk Monitoring:</strong> Review 20-question PTSD & stress evaluations in real time.</li>
+            <li><strong>Confidential Notes:</strong> Add clinical notes and recommendations to student records.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Side: Authority Registration Form Card -->
+      <div class="login-card-column">
+        <div class="login-card" style="padding: 32px 36px;">
+          <div class="login-card-header" style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <div style="background: #EFF6FF; color: var(--color-primary); width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h2 class="card-title" style="margin: 0; font-size: 1.35rem;">Authority Registration</h2>
+            </div>
+            <p class="card-subtitle">Create an authorized counselor account</p>
+          </div>
+
+          <!-- Alert Notices -->
+          <div id="regErrorNotice" style="display: none; background: #FEE2E2; color: #991B1B; padding: 10px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin-bottom: 14px; border: 1px solid #FECACA;"></div>
+          <div id="regSuccessNotice" style="display: none; background: #ECFDF5; color: #065F46; padding: 10px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin-bottom: 14px; border: 1px solid #A7F3D0;"></div>
+
+          <!-- Registration Form -->
+          <form class="login-form" id="authorityRegisterForm" onsubmit="return false;">
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="regFullName" class="form-label">Full Name</label>
+              <div class="input-container">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input type="text" id="regFullName" class="form-input" placeholder="e.g. Dr. Priya Sharma" required>
+              </div>
+            </div>
+
+            <!-- Email & Phone Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="form-group">
+                <label for="regEmail" class="form-label">Email Address</label>
+                <div class="input-container">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <input type="email" id="regEmail" class="form-input" placeholder="counselor@domain.edu" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="regPhone" class="form-label">Phone Number</label>
+                <div class="input-container">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <input type="tel" id="regPhone" class="form-input" placeholder="10-digit number" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Designation & Department Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="form-group">
+                <label for="regDesignation" class="form-label">Designation / Role</label>
+                <div class="input-container">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                  <input type="text" id="regDesignation" class="form-input" placeholder="e.g. Student Counselor">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="regDepartment" class="form-label">Institute / Dept</label>
+                <div class="input-container">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  </svg>
+                  <input type="text" id="regDepartment" class="form-input" placeholder="e.g. Wellness Center">
+                </div>
+              </div>
+            </div>
+
+            <!-- Password & Confirm Password Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="form-group">
+                <label for="regPassword" class="form-label">Password</label>
+                <div class="input-container">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <input type="password" id="regPassword" class="form-input" placeholder="Min. 6 characters" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+                <div class="input-container">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <input type="password" id="regConfirmPassword" class="form-input" placeholder="Re-type password" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Authority Privilege Notice -->
+            <div style="background: #F1F5F9; border-radius: 6px; padding: 10px 12px; font-size: 0.8rem; color: #475569; margin-bottom: 16px; line-height: 1.4;">
+              🛡️ <strong>Note:</strong> Once registered, you will have authority permissions to add users, issue UIDs & PINs, and review clinical risk records.
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block" id="btnSubmitRegister">
+              Register as Authority &rarr;
+            </button>
+          </form>
+
+          <!-- Back to Login Footer -->
+          <div class="login-card-footer" style="margin-top: 20px;">
+            <p class="admin-notice">
+              Already registered? <a href="login.html" class="admin-link" style="color: var(--color-primary); font-weight: 600;">Login here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Mental health is a journey, not a destination.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const regForm = document.getElementById('authorityRegisterForm');
+    const errBox = document.getElementById('regErrorNotice');
+    const successBox = document.getElementById('regSuccessNotice');
+    const submitBtn = document.getElementById('btnSubmitRegister');
+
+    regForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errBox.style.display = 'none';
+      successBox.style.display = 'none';
+
+      const fullName = document.getElementById('regFullName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const designation = document.getElementById('regDesignation').value.trim() || 'Authorized Counselor';
+      const department = document.getElementById('regDepartment').value.trim() || 'Counseling Services';
+      const password = document.getElementById('regPassword').value;
+      const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+      if (!fullName) {
+        errBox.textContent = 'Please enter your Full Name.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      if (!email && !phone) {
+        errBox.textContent = 'Please provide either an Email address or Phone number.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      if (password.length < 6) {
+        errBox.textContent = 'Password must be at least 6 characters long.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        errBox.textContent = 'Passwords do not match. Please re-enter.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating Authority Account...';
+
+      try {
+        const res = await fetch('/api/auth/authority-register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fullName, email, phone, designation, department, password })
+        });
+        const data = await res.json();
+
+        if (data && data.success) {
+          successBox.innerHTML = `<strong>Registration Successful!</strong> Welcome, ${data.user.fullName}. Redirecting to authority portal...`;
+          successBox.style.display = 'block';
+
+          // Save credentials to local storage
+          localStorage.setItem('currentAuthority', JSON.stringify(data.user));
+          localStorage.setItem('neurotech_currentAuthority', JSON.stringify(data.user));
+
+          setTimeout(() => {
+            window.location.href = 'authority-users.html';
+          }, 1500);
+        } else {
+          errBox.textContent = '⚠️ ' + (data.message || 'Registration failed.');
+          errBox.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Register as Authority →';
+        }
+      } catch (err) {
+        errBox.textContent = '⚠️ Could not reach server. Please ensure backend is running.';
+        errBox.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register as Authority →';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="login.html" class="nav-link active">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Main Content -->
+  <main class="login-page-section">
+    <div class="login-layout-container">
+      <!-- Left Side Presentation -->
+      <div class="login-intro-column">
+        <span class="tagline">SUPPORTING MINDS<br>BRIGHTER TOMORROWS</span>
+        <div class="accent-line"></div>
+        <h1 class="intro-title">Mental<br>Health<br>Matters</h1>
+        <h2 class="intro-subtitle">Early Awareness.<br>Stronger Tomorrows.</h2>
+        <p class="intro-description">
+          Neuro Tech is a student initiative to promote mental well-being through technology and data-driven insights.
+        </p>
+
+        <!-- Inspirational Quote Card -->
+        <div class="quote-card">
+          <div class="quote-icon">“</div>
+          <p class="quote-text">“A healthier mind leads to a brighter tomorrow.”</p>
+        </div>
+      </div>
+
+      <!-- Right Side: Login Form Card -->
+      <div class="login-card-column">
+        <div class="login-card">
+          <div class="login-card-header">
+            <h2 class="card-title">Choose how you want to login</h2>
+            <p class="card-subtitle">Access your dashboard based on your role</p>
+          </div>
+
+          <!-- Role Selection Tabs -->
+          <div class="role-selector" role="tablist">
+            <!-- User Role (Active by default) -->
+            <button type="button" class="role-button active" id="roleUserBtn" aria-selected="true">
+              <div class="role-icon-box user-role-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="role-info">
+                <span class="role-title">User</span>
+                <span class="role-desc">For individuals</span>
+              </div>
+            </button>
+
+            <!-- Authority Role -->
+            <button type="button" class="role-button" id="roleAuthorityBtn" aria-selected="false">
+              <div class="role-icon-box authority-role-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="role-info">
+                <span class="role-title">Authority</span>
+                <span class="role-desc">For authorized staff</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Login Credentials Form -->
+          <form class="login-form" id="loginForm" action="#" method="POST">
+            <h3 class="form-heading">Login to continue</h3>
+            <div id="loginErrorNotice" style="display: none; background: #FEE2E2; color: #991B1B; padding: 10px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin-bottom: 14px; border: 1px solid #FECACA;"></div>
+
+            <!-- Identifier Input (UID for User / Email or Phone for Authority) -->
+            <div class="form-group">
+              <label for="uid" class="form-label" id="identifierLabel">UID</label>
+              <div class="input-container">
+                <svg class="input-icon" id="identifierIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input type="text" id="uid" name="uid" class="form-input" placeholder="Enter your UID" required>
+              </div>
+            </div>
+
+            <!-- Secret Input (PIN for User / Password for Authority) -->
+            <div class="form-group">
+              <label for="pin" class="form-label" id="secretLabel">PIN</label>
+              <div class="input-container">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <input type="password" id="pin" name="pin" class="form-input" placeholder="Enter your PIN" required>
+                <!-- Eye Toggle Icon -->
+                <button type="button" class="password-toggle-btn" id="togglePinVisibility" aria-label="Toggle PIN/password visibility">
+                  <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Checkbox & Forgot Secret -->
+            <div class="form-extra-row">
+              <label class="remember-me-checkbox">
+                <input type="checkbox" name="remember" id="rememberMe">
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-pin-link" id="forgotSecretLink">Forgot PIN?</a>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block" id="submitLoginBtn">Login</button>
+
+            <!-- Student Direct Registration Notice -->
+            <div id="userDirectRegNotice" style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; color: #1E40AF; margin-top: 14px; line-height: 1.45;">
+              <strong>ℹ️ Note for Students:</strong> You cannot self-register directly. An authorized campus counselor or authority must first create your profile and generate your <strong>User ID (UID)</strong> & <strong>PIN</strong>. Only after that will you be able to log in.
+            </div>
+          </form>
+
+          <!-- Contact Administrator Note -->
+          <div class="login-card-footer">
+            <p class="admin-notice" id="adminNotice">Need an account? Please contact your campus counselor to receive your UID & PIN.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Mental health is a journey, not a destination.</span>
+      </div>
+    </div>
+  </footer>
+  <!-- Lightweight Interaction Script for Role Switching & Routing -->
+  <script>
+    const roleUserBtn = document.getElementById('roleUserBtn');
+    const roleAuthorityBtn = document.getElementById('roleAuthorityBtn');
+    const loginForm = document.getElementById('loginForm');
+    const identifierLabel = document.getElementById('identifierLabel');
+    const uidInput = document.getElementById('uid');
+    const secretLabel = document.getElementById('secretLabel');
+    const pinInput = document.getElementById('pin');
+    const togglePinVisibility = document.getElementById('togglePinVisibility');
+    const forgotSecretLink = document.getElementById('forgotSecretLink');
+    const adminNotice = document.getElementById('adminNotice');
+    const userDirectRegNotice = document.getElementById('userDirectRegNotice');
+    let currentRole = 'user';
+
+    function setRole(role) {
+      currentRole = role;
+      if (role === 'authority') {
+        roleAuthorityBtn.classList.add('active');
+        roleAuthorityBtn.setAttribute('aria-selected', 'true');
+        roleUserBtn.classList.remove('active');
+        roleUserBtn.setAttribute('aria-selected', 'false');
+
+        // Update fields for Authority (Phone/Email + Password)
+        identifierLabel.textContent = 'Phone Number or Email';
+        uidInput.placeholder = 'Enter email or phone number';
+        uidInput.value = '';
+        
+        secretLabel.textContent = 'Password';
+        pinInput.placeholder = 'Enter your password';
+        pinInput.value = '';
+
+        forgotSecretLink.textContent = 'Forgot Password?';
+        if (userDirectRegNotice) userDirectRegNotice.style.display = 'none';
+        adminNotice.innerHTML = 'New counselor or authority? <a href="authority-register.html" class="admin-link" style="color: var(--color-primary); font-weight: 600;">Register as Authority &rarr;</a>';
+      } else {
+        roleUserBtn.classList.add('active');
+        roleUserBtn.setAttribute('aria-selected', 'true');
+        roleAuthorityBtn.classList.remove('active');
+        roleAuthorityBtn.setAttribute('aria-selected', 'false');
+
+        // Update fields for User (UID + PIN)
+        identifierLabel.textContent = 'UID';
+        uidInput.placeholder = 'Enter your UID';
+        uidInput.value = '';
+
+        secretLabel.textContent = 'PIN';
+        pinInput.placeholder = 'Enter your PIN';
+        pinInput.value = '';
+
+        forgotSecretLink.textContent = 'Forgot PIN?';
+        if (userDirectRegNotice) userDirectRegNotice.style.display = 'block';
+        adminNotice.innerHTML = 'Need a student account? <span style="color: var(--text-muted);">Please contact your campus counselor to receive your UID & PIN.</span>';
+      }
+    }
+
+    // Check URL hash
+    if (window.location.hash === '#authority') {
+      setRole('authority');
+    }
+
+    roleUserBtn.addEventListener('click', () => setRole('user'));
+    roleAuthorityBtn.addEventListener('click', () => setRole('authority'));
+
+    togglePinVisibility.addEventListener('click', () => {
+      const isPassword = pinInput.getAttribute('type') === 'password';
+      pinInput.setAttribute('type', isPassword ? 'text' : 'password');
+    });
+
+    const errorNotice = document.getElementById('loginErrorNotice');
+    const submitBtn = document.getElementById('submitLoginBtn');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorNotice.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Verifying...';
+
+      const identifierVal = uidInput.value.trim();
+      const secretVal = pinInput.value.trim();
+
+      try {
+        if (currentRole === 'authority') {
+          // Authority login (email or phone + password)
+          const res = await fetch('/api/auth/authority-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ identifier: identifierVal, password: secretVal })
+          });
+          const data = await res.json();
+
+          if (data.success) {
+            localStorage.setItem('currentAuthority', JSON.stringify(data.user));
+            localStorage.setItem('neurotech_currentAuthority', JSON.stringify(data.user));
+            window.location.href = 'authority-users.html';
+          } else {
+            errorNotice.textContent = '⚠️ ' + (data.message || 'Invalid credentials');
+            errorNotice.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Login';
+          }
+        } else {
+          // User login (UID + PIN)
+          const res = await fetch('/api/auth/user-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ uid: identifierVal, pin: secretVal })
+          });
+          const data = await res.json();
+
+          if (data.success) {
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+            localStorage.setItem('neurotech_currentUser', JSON.stringify(data.user));
+            window.location.href = 'dashboard.html';
+          } else {
+            errorNotice.textContent = '⚠️ ' + (data.message || 'Invalid UID or PIN');
+            errorNotice.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Login';
+          }
+        }
+      } catch (err) {
+        errorNotice.textContent = '⚠️ Backend connection failed. Make sure server is running on port 5000.';
+        errorNotice.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Login';
+      }
+    });
+  </script>
+</body>
+</html>

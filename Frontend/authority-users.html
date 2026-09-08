@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Authority Panel - Users</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="authority-body">
+  <!-- Authority Top Navigation Bar -->
+  <header class="site-header authority-header">
+    <div class="nav-container">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <div class="brand-text-stack">
+          <span class="brand-name">Neuro Tech</span>
+          <span class="brand-sub">Mental Health. Brighter Tomorrows.</span>
+        </div>
+      </div>
+
+      <div class="authority-header-right">
+        <!-- Notification Bell with Red Indicator -->
+        <button type="button" class="btn-icon-header" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="notification-badge-dot"></span>
+        </button>
+
+        <!-- Admin Profile Dropdown -->
+        <div class="admin-profile-pill">
+          <div class="admin-avatar">A</div>
+          <span class="admin-label">Admin</span>
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Authority Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Authority Sidebar -->
+      <aside class="dashboard-sidebar authority-sidebar">
+        <div class="authority-meta-block">
+          <h2 class="authority-panel-title">Authority Panel</h2>
+          <p class="authority-panel-desc">Manage users and support their well-being.</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="authority-users.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Users</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom-action">
+          <a href="login.html" class="sidebar-logout-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Authority Users Content Area -->
+      <section class="dashboard-main-content">
+        <!-- Content Header with "+ New User" CTA -->
+        <div class="content-header-row">
+          <div>
+            <h1 class="page-title">Users</h1>
+            <p class="page-subtitle">View, manage and create users. Select a user to see their details and assessment history.</p>
+          </div>
+
+          <a href="authority-new-user.html" class="btn btn-primary">
+            <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+            New User
+          </a>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="authority-toolbar">
+          <!-- Search input -->
+          <div class="search-input-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="search-input" id="userSearchInput" placeholder="Search by name or user ID...">
+          </div>
+
+          <!-- Risk Level Dropdown -->
+          <div class="filter-dropdown-box">
+            <select class="toolbar-select" id="userRiskSelect">
+              <option value="ALL" selected>All Risk Levels</option>
+              <option value="LOW">Low</option>
+              <option value="MODERATE">Moderate</option>
+              <option value="HIGH">High</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Split Grid: Users Table (left) + Side Drawer Card (right) -->
+        <div class="authority-users-grid">
+          <!-- Users Table Card -->
+          <div class="authority-table-card">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Risk Level</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <tr><td colspan="7" style="text-align: center; padding: 24px; color: #64748B;">Loading registered users...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Right Side Quick Detail Drawer Card (Aarav Sharma) -->
+          <div class="user-quick-drawer-card">
+            <!-- Header with avatar & close -->
+            <div class="drawer-header">
+              <div class="drawer-user-info">
+                <div class="drawer-avatar">AS</div>
+                <div>
+                  <div class="drawer-name-row">
+                    <h3 class="drawer-name">Aarav Sharma</h3>
+                    <span class="status-pill-small active">Active</span>
+                  </div>
+                  <span class="drawer-id">User ID: NT1001</span>
+                </div>
+              </div>
+              <button type="button" class="btn-close-drawer" aria-label="Close user preview">×</button>
+            </div>
+
+            <!-- Drawer Tabs -->
+            <div class="drawer-tabs">
+              <button type="button" class="drawer-tab active">Overview</button>
+              <button type="button" class="drawer-tab">Assessments</button>
+              <button type="button" class="drawer-tab">Sessions</button>
+              <button type="button" class="drawer-tab">Data</button>
+            </div>
+
+            <!-- Drawer Specs List -->
+            <div class="drawer-specs-list">
+              <div class="drawer-spec-row">
+                <span class="spec-label">Name</span>
+                <span class="spec-value">Aarav Sharma</span>
+              </div>
+              <div class="drawer-spec-row">
+                <span class="spec-label">Age</span>
+                <span class="spec-value">24</span>
+              </div>
+              <div class="drawer-spec-row">
+                <span class="spec-label">Gender</span>
+                <span class="spec-value">Male</span>
+              </div>
+              <div class="drawer-spec-row">
+                <span class="spec-label">Contact</span>
+                <span class="spec-value">+91 98765 43210</span>
+              </div>
+              <div class="drawer-spec-row">
+                <span class="spec-label">Registered On</span>
+                <span class="spec-value">10 Aug 2026</span>
+              </div>
+              <div class="drawer-spec-row">
+                <span class="spec-label">Last Session</span>
+                <span class="spec-value">3 Sep 2026</span>
+              </div>
+              <div class="drawer-spec-row">
+                <span class="spec-label">Risk Level</span>
+                <span class="badge badge-low">Low</span>
+              </div>
+              <div class="drawer-spec-row vertical">
+                <span class="spec-label">Notes</span>
+                <p class="drawer-notes-text">Responding well. Continue regular sessions.</p>
+              </div>
+            </div>
+
+            <!-- Drawer Footer Action -->
+            <div class="drawer-footer-action">
+              <a href="authority-user-detail.html" class="btn btn-outline-full">
+                <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                View Full Profile
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Mental health is a journey, not a destination.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let allUsers = [];
+    const tbody = document.getElementById('usersTableBody');
+    const searchInput = document.getElementById('userSearchInput');
+    const riskSelect = document.getElementById('userRiskSelect');
+
+    // Update authority name in header
+    let auth = null;
+    try { auth = JSON.parse(localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority')); } catch (e) {}
+    if (auth && auth.fullName) {
+      const adminLabel = document.querySelector('.admin-label');
+      if (adminLabel) adminLabel.textContent = auth.fullName;
+    }
+
+    // Fetch users from backend
+    async function loadUsers() {
+      try {
+        const res = await fetch('/api/users');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.users)) {
+          allUsers = data.users;
+          renderUsers(allUsers);
+          if (allUsers.length > 0) {
+            selectUser(allUsers[0]);
+          }
+        } else {
+          tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px;">No registered users found. Use "+ New User" to register.</td></tr>';
+        }
+      } catch (err) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px; color: #DC2626;">Failed to connect to backend server. Make sure port 5000 is active.</td></tr>';
+      }
+    }
+
+    function renderUsers(users) {
+      if (!users || users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px; color: #64748B;">No matching users found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = '';
+      users.forEach((u, idx) => {
+        const tr = document.createElement('tr');
+        tr.style.cursor = 'pointer';
+
+        let badgeClass = 'badge-low';
+        const risk = (u.latestRiskLevel || 'Not Assessed').toUpperCase();
+        if (risk === 'HIGH') badgeClass = 'badge-high';
+        else if (risk === 'MODERATE') badgeClass = 'badge-moderate';
+
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><span class="uid-tag">${u.uid}</span></td>
+          <td><strong>${u.fullName}</strong></td>
+          <td>${u.age || '-'}</td>
+          <td>${u.gender || '-'}</td>
+          <td><span class="badge ${badgeClass}">${u.latestRiskLevel || 'Not Assessed'}</span></td>
+          <td><a href="authority-user-detail.html?uid=${u.uid}" class="btn-table-action" style="text-decoration: none;">View &rarr;</a></td>
+        `;
+
+        tr.addEventListener('click', () => {
+          document.querySelectorAll('#usersTableBody tr').forEach(r => r.classList.remove('table-row-selected'));
+          tr.classList.add('table-row-selected');
+          selectUser(u);
+        });
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function selectUser(u) {
+      const initials = (u.fullName || 'U').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+      const drawerAvatar = document.querySelector('.drawer-avatar');
+      const drawerName = document.querySelector('.drawer-name');
+      const drawerId = document.querySelector('.drawer-id');
+      const specRows = document.querySelectorAll('.drawer-spec-row .spec-value');
+      const profileLink = document.querySelector('.drawer-footer-action a');
+
+      if (drawerAvatar) drawerAvatar.textContent = initials;
+      if (drawerName) drawerName.textContent = u.fullName;
+      if (drawerId) drawerId.textContent = `User ID: ${u.uid}`;
+
+      if (specRows.length >= 6) {
+        specRows[0].textContent = u.fullName;
+        specRows[1].textContent = u.age || 'Not specified';
+        specRows[2].textContent = u.gender || 'Not specified';
+        specRows[3].textContent = u.phone || 'No phone';
+        specRows[4].textContent = u.createdAt ? new Date(u.createdAt).toLocaleDateString() : '-';
+        specRows[5].textContent = u.lastAssessmentDate || 'Not assessed';
+      }
+
+      const riskBadge = document.querySelector('.drawer-spec-row .badge');
+      if (riskBadge) {
+        riskBadge.textContent = u.latestRiskLevel || 'Not Assessed';
+        riskBadge.className = 'badge ' + (u.latestRiskLevel === 'HIGH' ? 'badge-high' : (u.latestRiskLevel === 'MODERATE' ? 'badge-moderate' : 'badge-low'));
+      }
+
+      const notesText = document.querySelector('.drawer-notes-text');
+      if (notesText) notesText.textContent = u.notes || 'No notes added.';
+
+      if (profileLink) profileLink.href = `authority-user-detail.html?uid=${u.uid}`;
+    }
+
+    function applyFilters() {
+      const q = searchInput.value.toLowerCase().trim();
+      const selectedRisk = riskSelect.value;
+
+      const filtered = allUsers.filter(u => {
+        const matchesQuery = (u.fullName && u.fullName.toLowerCase().includes(q)) || (u.uid && u.uid.toLowerCase().includes(q));
+        const matchesRisk = selectedRisk === 'ALL' || (u.latestRiskLevel && u.latestRiskLevel.toUpperCase() === selectedRisk);
+        return matchesQuery && matchesRisk;
+      });
+
+      renderUsers(filtered);
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    riskSelect.addEventListener('change', applyFilters);
+
+    loadUsers();
+  </script>
+</body>
+</html>

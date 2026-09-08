@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Create New User</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="authority-body">
+  <!-- Authority Top Navigation Bar -->
+  <header class="site-header authority-header">
+    <div class="nav-container">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <div class="brand-text-stack">
+          <span class="brand-name">Neuro Tech</span>
+          <span class="brand-sub">Authority Administration</span>
+        </div>
+      </div>
+
+      <div class="authority-header-right">
+        <!-- Admin Profile Pill -->
+        <div class="admin-profile-pill">
+          <div class="admin-avatar">A</div>
+          <span class="admin-label" id="authorityNameDisplay">Authority Staff</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Authority Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Authority Sidebar -->
+      <aside class="dashboard-sidebar authority-sidebar">
+        <nav class="sidebar-nav">
+          <a href="authority-users.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Users</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom-action">
+          <a href="login.html" class="sidebar-logout-link" onclick="localStorage.removeItem('currentAuthority');">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Form Content Area -->
+      <section class="dashboard-main-content">
+        <!-- Breadcrumb Row -->
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="authority-users.html">Users</a>
+          <span class="breadcrumb-separator">›</span>
+          <span class="breadcrumb-current">New User</span>
+        </nav>
+
+        <!-- Back Link & Page Title -->
+        <div class="page-title-group">
+          <a href="authority-users.html" class="back-link-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Users</span>
+          </a>
+          <h1 class="page-title">Create New User</h1>
+          <p class="page-subtitle">Enter details to register a user. A unique User ID and secure PIN will be generated upon submission.</p>
+        </div>
+
+        <!-- Two-Column Form Grid -->
+        <div class="form-layout-split-grid">
+          <!-- Left Column: Registration Form -->
+          <form class="new-user-form-card" id="createUserForm" onsubmit="return false;">
+            <!-- Section 1: User Information -->
+            <div class="form-section-block">
+              <div class="form-section-header">
+                <h3 class="form-section-heading">User Information</h3>
+                <p class="form-section-sub">Basic details of the user</p>
+              </div>
+
+              <!-- Full Name & Phone Number -->
+              <div class="form-grid-two">
+                <div class="form-field-group">
+                  <label class="field-label">Full Name <span class="required-star">*</span></label>
+                  <input type="text" class="field-input" id="inputFullName" placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-field-group">
+                  <label class="field-label">Phone Number <span class="required-star">*</span></label>
+                  <div class="phone-input-combo">
+                    <span class="phone-prefix">+91</span>
+                    <input type="tel" class="field-input" id="inputPhone" placeholder="Enter phone number" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email Address & Date of Birth -->
+              <div class="form-grid-two">
+                <div class="form-field-group">
+                  <label class="field-label">Email Address</label>
+                  <input type="email" class="field-input" id="inputEmail" placeholder="Enter email address (optional)">
+                </div>
+
+                <div class="form-field-group">
+                  <label class="field-label">Date of Birth</label>
+                  <div class="input-with-end-icon">
+                    <input type="date" class="field-input" id="inputDob">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gender & Profile Picture -->
+              <div class="form-grid-two">
+                <div class="form-field-group">
+                  <label class="field-label">Gender</label>
+                  <select class="field-select" id="inputGender">
+                    <option value="Not Specified" selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other / Non-binary</option>
+                  </select>
+                </div>
+
+                <div class="form-field-group">
+                  <label class="field-label">Emergency Contact</label>
+                  <input type="tel" class="field-input" id="inputEmergencyContact" placeholder="Emergency contact number">
+                </div>
+              </div>
+
+              <!-- Notes -->
+              <div class="form-field-group">
+                <label class="field-label">Initial Counselor Notes (Optional)</label>
+                <input type="text" class="field-input" id="inputNotes" placeholder="Initial context or reason for registration...">
+              </div>
+            </div>
+
+            <!-- Form Action Footer -->
+            <div class="form-actions-row">
+              <a href="authority-users.html" class="btn btn-secondary">Cancel</a>
+              <button type="submit" class="btn btn-primary" id="submitGenerateBtn">
+                <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Submit & Generate
+              </button>
+            </div>
+          </form>
+
+          <!-- Right Column: Informational Callouts -->
+          <div class="form-side-instructions">
+            <!-- Step-by-Step "What happens next?" -->
+            <div class="side-guide-card">
+              <div class="guide-header">
+                <div class="guide-icon-box icon-blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                </div>
+                <h4 class="guide-title">What happens next?</h4>
+              </div>
+
+              <ol class="guide-steps-list">
+                <li>
+                  <span class="step-num">1</span>
+                  <span>You submit the user details.</span>
+                </li>
+                <li>
+                  <span class="step-num">2</span>
+                  <span>A unique User ID and PIN will be generated.</span>
+                </li>
+                <li>
+                  <span class="step-num">3</span>
+                  <span>Share the credentials with the user.</span>
+                </li>
+                <li>
+                  <span class="step-num">4</span>
+                  <span>The user can then log in using their User ID and PIN.</span>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Generated Credentials Success Modal -->
+  <div id="credentialsModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); z-index: 10000; display: none; align-items: center; justify-content: center;">
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 32px; max-width: 460px; width: 90%; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); text-align: center;">
+      <div style="width: 56px; height: 56px; border-radius: 50%; background: #ECFDF5; color: #10B981; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2 style="font-size: 1.4rem; font-weight: 700; color: #0F172A; margin-bottom: 8px;">User Registered!</h2>
+      <p style="font-size: 0.9rem; color: #64748B; margin-bottom: 24px;">Please share these login credentials with the user.</p>
+
+      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px; margin-bottom: 24px; text-align: left;">
+        <div style="margin-bottom: 12px;">
+          <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #64748B; display: block;">Full Name</span>
+          <strong style="font-size: 1.05rem; color: #0F172A;" id="modalName">-</strong>
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <div style="flex: 1;">
+            <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #64748B; display: block;">Generated UID</span>
+            <strong style="font-size: 1.25rem; color: #2563EB; font-family: monospace;" id="modalUid">NT1000</strong>
+          </div>
+          <div style="flex: 1;">
+            <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #64748B; display: block;">Generated PIN</span>
+            <strong style="font-size: 1.25rem; color: #10B981; font-family: monospace;" id="modalPin">0000</strong>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block" id="modalOkBtn" onclick="window.location.href='authority-users.html'">
+        Done & Return to Users List
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Check authority login
+    let auth = null;
+    try {
+      auth = JSON.parse(localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority'));
+    } catch (e) {}
+    if (auth && auth.fullName) {
+      document.getElementById('authorityNameDisplay').textContent = auth.fullName;
+    }
+
+    const form = document.getElementById('createUserForm');
+    const submitBtn = document.getElementById('submitGenerateBtn');
+    const modal = document.getElementById('credentialsModal');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Generating...';
+
+      const payload = {
+        fullName: document.getElementById('inputFullName').value.trim(),
+        phone: document.getElementById('inputPhone').value.trim(),
+        email: document.getElementById('inputEmail').value.trim(),
+        gender: document.getElementById('inputGender').value,
+        emergencyContact: document.getElementById('inputEmergencyContact').value.trim(),
+        notes: document.getElementById('inputNotes').value.trim()
+      };
+
+      try {
+        const res = await fetch('/api/users/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (data.success && data.credentials) {
+          document.getElementById('modalName').textContent = data.credentials.fullName;
+          document.getElementById('modalUid').textContent = data.credentials.uid;
+          document.getElementById('modalPin').textContent = data.credentials.pin;
+          modal.style.display = 'flex';
+        } else {
+          alert('Error: ' + (data.message || 'Failed to create user'));
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit & Generate';
+        }
+      } catch (err) {
+        alert('Cannot connect to server. Please ensure the backend is running at http://localhost:5000');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit & Generate';
+      }
+    });
+  </script>
+</body>
+</html>

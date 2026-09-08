@@ -1,0 +1,15 @@
+{
+  "watch": [
+    "server.js",
+    "auth.js",
+    "session.js",
+    "wearable.js",
+    "firebase.js",
+    "users.js",
+    "login.js"
+  ],
+  "ignore": [
+    "local_db.json",
+    "*.log"
+  ]
+}

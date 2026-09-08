@@ -1,0 +1,1549 @@
+{
+  "authorities": {
+    "auth_01": {
+      "id": "auth_01",
+      "fullName": "Dr. Admin Counselor",
+      "email": "admin@neurotech.com",
+      "phone": "9876543210",
+      "password": "admin123",
+      "role": "authority",
+      "createdAt": "2026-09-07T16:43:28.827Z"
+    },
+    "auth_1788880286871": {
+      "id": "auth_1788880286871",
+      "fullName": "Suman Karmakar",
+      "email": "suman.karmakar@stu.adamasuniversity.ac.in",
+      "phone": "9826931189",
+      "designation": "Student",
+      "department": "Adamas",
+      "password": "suman@123@",
+      "role": "authority",
+      "createdAt": "2026-09-08T15:11:26.871Z"
+    }
+  },
+  "users": {
+    "NT1001": {
+      "uid": "NT1001",
+      "pin": "1234",
+      "fullName": "Aarav Sharma",
+      "email": "aarav.sharma@college.edu",
+      "phone": "9123456780",
+      "age": 20,
+      "gender": "Male",
+      "role": "user",
+      "latestRiskLevel": "LOW",
+      "latestScore": 2,
+      "createdAt": "2026-09-07T16:43:28.830Z",
+      "lastAssessmentDate": "8 Sept 2026, 8:38 pm"
+    },
+    "NT1002": {
+      "uid": "NT1002",
+      "pin": "7695",
+      "fullName": "Sammer Verma",
+      "phone": "9876543219",
+      "email": "sammerverma@67",
+      "age": 67,
+      "gender": "Female",
+      "emergencyContact": "",
+      "notes": "",
+      "role": "user",
+      "latestRiskLevel": "LOW",
+      "latestScore": 33,
+      "createdAt": "2026-09-07T16:52:43.514Z",
+      "studentId": "NT1002",
+      "lastAssessmentDate": "8 Sept 2026, 12:22 am"
+    }
+  },
+  "assessments": {
+    "NT1002": {
+      "ASM-989529": {
+        "assessmentId": "ASM-989529",
+        "userId": "NT1002",
+        "timestamp": "2026-09-07T18:16:29.530Z",
+        "dateFormatted": "7 Sept 2026, 11:46 pm",
+        "rawScore": 53,
+        "score": 88,
+        "maxRawScore": 60,
+        "riskLevel": "HIGH",
+        "explanation": "Your responses suggest elevated levels of distress that may be interfering with your everyday activities and well-being.",
+        "recommendations": [
+          "Consider seeking support from a qualified mental-health professional.",
+          "Reach out to a trusted person rather than dealing with distress alone.",
+          "If you feel unsafe or are in immediate danger, contact local emergency services or an appropriate crisis service.",
+          "Please note: this system does not attempt to diagnose or prescribe treatment."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "During the past two weeks, how often have you felt nervous, anxious, or on edge?",
+            "selectedOption": "Nearly every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "How often have you experienced unwanted or distressing memories of a difficult or traumatic event?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "How often have you had upsetting dreams or nightmares related to a difficult experience?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "How often have you tried to avoid thoughts, feelings, people, places, or situations that remind you of a difficult experience?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "How often have you felt unusually alert, watchful, or 'on guard'?",
+            "selectedOption": "Almost constantly",
+            "score": 3
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "How easily are you startled by sudden sounds or unexpected events?",
+            "selectedOption": "Extremely easily",
+            "score": 3
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "How often have you had difficulty falling asleep or staying asleep?",
+            "selectedOption": "Almost every night",
+            "score": 3
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "How would you describe your average sleep duration during the past week?",
+            "selectedOption": "8 hours or more",
+            "score": 0
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "How often have you experienced difficulty concentrating on studies, work, or daily activities?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "How often have you felt emotionally numb, detached, or disconnected from people around you?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "How often have you experienced sudden feelings of fear, panic, or intense discomfort?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "How often have you felt that you are unable to relax even when you are in a safe environment?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "How often have you experienced sudden physical reactions when something reminded you of a stressful or difficult experience?",
+            "selectedOption": "Frequently",
+            "score": 2
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "How often have you experienced changes in your mood, such as irritability, sadness, or frustration?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "How much have these experiences affected your studies, work, relationships, or normal daily activities?",
+            "selectedOption": "Severely",
+            "score": 3
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "How often have you felt that something bad might happen even when there is no immediate danger?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "How often have you found yourself thinking repeatedly about a stressful or difficult experience when you did not want to?",
+            "selectedOption": "Almost constantly",
+            "score": 3
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "How often have you avoided social interaction because you did not feel comfortable or safe?",
+            "selectedOption": "Never",
+            "score": 0
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "How would you rate your overall emotional well-being during the past two weeks?",
+            "selectedOption": "Very poor",
+            "score": 3
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "How difficult have these symptoms or feelings made your everyday life?",
+            "selectedOption": "Extremely difficult",
+            "score": 3
+          }
+        ],
+        "vitals": {
+          "heartRate": 72,
+          "spo2": 98,
+          "temperature": 36.6,
+          "motion": 0.1
+        }
+      },
+      "ASM-990664": {
+        "assessmentId": "ASM-990664",
+        "userId": "NT1002",
+        "timestamp": "2026-09-07T18:16:30.664Z",
+        "dateFormatted": "7 Sept 2026, 11:46 pm",
+        "rawScore": 53,
+        "score": 88,
+        "maxRawScore": 60,
+        "riskLevel": "HIGH",
+        "explanation": "Your responses suggest elevated levels of distress that may be interfering with your everyday activities and well-being.",
+        "recommendations": [
+          "Consider seeking support from a qualified mental-health professional.",
+          "Reach out to a trusted person rather than dealing with distress alone.",
+          "If you feel unsafe or are in immediate danger, contact local emergency services or an appropriate crisis service.",
+          "Please note: this system does not attempt to diagnose or prescribe treatment."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "During the past two weeks, how often have you felt nervous, anxious, or on edge?",
+            "selectedOption": "Nearly every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "How often have you experienced unwanted or distressing memories of a difficult or traumatic event?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "How often have you had upsetting dreams or nightmares related to a difficult experience?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "How often have you tried to avoid thoughts, feelings, people, places, or situations that remind you of a difficult experience?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "How often have you felt unusually alert, watchful, or 'on guard'?",
+            "selectedOption": "Almost constantly",
+            "score": 3
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "How easily are you startled by sudden sounds or unexpected events?",
+            "selectedOption": "Extremely easily",
+            "score": 3
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "How often have you had difficulty falling asleep or staying asleep?",
+            "selectedOption": "Almost every night",
+            "score": 3
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "How would you describe your average sleep duration during the past week?",
+            "selectedOption": "8 hours or more",
+            "score": 0
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "How often have you experienced difficulty concentrating on studies, work, or daily activities?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "How often have you felt emotionally numb, detached, or disconnected from people around you?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "How often have you experienced sudden feelings of fear, panic, or intense discomfort?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "How often have you felt that you are unable to relax even when you are in a safe environment?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "How often have you experienced sudden physical reactions when something reminded you of a stressful or difficult experience?",
+            "selectedOption": "Frequently",
+            "score": 2
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "How often have you experienced changes in your mood, such as irritability, sadness, or frustration?",
+            "selectedOption": "Almost every day",
+            "score": 3
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "How much have these experiences affected your studies, work, relationships, or normal daily activities?",
+            "selectedOption": "Severely",
+            "score": 3
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "How often have you felt that something bad might happen even when there is no immediate danger?",
+            "selectedOption": "Almost always",
+            "score": 3
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "How often have you found yourself thinking repeatedly about a stressful or difficult experience when you did not want to?",
+            "selectedOption": "Almost constantly",
+            "score": 3
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "How often have you avoided social interaction because you did not feel comfortable or safe?",
+            "selectedOption": "Never",
+            "score": 0
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "How would you rate your overall emotional well-being during the past two weeks?",
+            "selectedOption": "Very poor",
+            "score": 3
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "How difficult have these symptoms or feelings made your everyday life?",
+            "selectedOption": "Extremely difficult",
+            "score": 3
+          }
+        ],
+        "vitals": {
+          "heartRate": 72,
+          "spo2": 98,
+          "temperature": 36.6,
+          "motion": 0.1
+        }
+      },
+      "ASM-130883": {
+        "assessmentId": "ASM-130883",
+        "userId": "NT1002",
+        "timestamp": "2026-09-07T18:52:10.883Z",
+        "dateFormatted": "8 Sept 2026, 12:22 am",
+        "rawScore": 20,
+        "score": 33,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "Q1",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "Q2",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "Q3",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "Q4",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "Q5",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "Q6",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "Q7",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "Q8",
+            "selectedOption": "8 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "Q9",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "Q10",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "Q11",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "Q12",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "Q13",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "Q14",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "Q15",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "Q16",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "Q17",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "Q18",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "Q19",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "Q20",
+            "selectedOption": "Rarely",
+            "score": 1
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": false,
+          "heartRate": "Not Applicable",
+          "spo2": "Not Applicable",
+          "temperature": "Not Applicable",
+          "status": "Hardware Not Connected"
+        }
+      },
+      "ASM-130934": {
+        "assessmentId": "ASM-130934",
+        "userId": "NT1002",
+        "timestamp": "2026-09-07T18:52:10.934Z",
+        "dateFormatted": "8 Sept 2026, 12:22 am",
+        "rawScore": 20,
+        "score": 33,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "Q1",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "Q2",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "Q3",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "Q4",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "Q5",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "Q6",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "Q7",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "Q8",
+            "selectedOption": "8 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "Q9",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "Q10",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "Q11",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "Q12",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "Q13",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "Q14",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "Q15",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "Q16",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "Q17",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "Q18",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "Q19",
+            "selectedOption": "Rarely",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "Q20",
+            "selectedOption": "Rarely",
+            "score": 1
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 99,
+          "temperature": 36.6,
+          "status": "Live Stream Active"
+        }
+      }
+    },
+    "NT1001": {
+      "ASM-902494": {
+        "assessmentId": "ASM-902494",
+        "userId": "NT1001",
+        "timestamp": "2026-09-07T18:48:22.494Z",
+        "dateFormatted": "8 Sept 2026, 12:18 am",
+        "rawScore": 20,
+        "score": 33,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "Question 1",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "Question 2",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "Question 3",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "Question 4",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "Question 5",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "Question 6",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "Question 7",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "Question 8",
+            "selectedOption": "7-8 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "Question 9",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "Question 10",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "Question 11",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "Question 12",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "Question 13",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "Question 14",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "Question 15",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "Question 16",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "Question 17",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "Question 18",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "Question 19",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "Question 20",
+            "selectedOption": "Option A",
+            "score": 1
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": false,
+          "heartRate": "Not Applicable",
+          "spo2": "Not Applicable",
+          "temperature": "Not Applicable",
+          "status": "Hardware Not Connected"
+        }
+      },
+      "ASM-912454": {
+        "assessmentId": "ASM-912454",
+        "userId": "NT1001",
+        "timestamp": "2026-09-07T18:48:32.454Z",
+        "dateFormatted": "8 Sept 2026, 12:18 am",
+        "rawScore": 20,
+        "score": 33,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "Question 1",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "Question 2",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "Question 3",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "Question 4",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "Question 5",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "Question 6",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "Question 7",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "Question 8",
+            "selectedOption": "7-8 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "Question 9",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "Question 10",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "Question 11",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "Question 12",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "Question 13",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "Question 14",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "Question 15",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "Question 16",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "Question 17",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "Question 18",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "Question 19",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "Question 20",
+            "selectedOption": "Option A",
+            "score": 1
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": false,
+          "heartRate": "Not Applicable",
+          "spo2": "Not Applicable",
+          "temperature": "Not Applicable",
+          "status": "Hardware Not Connected"
+        }
+      },
+      "ASM-977390": {
+        "assessmentId": "ASM-977390",
+        "userId": "NT1001",
+        "timestamp": "2026-09-07T18:49:37.390Z",
+        "dateFormatted": "8 Sept 2026, 12:19 am",
+        "rawScore": 20,
+        "score": 33,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "Question 1",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "Question 2",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "Question 3",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "Question 4",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "Question 5",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "Question 6",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "Question 7",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "Question 8",
+            "selectedOption": "7-8 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "Question 9",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "Question 10",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "Question 11",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "Question 12",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "Question 13",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "Question 14",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "Question 15",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "Question 16",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "Question 17",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "Question 18",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "Question 19",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "Question 20",
+            "selectedOption": "Option A",
+            "score": 1
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": false,
+          "heartRate": "Not Applicable",
+          "spo2": "Not Applicable",
+          "temperature": "Not Applicable",
+          "status": "Hardware Not Connected"
+        }
+      },
+      "ASM-095155": {
+        "assessmentId": "ASM-095155",
+        "userId": "NT1001",
+        "timestamp": "2026-09-07T18:51:35.155Z",
+        "dateFormatted": "8 Sept 2026, 12:21 am",
+        "rawScore": 20,
+        "score": 33,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "Question 1",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "Question 2",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "Question 3",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "Question 4",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "Question 5",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "Question 6",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "Question 7",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "Question 8",
+            "selectedOption": "7-8 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "Question 9",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "Question 10",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "Question 11",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "Question 12",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "Question 13",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "Question 14",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "Question 15",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "Question 16",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "Question 17",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "Question 18",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "Question 19",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "Question 20",
+            "selectedOption": "Option A",
+            "score": 1
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": false,
+          "heartRate": "Not Applicable",
+          "spo2": "Not Applicable",
+          "temperature": "Not Applicable",
+          "status": "Hardware Not Connected"
+        }
+      },
+      "ASM-165126": {
+        "assessmentId": "ASM-165126",
+        "userId": "NT1001",
+        "timestamp": "2026-09-07T18:52:45.126Z",
+        "dateFormatted": "8 Sept 2026, 12:22 am",
+        "rawScore": 20,
+        "score": 33,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "questionText": "Question 1",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 2,
+            "questionText": "Question 2",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 3,
+            "questionText": "Question 3",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 4,
+            "questionText": "Question 4",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 5,
+            "questionText": "Question 5",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 6,
+            "questionText": "Question 6",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 7,
+            "questionText": "Question 7",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "questionText": "Question 8",
+            "selectedOption": "7-8 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 9,
+            "questionText": "Question 9",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 10,
+            "questionText": "Question 10",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 11,
+            "questionText": "Question 11",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 12,
+            "questionText": "Question 12",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 13,
+            "questionText": "Question 13",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 14,
+            "questionText": "Question 14",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 15,
+            "questionText": "Question 15",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 16,
+            "questionText": "Question 16",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 17,
+            "questionText": "Question 17",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 18,
+            "questionText": "Question 18",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 19,
+            "questionText": "Question 19",
+            "selectedOption": "Option A",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "questionText": "Question 20",
+            "selectedOption": "Option A",
+            "score": 1
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": false,
+          "heartRate": "Not Applicable",
+          "spo2": "Not Applicable",
+          "temperature": "Not Applicable",
+          "status": "Hardware Not Connected"
+        }
+      },
+      "ASM-751368": {
+        "assessmentId": "ASM-751368",
+        "userId": "NT1001",
+        "timestamp": "2026-09-08T13:55:51.368Z",
+        "dateFormatted": "8 Sept 2026, 7:25 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": false,
+          "heartRate": "Not Applicable",
+          "spo2": "Not Applicable",
+          "temperature": "Not Applicable",
+          "sleepHours": "Not Applicable",
+          "sleepQuality": "Not Applicable",
+          "status": "Hardware Not Connected"
+        }
+      },
+      "ASM-803387": {
+        "assessmentId": "ASM-803387",
+        "userId": "NT1001",
+        "timestamp": "2026-09-08T13:56:43.387Z",
+        "dateFormatted": "8 Sept 2026, 7:26 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-110840": {
+        "assessmentId": "ASM-110840",
+        "userId": "NT1001",
+        "timestamp": "2026-09-08T15:08:30.840Z",
+        "dateFormatted": "8 Sept 2026, 8:38 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      }
+    }
+  },
+  "liveData": {
+    "NT1001": {
+      "deviceId": "NT-ESP32-001",
+      "userId": "NT1001",
+      "heartRate": 78,
+      "spo2": 98,
+      "temperature": 36.7,
+      "motion": 0.03,
+      "sleepHours": 7.5,
+      "sleepQuality": "Good (88%)",
+      "battery": 92,
+      "status": "Live Stream Active",
+      "time": "08:38:30 pm",
+      "timestamp": "2026-09-08T15:08:30.830Z"
+    }
+  },
+  "sensorHistory": {
+    "NT1001": [
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "NT1001",
+        "heartRate": 78,
+        "spo2": 98,
+        "temperature": 36.7,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "battery": 92,
+        "status": "Live Stream Active",
+        "time": "07:26:43 pm",
+        "timestamp": "2026-09-08T13:56:43.380Z"
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "NT1001",
+        "heartRate": 78,
+        "spo2": 98,
+        "temperature": 36.7,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "battery": 92,
+        "status": "Live Stream Active",
+        "time": "08:38:30 pm",
+        "timestamp": "2026-09-08T15:08:30.830Z"
+      }
+    ]
+  }
+}

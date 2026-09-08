@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link active">Home</a>
+        <a href="session-intro.html" class="nav-link">Session</a>
+        <a href="data-live.html" class="nav-link">Data / Live</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="#" id="navLogoutBtn" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" id="navUserAvatar" title="User Profile">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- User Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Dashboard Sidebar -->
+      <aside class="dashboard-sidebar">
+        <div class="user-greeting-block">
+          <span class="greeting-sub">Hello,</span>
+          <h2 class="greeting-username" id="dashboardGreetingName">User</h2>
+          <p class="greeting-quote" id="userUidDisplay">Take care of your mind today.</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="session-intro.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span>Session</span>
+          </a>
+
+          <a href="data-live.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span>Data / Live</span>
+          </a>
+
+          <a href="history.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </a>
+
+          <a href="statistics.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Statistics</span>
+          </a>
+
+          <a href="profile.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+          </a>
+
+          <a href="about.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>About</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Dashboard Content Area -->
+      <section class="dashboard-main-content">
+        <!-- Dashboard Greeting & CTA -->
+        <div class="content-header-row">
+          <div>
+            <h1 class="page-title">User Dashboard</h1>
+            <p class="page-subtitle">Monitor your assessment status, real-time wearable readings, and personal progress.</p>
+          </div>
+
+          <a href="session-intro.html" class="btn btn-primary">
+            <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              <path d="m9 14 2 2 4-4"></path>
+            </svg>
+            Take Assessment
+          </a>
+        </div>
+
+        <!-- 3 Primary Status Highlights Grid -->
+        <div class="stats-overview-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 28px;">
+          <!-- Latest Risk Status Card -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle green-tint" id="latestRiskIconCircle">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9c0-4.97-4.03-9-9-9z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="stat-card-title">Latest Risk Level</span>
+                <span class="badge badge-low" id="latestRiskBadge" style="margin-top: 4px;">Low Risk</span>
+              </div>
+            </div>
+            <div class="stat-main-number" id="latestRiskScore">-- <small>/ 100</small></div>
+            <div id="latestRiskDate" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">No assessments yet</div>
+            <a href="session-result.html" id="latestRiskLink" class="btn-table-action" style="display: inline-block;">View Full Report &rarr;</a>
+          </div>
+
+          <!-- ESP32 Wearable Status Card -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle red-tint">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="stat-card-title">Wearable Sensor</span>
+                <span id="wearableStatusLabel" style="font-size: 0.75rem; color: #64748B; font-weight: 600; display: block;">● Hardware Disconnected</span>
+              </div>
+            </div>
+            <div class="stat-main-number" style="font-size: 1.25rem;">
+              <span id="wearableHrText" style="color: #64748B;">Not Applicable</span>
+            </div>
+            <div id="wearableMetaText" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">No ESP32 connected • Measurements Not Applicable</div>
+            <a href="data-live.html" class="btn-table-action" style="display: inline-block;">Open Live Data &rarr;</a>
+          </div>
+
+          <!-- Total Sessions & History -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle blue-tint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+              </div>
+              <span class="stat-card-title">Assessment Activity</span>
+            </div>
+            <div class="stat-main-number" id="totalSessionsNum">0 <small>Sessions</small></div>
+            <div class="stat-trend positive" id="totalSessionsTrend" style="margin-bottom: 12px;">
+              <span>Updated today</span>
+            </div>
+            <a href="history.html" class="btn-table-action" style="display: inline-block;">View History &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Quick Navigation Grid -->
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0F172A; margin-bottom: 16px;">Quick Actions</h3>
+        <div class="features-container" style="margin-bottom: 32px;">
+          <a href="session-intro.html" class="feature-card feature-link">
+            <div class="feature-icon-wrapper">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                <path d="m9 14 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Take Assessment</h3>
+            <p class="feature-desc">Complete your periodic WHO-5 questionnaire to assess risk levels.</p>
+          </a>
+
+          <a href="data-live.html" class="feature-card feature-link">
+            <div class="feature-icon-wrapper">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">Live Health Stream</h3>
+            <p class="feature-desc">Monitor continuous Heart Rate and SpO2 readings from your ESP32.</p>
+          </a>
+
+          <a href="statistics.html" class="feature-card feature-link">
+            <div class="feature-icon-wrapper">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Trend Analytics</h3>
+            <p class="feature-desc">Review your risk score trends, sleep patterns, and vitals over time.</p>
+          </a>
+
+          <a href="profile.html" class="feature-card feature-link">
+            <div class="feature-icon-wrapper">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3 class="feature-title">Manage Profile</h3>
+            <p class="feature-desc">Update account preferences, notification settings, and personal data.</p>
+          </a>
+        </div>
+
+        <!-- Recent Assessments Preview -->
+        <div class="details-card" style="margin-bottom: 24px;">
+          <div class="details-card-header">
+            <h3 class="card-section-title">Recent Assessment Sessions</h3>
+            <a href="history.html" class="view-all-link">View All History &rarr;</a>
+          </div>
+
+          <table class="readings-table">
+            <thead>
+              <tr>
+                <th>Date & Time</th>
+                <th>Risk Level</th>
+                <th>Score</th>
+                <th>Observations</th>
+                <th>Report</th>
+              </tr>
+            </thead>
+            <tbody id="recentSessionsTableBody">
+              <tr>
+                <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading sessions...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Non-Clinical Screening Disclaimer -->
+        <div class="info-alert-banner">
+          <div class="alert-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </div>
+          <div class="alert-content">
+            <strong class="alert-title">Screening & Monitoring Support Tool</strong>
+            <p class="alert-text">Neuro Tech provides algorithmic screening indicators and is not a clinical medical diagnosis. If you experience severe distress, please consult a healthcare professional.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <a href="#" id="footerLogoutBtn">Logout</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Small steps today. A stronger tomorrow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Verify session
+    const currentUser = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
+    if (!currentUser) {
+      window.location.href = 'login.html';
+    }
+
+    const userId = currentUser.userId || currentUser.uid || 'NT1001';
+    const userName = currentUser.fullName || currentUser.name || 'User';
+
+    // Update greeting and avatar
+    document.getElementById('dashboardGreetingName').textContent = userName;
+    document.getElementById('userUidDisplay').textContent = `User ID: ${userId} • Mind Health`;
+    const avatarLetter = (userName || 'U')[0].toUpperCase();
+    document.getElementById('navUserAvatar').textContent = avatarLetter;
+
+    // Logout helpers
+    function handleLogout(e) {
+      if (e) e.preventDefault();
+      localStorage.removeItem('neurotech_currentUser');
+      localStorage.removeItem('currentUser');
+      sessionStorage.removeItem('neurotech_latest_result');
+      window.location.href = 'login.html';
+    }
+    document.getElementById('navLogoutBtn').addEventListener('click', handleLogout);
+    document.getElementById('footerLogoutBtn').addEventListener('click', handleLogout);
+
+    // Fetch latest assessment
+    async function loadLatestSession() {
+      try {
+        const res = await fetch(`/api/session/latest/${userId}`);
+        const data = await res.json();
+
+        if (data && data.success && data.session) {
+          const s = data.session;
+          const scoreEl = document.getElementById('latestRiskScore');
+          const badgeEl = document.getElementById('latestRiskBadge');
+          const dateEl = document.getElementById('latestRiskDate');
+          const circleEl = document.getElementById('latestRiskIconCircle');
+
+          scoreEl.innerHTML = `${s.score} <small>/ 100</small>`;
+          badgeEl.textContent = `${s.riskLevel} Risk`;
+          dateEl.textContent = `Completed on ${s.dateFormatted || new Date(s.timestamp).toLocaleDateString()}`;
+
+          // Color accents
+          const lvl = (s.riskLevel || 'LOW').toUpperCase();
+          badgeEl.className = 'badge ' + (lvl === 'HIGH' ? 'badge-high' : (lvl === 'MODERATE' ? 'badge-moderate' : 'badge-low'));
+          if (circleEl) {
+            circleEl.className = 'stat-icon-circle ' + (lvl === 'HIGH' ? 'red-tint' : (lvl === 'MODERATE' ? 'yellow-tint' : 'green-tint'));
+          }
+
+          document.getElementById('latestRiskLink').onclick = (e) => {
+            sessionStorage.setItem('neurotech_latest_result', JSON.stringify(s));
+          };
+        }
+      } catch (err) {
+        console.warn('Using offline cached session for dashboard', err);
+      }
+    }
+
+    // Fetch assessment history
+    async function loadHistory() {
+      const tbody = document.getElementById('recentSessionsTableBody');
+      try {
+        const res = await fetch(`/api/session/history/${userId}`);
+        const data = await res.json();
+        const history = (data && data.success && Array.isArray(data.history)) ? data.history : [];
+
+        document.getElementById('totalSessionsNum').innerHTML = `${history.length} <small>Sessions</small>`;
+
+        if (history.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">
+                No assessments taken yet. <a href="session-intro.html" style="color: var(--primary-color); font-weight: 600;">Start your first 20-question screening &rarr;</a>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = '';
+        const recent = history.slice(0, 5); // Show latest 5
+        recent.forEach(s => {
+          const tr = document.createElement('tr');
+          const lvl = (s.riskLevel || 'LOW').toUpperCase();
+          const badgeClass = lvl === 'HIGH' ? 'badge-high' : (lvl === 'MODERATE' ? 'badge-moderate' : 'badge-low');
+
+          tr.innerHTML = `
+            <td><strong>${s.dateFormatted || new Date(s.timestamp).toLocaleDateString()}</strong></td>
+            <td><span class="badge ${badgeClass}">${s.riskLevel}</span></td>
+            <td><strong>${s.score}</strong> / 100</td>
+            <td>${s.explanation ? s.explanation.slice(0, 55) + '...' : 'Screening recorded'}</td>
+            <td><a href="session-result.html" class="btn-table-action view-report-btn">View Report</a></td>
+          `;
+
+          tr.querySelector('.view-report-btn').addEventListener('click', () => {
+            sessionStorage.setItem('neurotech_latest_result', JSON.stringify(s));
+          });
+
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">
+              Baseline standby mode active. <a href="session-intro.html" style="color: var(--primary-color);">Take assessment &rarr;</a>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    // Fetch wearable telemetry
+    async function loadWearableData() {
+      try {
+        const res = await fetch(`/api/wearable/live/${userId}`);
+        const data = await res.json();
+        if (data && data.success && data.isHardwareActive === true && typeof data.telemetry?.heartRate === 'number') {
+          const tel = data.telemetry;
+          document.getElementById('wearableHrText').innerHTML = `${tel.heartRate} <small>bpm</small> <span style="color: #CBD5E1; margin: 0 4px;">|</span> ${tel.spo2} <small>%</small> <span style="color: #CBD5E1; margin: 0 4px;">|</span> ${tel.temperature || 36.6} <small>°C</small>`;
+          document.getElementById('wearableHrText').style.color = '#0F172A';
+          document.getElementById('wearableStatusLabel').textContent = '● Live Stream Active (Wi-Fi)';
+          document.getElementById('wearableStatusLabel').style.color = '#10B981';
+          document.getElementById('wearableMetaText').textContent = `Sleep: ${tel.sleepHours || 7.5} hrs today • ${tel.sleepQuality || 'Restful'}`;
+        } else {
+          document.getElementById('wearableHrText').innerHTML = `<span style="color: #64748B;">Not Applicable</span>`;
+          document.getElementById('wearableStatusLabel').textContent = '● Hardware Disconnected';
+          document.getElementById('wearableStatusLabel').style.color = '#64748B';
+          document.getElementById('wearableMetaText').textContent = 'No ESP32 connected • Measurements Not Applicable';
+        }
+      } catch (err) {
+        document.getElementById('wearableHrText').innerHTML = `<span style="color: #64748B;">Not Applicable</span>`;
+        document.getElementById('wearableStatusLabel').textContent = '● Hardware Disconnected';
+        document.getElementById('wearableStatusLabel').style.color = '#64748B';
+        document.getElementById('wearableMetaText').textContent = 'No ESP32 connected • Measurements Not Applicable';
+      }
+    }
+
+    loadLatestSession();
+    loadHistory();
+    loadWearableData();
+  </script>
+</body>
+</html>

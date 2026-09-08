@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Statistics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="session-intro.html" class="nav-link">Session</a>
+        <a href="data-live.html" class="nav-link">Data / Live</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="#" id="navLogoutBtn" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" id="navUserAvatar" title="User Profile">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- User Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Dashboard Sidebar -->
+      <aside class="dashboard-sidebar">
+        <div class="user-greeting-block">
+          <span class="greeting-sub">Hello,</span>
+          <h2 class="greeting-username" id="statsGreetingName">User</h2>
+          <p class="greeting-quote" id="statsUidDisplay">Take care of your mind today.</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="session-intro.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span>Session</span>
+          </a>
+
+          <a href="data-live.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span>Data / Live</span>
+          </a>
+
+          <a href="history.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </a>
+
+          <a href="statistics.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Statistics</span>
+          </a>
+
+          <a href="profile.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Statistics Content Area -->
+      <section class="dashboard-main-content">
+        <!-- Page Title & Period Dropdown -->
+        <div class="content-header-row">
+          <div>
+            <h1 class="page-title">Your Well-Being Trends</h1>
+            <p class="page-subtitle">Track your progress and see how you're doing over time.</p>
+          </div>
+
+          <!-- Overall Timeframe Selector -->
+          <div class="timeframe-select-wrapper">
+            <svg class="timeframe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <select class="timeframe-select">
+              <option selected>Last 30 Days</option>
+              <option>Last 7 Days</option>
+              <option>Last 90 Days</option>
+              <option>All Time</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Top Row: 4 Metric Cards -->
+        <div class="stats-overview-grid">
+          <!-- Total Sessions -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle blue-tint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+              </div>
+              <span class="stat-card-title">Total Sessions</span>
+            </div>
+            <div class="stat-main-number" id="statTotalSessions">0</div>
+            <div class="stat-trend positive">
+              <span>All assessments recorded</span>
+            </div>
+          </div>
+
+          <!-- Average Risk Score -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle green-tint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="4" fill="currentColor"></circle>
+                </svg>
+              </div>
+              <span class="stat-card-title">Average Risk Score</span>
+            </div>
+            <div class="stat-main-number" id="statAvgRiskScore">-- <small>/ 100</small></div>
+            <div class="stat-trend positive">
+              <span>Calculated from submissions</span>
+            </div>
+          </div>
+
+          <!-- Average Sleep -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle purple-tint">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </div>
+              <span class="stat-card-title">Average Sleep</span>
+            </div>
+            <div class="stat-main-number" id="statAvgSleep">7.2 <small>hours</small></div>
+            <div class="stat-trend positive">
+              <span>Reported in screening</span>
+            </div>
+          </div>
+
+          <!-- Average Heart Rate -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle red-tint">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <span class="stat-card-title">Average Heart Rate</span>
+            </div>
+            <div class="stat-main-number" id="statAvgHr" style="font-size: 1.25rem; color: #64748B;">Not Applicable</div>
+            <div class="stat-trend" id="statAvgHrTrend" style="color: #64748B;">
+              <span>Hardware Disconnected</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Row: 2 Major Trends (Risk Level & Sleep Duration) -->
+        <div class="charts-row-two-col">
+          <!-- Risk Level Trend Chart Card -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <div>
+                <h3 class="chart-box-title">Risk Level Trend</h3>
+                <p class="chart-box-subtitle">Your risk level over time based on assessment results.</p>
+              </div>
+            </div>
+
+            <!-- Risk SVG Line Chart -->
+            <div class="svg-chart-container">
+              <svg class="chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
+                <!-- Grid Lines -->
+                <line x1="40" y1="20" x2="490" y2="20" stroke="#F1F5F9"/>
+                <line x1="40" y1="50" x2="490" y2="50" stroke="#F1F5F9"/>
+                <line x1="40" y1="80" x2="490" y2="80" stroke="#F1F5F9"/>
+                <line x1="40" y1="110" x2="490" y2="110" stroke="#F1F5F9"/>
+                <line x1="40" y1="140" x2="490" y2="140" stroke="#F1F5F9"/>
+
+                <!-- Y Axis Labels -->
+                <text x="15" y="24" class="axis-label">100</text>
+                <text x="15" y="54" class="axis-label">80</text>
+                <text x="15" y="84" class="axis-label">60</text>
+                <text x="15" y="114" class="axis-label">40</text>
+                <text x="15" y="144" class="axis-label">20</text>
+                <text x="25" y="174" class="axis-label">0</text>
+
+                <!-- Gradient -->
+                <defs>
+                  <linearGradient id="riskGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Gradient Area & Polyline -->
+                <polygon id="statRiskPolygon" points="50,130 460,130 460,170 50,170" fill="url(#riskGrad)"/>
+                <polyline id="statRiskPolyline" points="50,130 460,130" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="statRiskDots"></g>
+              </svg>
+              <!-- X Axis Labels -->
+              <div class="chart-dates-row" id="statRiskDatesRow">
+                <span>Recent Assessments</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sleep Duration Trend Chart Card -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <div>
+                <h3 class="chart-box-title">Sleep Duration Trend</h3>
+                <p class="chart-box-subtitle">Average sleep hours recorded in screening sessions.</p>
+              </div>
+            </div>
+
+            <!-- Sleep SVG Line Chart -->
+            <div class="svg-chart-container">
+              <svg class="chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
+                <!-- Grid Lines -->
+                <line x1="40" y1="20" x2="490" y2="20" stroke="#F1F5F9"/>
+                <line x1="40" y1="50" x2="490" y2="50" stroke="#F1F5F9"/>
+                <line x1="40" y1="80" x2="490" y2="80" stroke="#F1F5F9"/>
+                <line x1="40" y1="110" x2="490" y2="110" stroke="#F1F5F9"/>
+                <line x1="40" y1="140" x2="490" y2="140" stroke="#F1F5F9"/>
+
+                <!-- Y Axis Labels -->
+                <text x="15" y="24" class="axis-label">12</text>
+                <text x="15" y="54" class="axis-label">10</text>
+                <text x="20" y="84" class="axis-label">8</text>
+                <text x="20" y="114" class="axis-label">6</text>
+                <text x="20" y="144" class="axis-label">4</text>
+                <text x="20" y="174" class="axis-label">2</text>
+
+                <!-- Gradient -->
+                <defs>
+                  <linearGradient id="sleepGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Gradient Area & Polyline -->
+                <polygon id="statSleepPolygon" points="50,90 460,90 460,170 50,170" fill="url(#sleepGrad)"/>
+                <polyline id="statSleepPolyline" points="50,90 460,90" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="statSleepDots"></g>
+              </svg>
+              <!-- X Axis Labels -->
+              <div class="chart-dates-row" id="statSleepDatesRow">
+                <span>Recent Assessments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sensor Summary Row: Body Temperature & Sleep Monitoring -->
+        <div class="charts-row-two-col">
+          <!-- Body Temperature Telemetry Card -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <div>
+                <h3 class="chart-box-title">Average Body Temperature</h3>
+                <p class="chart-box-subtitle">Digital thermal probe telemetry (DS18B20).</p>
+              </div>
+              <div class="stat-icon-circle" style="background-color: #FEF3C7; color: #D97706; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-main-number" id="statAvgTemp" style="font-size: 1.5rem; color: #64748B;">Not Applicable</div>
+            <div class="stat-trend" id="statAvgTempTrend" style="color: #64748B; margin-top: 6px;">
+              <span>Hardware Disconnected</span>
+            </div>
+            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #F1F5F9; display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748B;">
+              <span>Reference: 36.1°C – 37.2°C</span>
+              <span id="statTempLast">Last: Standby</span>
+            </div>
+          </div>
+
+          <!-- Sleep Monitoring Card (No graph as requested, displays data) -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <div>
+                <h3 class="chart-box-title">Sleep Monitoring (Today)</h3>
+                <p class="chart-box-subtitle">Wrist actigraphy & resting stillness (MPU6050 6-axis IMU).</p>
+              </div>
+              <div class="stat-icon-circle" style="background-color: #EEF2FF; color: #4F46E5; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-main-number" id="statSleepToday" style="font-size: 1.5rem; color: #64748B;">Not Applicable</div>
+            <div class="stat-trend" id="statSleepTodayTrend" style="color: #64748B; margin-top: 6px;">
+              <span>Hardware Disconnected</span>
+            </div>
+            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #F1F5F9; display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748B;">
+              <span id="statSleepQuality">Efficiency: Standby</span>
+              <span id="statSleepMotion">Rest Index: Standby</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: 3 Cards (Distribution, Heart Rate, SpO2) -->
+        <div class="charts-row-three-col">
+          <!-- Risk Level Distribution Donut Card -->
+          <div class="chart-box-card">
+            <h3 class="chart-box-title">Risk Level Distribution</h3>
+            <p class="chart-box-subtitle">Breakdown of your assessment results.</p>
+
+            <div class="dist-donut-wrapper">
+              <svg class="dist-donut-svg" viewBox="0 0 160 160">
+                <!-- Low segment -->
+                <circle id="statDonutCircleLow" cx="80" cy="80" r="58" fill="none" stroke="#10B981" stroke-width="16" stroke-dasharray="0 364" stroke-dashoffset="0"/>
+                <!-- Moderate segment -->
+                <circle id="statDonutCircleMod" cx="80" cy="80" r="58" fill="none" stroke="#F59E0B" stroke-width="16" stroke-dasharray="0 364" stroke-dashoffset="0"/>
+                <!-- High segment -->
+                <circle id="statDonutCircleHigh" cx="80" cy="80" r="58" fill="none" stroke="#EF4444" stroke-width="16" stroke-dasharray="0 364" stroke-dashoffset="0"/>
+              </svg>
+              <div class="dist-donut-center">
+                <span class="center-number" id="statDonutTotalSessions">0</span>
+                <span class="center-text">Sessions</span>
+              </div>
+            </div>
+
+            <!-- Distribution Legend with Percentages -->
+            <div class="dist-legend-list">
+              <div class="dist-legend-item">
+                <span class="legend-color-dot dot-low"></span>
+                <span class="legend-label">Low</span>
+                <strong class="legend-val" id="statLegendLowVal">0</strong>
+              </div>
+              <div class="dist-legend-item">
+                <span class="legend-color-dot dot-moderate"></span>
+                <span class="legend-label">Moderate</span>
+                <strong class="legend-val" id="statLegendModVal">0</strong>
+              </div>
+              <div class="dist-legend-item">
+                <span class="legend-color-dot dot-high"></span>
+                <span class="legend-label">High</span>
+                <strong class="legend-val" id="statLegendHighVal">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Heart Rate Trend Mini Card -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <div>
+                <h3 class="chart-box-title">Heart Rate Trend</h3>
+                <p class="chart-box-subtitle" id="statHrSubtitle">No hardware connected (flatline baseline).</p>
+              </div>
+            </div>
+
+            <div class="svg-chart-container mini">
+              <svg class="chart-svg" viewBox="0 0 350 140" preserveAspectRatio="none">
+                <line x1="30" y1="15" x2="340" y2="15" stroke="#F1F5F9"/>
+                <line x1="30" y1="45" x2="340" y2="45" stroke="#F1F5F9"/>
+                <line x1="30" y1="75" x2="340" y2="75" stroke="#F1F5F9"/>
+                <line x1="30" y1="105" x2="340" y2="105" stroke="#F1F5F9"/>
+
+                <text x="10" y="20" class="axis-label">120</text>
+                <text x="10" y="50" class="axis-label">100</text>
+                <text x="10" y="80" class="axis-label">80</text>
+                <text x="10" y="110" class="axis-label">60</text>
+
+                <defs>
+                  <linearGradient id="hrMiniGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#EF4444" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#EF4444" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <polygon id="statHrPolygon" points="35,110 335,110 335,110 35,110" fill="url(#hrMiniGrad)" fill-opacity="0"/>
+                <polyline id="statHrPolyline" points="35,110 335,110" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="chart-dates-row" id="statHrDatesRow">
+                <span>Standby</span>
+                <span>Standby</span>
+                <span>Standby</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SpO2 Trend Mini Card -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <div>
+                <h3 class="chart-box-title">SpO<sub>2</sub> Trend</h3>
+                <p class="chart-box-subtitle" id="statSpo2Subtitle">No hardware connected (flatline baseline).</p>
+              </div>
+            </div>
+
+            <div class="svg-chart-container mini">
+              <svg class="chart-svg" viewBox="0 0 350 140" preserveAspectRatio="none">
+                <line x1="30" y1="15" x2="340" y2="15" stroke="#F1F5F9"/>
+                <line x1="30" y1="45" x2="340" y2="45" stroke="#F1F5F9"/>
+                <line x1="30" y1="75" x2="340" y2="75" stroke="#F1F5F9"/>
+                <line x1="30" y1="105" x2="340" y2="105" stroke="#F1F5F9"/>
+
+                <text x="10" y="20" class="axis-label">100</text>
+                <text x="10" y="50" class="axis-label">95</text>
+                <text x="10" y="80" class="axis-label">90</text>
+                <text x="10" y="110" class="axis-label">85</text>
+
+                <defs>
+                  <linearGradient id="spo2MiniGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0284C7" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#0284C7" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <polygon id="statSpo2Polygon" points="35,110 335,110 335,110 35,110" fill="url(#spo2MiniGrad)" fill-opacity="0"/>
+                <polyline id="statSpo2Polyline" points="35,110 335,110" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="chart-dates-row" id="statSpo2DatesRow">
+                <span>Standby</span>
+                <span>Standby</span>
+                <span>Standby</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <a href="#" id="footerLogoutBtn">Logout</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Small steps today. A stronger tomorrow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Verify session
+    const currentUser = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
+    if (!currentUser) {
+      window.location.href = 'login.html';
+    }
+
+    const userId = currentUser.userId || currentUser.uid || 'NT1001';
+    const userName = currentUser.fullName || currentUser.name || 'User';
+
+    document.getElementById('statsGreetingName').textContent = userName;
+    document.getElementById('statsUidDisplay').textContent = `User ID: ${userId} • Health Analytics`;
+    const avatarLetter = (userName || 'U')[0].toUpperCase();
+    document.getElementById('navUserAvatar').textContent = avatarLetter;
+
+    // Logout
+    function handleLogout(e) {
+      if (e) e.preventDefault();
+      localStorage.removeItem('neurotech_currentUser');
+      localStorage.removeItem('currentUser');
+      sessionStorage.removeItem('neurotech_latest_result');
+      window.location.href = 'login.html';
+    }
+    document.getElementById('navLogoutBtn').addEventListener('click', handleLogout);
+    document.getElementById('footerLogoutBtn').addEventListener('click', handleLogout);
+
+    // Fetch session data & compute trends
+    async function loadStatistics() {
+      try {
+        const res = await fetch(`/api/session/history/${userId}`);
+        const data = await res.json();
+        const history = (data && data.success && Array.isArray(data.history)) ? data.history : [];
+
+        // 1. Top metric cards
+        const total = history.length;
+        document.getElementById('statTotalSessions').textContent = total;
+
+        if (total > 0) {
+          const sumScore = history.reduce((acc, s) => acc + (s.score || 0), 0);
+          const avgScore = Math.round(sumScore / total);
+          document.getElementById('statAvgRiskScore').innerHTML = `${avgScore} <small>/ 100</small>`;
+
+          // Extract average sleep from Q8 answers or default
+          let sleepHoursList = [];
+          history.forEach(s => {
+            if (Array.isArray(s.answers)) {
+              const q8 = s.answers.find(a => a && a.questionNumber === 8);
+              if (q8 && q8.selectedOption) {
+                const match = q8.selectedOption.match(/(\d+(\.\d+)?)/);
+                if (match) sleepHoursList.push(parseFloat(match[1]));
+              }
+            }
+          });
+          const avgSleep = sleepHoursList.length > 0 ? (sleepHoursList.reduce((a, b) => a + b, 0) / sleepHoursList.length).toFixed(1) : '7.2';
+          document.getElementById('statAvgSleep').innerHTML = `${avgSleep} <small>hours</small>`;
+
+          // 2. Risk Level Trend (chronological)
+          const chronological = [...history].reverse();
+          const riskPoints = chronological.map((s, idx) => {
+            const count = chronological.length;
+            const x = count > 1 ? 50 + (idx / (count - 1)) * 410 : 250;
+            // Map score (0 to 100) to y (170 at 0, 24 at 100)
+            const y = 170 - ((s.score || 0) / 100) * 146;
+            return { x: Math.round(x), y: Math.round(y), score: s.score, date: s.dateFormatted ? s.dateFormatted.split(',')[0] : 'Session ' + (idx + 1) };
+          });
+
+          const riskPolyStr = riskPoints.map(p => `${p.x},${p.y}`).join(' ');
+          document.getElementById('statRiskPolyline').setAttribute('points', riskPolyStr);
+          document.getElementById('statRiskPolygon').setAttribute('points', `50,170 ${riskPolyStr} 460,170`);
+
+          const dotsGroup = document.getElementById('statRiskDots');
+          dotsGroup.innerHTML = riskPoints.map(p => `<circle cx="${p.x}" cy="${p.y}" r="4" fill="#2563EB"/>`).join('');
+
+          const datesRow = document.getElementById('statRiskDatesRow');
+          datesRow.innerHTML = riskPoints.slice(-6).map(p => `<span>${p.date}</span>`).join('');
+
+          // 3. Sleep Trend
+          const sleepPoints = chronological.map((s, idx) => {
+            const count = chronological.length;
+            const x = count > 1 ? 50 + (idx / (count - 1)) * 410 : 250;
+            const hrs = 7.2; // default
+            // Map hrs (2 to 12) to y (170 at 2, 24 at 12)
+            const y = 170 - ((hrs - 2) / 10) * 146;
+            return { x: Math.round(x), y: Math.round(y), date: s.dateFormatted ? s.dateFormatted.split(',')[0] : 'Session ' + (idx + 1) };
+          });
+          const sleepPolyStr = sleepPoints.map(p => `${p.x},${p.y}`).join(' ');
+          document.getElementById('statSleepPolyline').setAttribute('points', sleepPolyStr);
+          document.getElementById('statSleepPolygon').setAttribute('points', `50,170 ${sleepPolyStr} 460,170`);
+          document.getElementById('statSleepDatesRow').innerHTML = sleepPoints.slice(-6).map(p => `<span>${p.date}</span>`).join('');
+
+          // 4. Donut Breakdown (r=58, circ=364)
+          const circ = 364;
+          const lowCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'LOW').length;
+          const modCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'MODERATE').length;
+          const highCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'HIGH').length;
+
+          document.getElementById('statDonutTotalSessions').textContent = total;
+          document.getElementById('statLegendLowVal').textContent = `${lowCount} (${Math.round((lowCount/total)*100)}%)`;
+          document.getElementById('statLegendModVal').textContent = `${modCount} (${Math.round((modCount/total)*100)}%)`;
+          document.getElementById('statLegendHighVal').textContent = `${highCount} (${Math.round((highCount/total)*100)}%)`;
+
+          const lenLow = (lowCount / total) * circ;
+          const lenMod = (modCount / total) * circ;
+          const lenHigh = (highCount / total) * circ;
+
+          const cLow = document.getElementById('statDonutCircleLow');
+          const cMod = document.getElementById('statDonutCircleMod');
+          const cHigh = document.getElementById('statDonutCircleHigh');
+
+          cLow.setAttribute('stroke-dasharray', `${lenLow} ${circ}`);
+          cLow.setAttribute('stroke-dashoffset', '0');
+
+          cMod.setAttribute('stroke-dasharray', `${lenMod} ${circ}`);
+          cMod.setAttribute('stroke-dashoffset', `${-lenLow}`);
+
+          cHigh.setAttribute('stroke-dasharray', `${lenHigh} ${circ}`);
+          cHigh.setAttribute('stroke-dashoffset', `${-(lenLow + lenMod)}`);
+        }
+      } catch (err) {
+        // Safe fallbacks remain displayed
+      }
+
+      // Load Wearable Telemetry Trend (Handles Hardware Disconnected flatline)
+      try {
+        const wRes = await fetch(`/api/wearable/history/${userId}`);
+        const wData = await wRes.json();
+        const wHist = (wData && wData.success && Array.isArray(wData.history)) ? wData.history : [];
+        const isHwActive = Boolean(wData && wData.isHardwareActive === true && wHist.length > 0 && typeof wHist[0].heartRate === 'number' && wHist[0].heartRate > 0);
+
+        if (isHwActive) {
+          // Average Heart Rate
+          const sumHr = wHist.reduce((acc, r) => acc + (r.heartRate || 72), 0);
+          const avgHr = Math.round(sumHr / wHist.length);
+          document.getElementById('statAvgHr').innerHTML = `${avgHr} <small>bpm</small>`;
+          document.getElementById('statAvgHr').style.color = '#0F172A';
+          document.getElementById('statAvgHrTrend').innerHTML = '<span style="color: #10B981;">● Live Telemetry</span>';
+          document.getElementById('statHrSubtitle').textContent = 'Wearable baseline (live signal).';
+          document.getElementById('statSpo2Subtitle').textContent = 'Wearable baseline (live signal).';
+
+          // Body Temperature (DS18B20)
+          const validTemps = wHist.filter(r => typeof r.temperature === 'number' && r.temperature > 0);
+          const avgTemp = validTemps.length > 0 
+            ? (validTemps.reduce((acc, r) => acc + r.temperature, 0) / validTemps.length).toFixed(1)
+            : '36.6';
+          const lastTemp = validTemps.length > 0 ? validTemps[validTemps.length - 1].temperature : avgTemp;
+          document.getElementById('statAvgTemp').innerHTML = `${avgTemp} <small>°C</small>`;
+          document.getElementById('statAvgTemp').style.color = '#0F172A';
+          document.getElementById('statAvgTempTrend').innerHTML = '<span style="color: #10B981;">● Normothermic (Normal Range)</span>';
+          document.getElementById('statTempLast').textContent = `Last: ${lastTemp} °C`;
+
+          // Sleep Monitoring (Today via MPU6050 actigraphy)
+          const lastPoint = wHist[wHist.length - 1] || {};
+          const sleepHrs = lastPoint.sleepHours || 7.5;
+          document.getElementById('statSleepToday').innerHTML = `${sleepHrs} <small>hours</small>`;
+          document.getElementById('statSleepToday').style.color = '#0F172A';
+          document.getElementById('statSleepTodayTrend').innerHTML = '<span style="color: #10B981;">● Active Sensor Telemetry</span>';
+          document.getElementById('statSleepQuality').textContent = `Quality: ${lastPoint.sleepQuality || 'Good (88%)'}`;
+          document.getElementById('statSleepMotion').textContent = `Motion: ${lastPoint.motion || 'Resting'}`;
+
+          // Mini HR Graph (y: 110 at 60 bpm, 20 at 120 bpm)
+          const hrPts = wHist.map((r, idx) => {
+            const x = 35 + (idx / (wHist.length - 1)) * 300;
+            const y = 110 - (((r.heartRate || 72) - 60) / 60) * 90;
+            return { x: Math.round(x), y: Math.round(y) };
+          });
+          const hrStr = hrPts.map(p => `${p.x},${p.y}`).join(' ');
+          const hrPoly = document.getElementById('statHrPolyline');
+          hrPoly.setAttribute('points', hrStr);
+          hrPoly.setAttribute('stroke', '#EF4444');
+          const hrPolyG = document.getElementById('statHrPolygon');
+          hrPolyG.setAttribute('points', `35,130 ${hrStr} 335,130`);
+          hrPolyG.setAttribute('fill-opacity', '1');
+
+          // Mini SpO2 Graph (y: 110 at 85%, 20 at 100%)
+          const spo2Pts = wHist.map((r, idx) => {
+            const x = 35 + (idx / (wHist.length - 1)) * 300;
+            const y = 110 - (((r.spo2 || 98) - 85) / 15) * 90;
+            return { x: Math.round(x), y: Math.round(y) };
+          });
+          const spo2Str = spo2Pts.map(p => `${p.x},${p.y}`).join(' ');
+          const spo2Poly = document.getElementById('statSpo2Polyline');
+          spo2Poly.setAttribute('points', spo2Str);
+          spo2Poly.setAttribute('stroke', '#0284C7');
+          const spo2PolyG = document.getElementById('statSpo2Polygon');
+          spo2PolyG.setAttribute('points', `35,130 ${spo2Str} 335,130`);
+          spo2PolyG.setAttribute('fill-opacity', '1');
+
+          const sampleTimes = wHist.slice(-3).map(h => h.time || '10:00');
+          document.getElementById('statHrDatesRow').innerHTML = sampleTimes.map(t => `<span>${t}</span>`).join('');
+          document.getElementById('statSpo2DatesRow').innerHTML = sampleTimes.map(t => `<span>${t}</span>`).join('');
+        } else {
+          // Disconnected flatline mode
+          document.getElementById('statAvgHr').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
+          document.getElementById('statAvgHrTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
+          document.getElementById('statHrSubtitle').textContent = 'No hardware connected (flatline baseline).';
+          document.getElementById('statSpo2Subtitle').textContent = 'No hardware connected (flatline baseline).';
+
+          document.getElementById('statAvgTemp').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
+          document.getElementById('statAvgTempTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
+          document.getElementById('statTempLast').textContent = 'Last: Standby';
+
+          document.getElementById('statSleepToday').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
+          document.getElementById('statSleepTodayTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
+          document.getElementById('statSleepQuality').textContent = 'Efficiency: Standby';
+          document.getElementById('statSleepMotion').textContent = 'Rest Index: Standby';
+
+          document.getElementById('statHrPolyline').setAttribute('points', '35,110 335,110');
+          document.getElementById('statHrPolyline').setAttribute('stroke', '#94A3B8');
+          document.getElementById('statHrPolygon').setAttribute('points', '35,110 335,110 335,110 35,110');
+          document.getElementById('statHrPolygon').setAttribute('fill-opacity', '0');
+
+          document.getElementById('statSpo2Polyline').setAttribute('points', '35,110 335,110');
+          document.getElementById('statSpo2Polyline').setAttribute('stroke', '#94A3B8');
+          document.getElementById('statSpo2Polygon').setAttribute('points', '35,110 335,110 335,110 35,110');
+          document.getElementById('statSpo2Polygon').setAttribute('fill-opacity', '0');
+
+          document.getElementById('statHrDatesRow').innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
+          document.getElementById('statSpo2DatesRow').innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
+        }
+      } catch (err) {
+        // Fallbacks remain in place
+      }
+    }
+
+    loadStatistics();
+  </script>
+</body>
+</html>

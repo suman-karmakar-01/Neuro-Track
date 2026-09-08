@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Screening Assessment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="session-intro.html" class="nav-link active">Session</a>
+        <a href="data-live.html" class="nav-link">Data / Live</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="login.html" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" title="User Profile" style="text-decoration: none;">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Session Container -->
+  <main class="session-layout-section">
+    <div class="session-layout-container">
+      <!-- Left Sidebar / Stepper Navigation -->
+      <aside class="session-sidebar">
+        <h2 class="sidebar-title">Session</h2>
+        <p class="sidebar-subtitle">PTSD & Well-Being Screening</p>
+
+        <ul class="stepper-list">
+          <!-- Step 1: Completed -->
+          <li class="stepper-item completed">
+            <span class="stepper-circle check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="stepper-text">Introduction</span>
+          </li>
+
+          <!-- Step 2: Session (Active) -->
+          <li class="stepper-item active">
+            <span class="stepper-circle">2</span>
+            <span class="stepper-text">Session</span>
+          </li>
+
+          <!-- Step 3: Review -->
+          <li class="stepper-item">
+            <span class="stepper-circle">3</span>
+            <span class="stepper-text">Review</span>
+          </li>
+
+          <!-- Step 4: Result -->
+          <li class="stepper-item">
+            <span class="stepper-circle">4</span>
+            <span class="stepper-text">Result</span>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Right Question Step Card -->
+      <section class="session-main-card">
+        <!-- Progress Bar Header -->
+        <div class="progress-section">
+          <div class="progress-info-row">
+            <span class="progress-text" id="progressText">Question 1 of 20</span>
+            <span class="progress-percentage" id="progressPercentage">5%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressBarFill" style="width: 5%;"></div>
+          </div>
+        </div>
+
+        <!-- Question Title & Prompt -->
+        <div class="question-container">
+          <h1 class="question-title" id="questionTitle">Loading question...</h1>
+          <p class="question-subtitle" id="questionSubtitle">Select the option that best describes your experience over the past two weeks.</p>
+
+          <!-- Radio Option Cards -->
+          <form id="questionForm" class="options-group" onsubmit="return false;">
+            <div id="optionsContainer"></div>
+
+            <!-- Slider Helper for Q8 (Sleep Duration) -->
+            <div class="slider-wrapper" id="sliderWrapper" style="display: none;">
+              <p class="slider-instruction">Or adjust your average nightly sleep hours with the slider:</p>
+              <div class="range-slider-row">
+                <span class="slider-bound">0h</span>
+                <input type="range" min="0" max="24" value="7" class="slider-input" id="sleepSlider">
+                <span class="slider-bound">24h</span>
+                <span class="slider-current-value" id="sliderValueDisplay">7 hours</span>
+              </div>
+            </div>
+          </form>
+
+          <!-- Validation Warning -->
+          <div id="validationNotice" style="display: none; color: #DC2626; font-size: 0.85rem; font-weight: 600; margin-top: 14px;">
+            ⚠️ Please select an option before continuing.
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="step-actions-footer">
+          <button type="button" class="btn btn-secondary" id="prevBtn">
+            <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Previous
+          </button>
+
+          <button type="button" class="btn btn-primary" id="nextBtn">
+            Next
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">Screening & educational prototype — not a clinical diagnosis.</span>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Small steps today. A stronger tomorrow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 20-Question Dynamic Engine Script -->
+  <script>
+    // 20-Question PTSD / Well-being screening questions
+    const QUESTIONS = [
+      {
+        id: 1,
+        text: "During the past two weeks, how often have you felt nervous, anxious, or on edge?",
+        subtitle: "Select the option that best reflects your feelings.",
+        options: [
+          { text: "Not at all", score: 0 },
+          { text: "Several days", score: 1 },
+          { text: "More than half the days", score: 2 },
+          { text: "Nearly every day", score: 3 }
+        ]
+      },
+      {
+        id: 2,
+        text: "How often have you experienced unwanted or distressing memories of a difficult or traumatic event?",
+        subtitle: "Unwanted recurring thoughts or vivid memories.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost every day", score: 3 }
+        ]
+      },
+      {
+        id: 3,
+        text: "How often have you had upsetting dreams or nightmares related to a difficult experience?",
+        subtitle: "Distressing dreams disturbing your sleep.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost every day", score: 3 }
+        ]
+      },
+      {
+        id: 4,
+        text: "How often have you tried to avoid thoughts, feelings, people, places, or situations that remind you of a difficult experience?",
+        subtitle: "Active avoidance of reminders.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost always", score: 3 }
+        ]
+      },
+      {
+        id: 5,
+        text: "How often have you felt unusually alert, watchful, or 'on guard'?",
+        subtitle: "Feeling on edge even in everyday surroundings.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost constantly", score: 3 }
+        ]
+      },
+      {
+        id: 6,
+        text: "How easily are you startled by sudden sounds or unexpected events?",
+        subtitle: "Heightened startle response or jumping at noises.",
+        options: [
+          { text: "Not at all", score: 0 },
+          { text: "Slightly", score: 1 },
+          { text: "Quite easily", score: 2 },
+          { text: "Extremely easily", score: 3 }
+        ]
+      },
+      {
+        id: 7,
+        text: "How often have you had difficulty falling asleep or staying asleep?",
+        subtitle: "Restlessness, waking up in the middle of the night, or insomnia.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost every night", score: 3 }
+        ]
+      },
+      {
+        id: 8,
+        text: "How would you describe your average sleep duration during the past week?",
+        subtitle: "Estimated hours of restful sleep per night.",
+        isSleepDuration: true,
+        options: [
+          { text: "8 hours or more", score: 0, minHr: 8, maxHr: 24 },
+          { text: "6–7 hours", score: 1, minHr: 6, maxHr: 7 },
+          { text: "4–5 hours", score: 2, minHr: 4, maxHr: 5 },
+          { text: "Less than 4 hours", score: 3, minHr: 0, maxHr: 3 }
+        ]
+      },
+      {
+        id: 9,
+        text: "How often have you experienced difficulty concentrating on studies, work, or daily activities?",
+        subtitle: "Trouble focusing or remembering routine tasks.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost every day", score: 3 }
+        ]
+      },
+      {
+        id: 10,
+        text: "How often have you felt emotionally numb, detached, or disconnected from people around you?",
+        subtitle: "Feeling distant from family, friends, or loved ones.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost always", score: 3 }
+        ]
+      },
+      {
+        id: 11,
+        text: "How often have you experienced sudden feelings of fear, panic, or intense discomfort?",
+        subtitle: "Spontaneous rushes of anxiety or dread.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost every day", score: 3 }
+        ]
+      },
+      {
+        id: 12,
+        text: "How often have you felt that you are unable to relax even when you are in a safe environment?",
+        subtitle: "Persistent tension even while resting at home.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost always", score: 3 }
+        ]
+      },
+      {
+        id: 13,
+        text: "How often have you experienced sudden physical reactions when something reminded you of a stressful or difficult experience?",
+        subtitle: "Examples include racing heart rate, sweating, shaking, or feeling tight in the chest.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost every time", score: 3 }
+        ]
+      },
+      {
+        id: 14,
+        text: "How often have you experienced changes in your mood, such as irritability, sadness, or frustration?",
+        subtitle: "Rapid mood shifts or unexpected anger.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost every day", score: 3 }
+        ]
+      },
+      {
+        id: 15,
+        text: "How much have these experiences affected your studies, work, relationships, or normal daily activities?",
+        subtitle: "Degree of interference with regular functioning.",
+        options: [
+          { text: "Not at all", score: 0 },
+          { text: "A little", score: 1 },
+          { text: "Quite a lot", score: 2 },
+          { text: "Severely", score: 3 }
+        ]
+      },
+      {
+        id: 16,
+        text: "How often have you felt that something bad might happen even when there is no immediate danger?",
+        subtitle: "Apprehension or persistent feelings of impending doom.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost always", score: 3 }
+        ]
+      },
+      {
+        id: 17,
+        text: "How often have you found yourself thinking repeatedly about a stressful or difficult experience when you did not want to?",
+        subtitle: "Intrusive, looping thoughts that feel hard to stop.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost constantly", score: 3 }
+        ]
+      },
+      {
+        id: 18,
+        text: "How often have you avoided social interaction because you did not feel comfortable or safe?",
+        subtitle: "Cancelling plans or withdrawing from gatherings.",
+        options: [
+          { text: "Never", score: 0 },
+          { text: "Occasionally", score: 1 },
+          { text: "Frequently", score: 2 },
+          { text: "Almost always", score: 3 }
+        ]
+      },
+      {
+        id: 19,
+        text: "How would you rate your overall emotional well-being during the past two weeks?",
+        subtitle: "Your general personal assessment of your mental state.",
+        options: [
+          { text: "Very good", score: 0 },
+          { text: "Good", score: 1 },
+          { text: "Poor", score: 2 },
+          { text: "Very poor", score: 3 }
+        ]
+      },
+      {
+        id: 20,
+        text: "How difficult have these symptoms or feelings made your everyday life?",
+        subtitle: "Overall perceived burden on daily life.",
+        options: [
+          { text: "Not difficult", score: 0 },
+          { text: "Slightly difficult", score: 1 },
+          { text: "Quite difficult", score: 2 },
+          { text: "Extremely difficult", score: 3 }
+        ]
+      }
+    ];
+
+    let currentIndex = 0;
+    // Load previously selected answers from sessionStorage if available
+    let storedAnswers = [];
+    try {
+      storedAnswers = JSON.parse(sessionStorage.getItem('neurotech_answers')) || [];
+    } catch (e) {
+      storedAnswers = [];
+    }
+
+    const questionTitle = document.getElementById('questionTitle');
+    const questionSubtitle = document.getElementById('questionSubtitle');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const progressText = document.getElementById('progressText');
+    const progressPercentage = document.getElementById('progressPercentage');
+    const progressBarFill = document.getElementById('progressBarFill');
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    const sleepSlider = document.getElementById('sleepSlider');
+    const sliderValueDisplay = document.getElementById('sliderValueDisplay');
+    const validationNotice = document.getElementById('validationNotice');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function renderQuestion(index) {
+      validationNotice.style.display = 'none';
+      const q = QUESTIONS[index];
+
+      // Update headers & progress
+      questionTitle.textContent = `Q${q.id}. ${q.text}`;
+      questionSubtitle.textContent = q.subtitle;
+      const pct = Math.round(((index + 1) / QUESTIONS.length) * 100);
+      progressText.textContent = `Question ${index + 1} of ${QUESTIONS.length}`;
+      progressPercentage.textContent = `${pct}%`;
+      progressBarFill.style.width = `${pct}%`;
+
+      // Render options
+      optionsContainer.innerHTML = '';
+      const prevAnswer = storedAnswers[index];
+
+      q.options.forEach((opt, optIdx) => {
+        const isSelected = prevAnswer && prevAnswer.selectedOption === opt.text;
+
+        const label = document.createElement('label');
+        label.className = `option-card ${isSelected ? 'selected' : ''}`;
+
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = `question_${q.id}`;
+        input.value = opt.text;
+        input.className = 'option-radio';
+        input.checked = isSelected;
+
+        input.addEventListener('change', () => {
+          document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+          label.classList.add('selected');
+          validationNotice.style.display = 'none';
+
+          // Save answer
+          storedAnswers[index] = {
+            questionNumber: q.id,
+            questionText: q.text,
+            selectedOption: opt.text,
+            score: opt.score
+          };
+          sessionStorage.setItem('neurotech_answers', JSON.stringify(storedAnswers));
+
+          // Sync slider if Q8
+          if (q.isSleepDuration && sleepSlider) {
+            if (opt.score === 0) sleepSlider.value = 8;
+            else if (opt.score === 1) sleepSlider.value = 7;
+            else if (opt.score === 2) sleepSlider.value = 5;
+            else if (opt.score === 3) sleepSlider.value = 3;
+            sliderValueDisplay.textContent = sleepSlider.value + ' hours';
+          }
+        });
+
+        const span = document.createElement('span');
+        span.className = 'option-text';
+        span.textContent = opt.text;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        optionsContainer.appendChild(label);
+      });
+
+      // Show/hide Sleep Slider for Q8
+      if (q.isSleepDuration) {
+        sliderWrapper.style.display = 'block';
+        if (prevAnswer) {
+          const matched = q.options.find(o => o.text === prevAnswer.selectedOption);
+          if (matched) {
+            sleepSlider.value = matched.minHr || 7;
+            sliderValueDisplay.textContent = sleepSlider.value + ' hours';
+          }
+        }
+      } else {
+        sliderWrapper.style.display = 'none';
+      }
+
+      // Button states
+      if (index === QUESTIONS.length - 1) {
+        nextBtn.innerHTML = `Review Answers
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>`;
+      } else {
+        nextBtn.innerHTML = `Next
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>`;
+      }
+    }
+
+    // Slider input handler for Question 8
+    sleepSlider.addEventListener('input', (e) => {
+      const hours = Number(e.target.value);
+      sliderValueDisplay.textContent = hours + ' hours';
+
+      // Auto-select corresponding radio option
+      const q = QUESTIONS[currentIndex];
+      if (q && q.isSleepDuration) {
+        let matchedScore = 0;
+        if (hours >= 8) matchedScore = 0;
+        else if (hours >= 6) matchedScore = 1;
+        else if (hours >= 4) matchedScore = 2;
+        else matchedScore = 3;
+
+        const targetOption = q.options.find(o => o.score === matchedScore);
+        if (targetOption) {
+          storedAnswers[currentIndex] = {
+            questionNumber: q.id,
+            questionText: q.text,
+            selectedOption: targetOption.text,
+            score: targetOption.score
+          };
+          sessionStorage.setItem('neurotech_answers', JSON.stringify(storedAnswers));
+
+          // Re-highlight radio card
+          const cards = optionsContainer.querySelectorAll('.option-card');
+          cards.forEach((c, idx) => {
+            if (q.options[idx].score === matchedScore) {
+              c.classList.add('selected');
+              c.querySelector('input').checked = true;
+            } else {
+              c.classList.remove('selected');
+            }
+          });
+          validationNotice.style.display = 'none';
+        }
+      }
+    });
+
+    // Next button
+    nextBtn.addEventListener('click', () => {
+      if (!storedAnswers[currentIndex]) {
+        validationNotice.style.display = 'block';
+        return;
+      }
+
+      if (currentIndex < QUESTIONS.length - 1) {
+        currentIndex++;
+        renderQuestion(currentIndex);
+      } else {
+        // Proceed to Review step
+        window.location.href = 'session-review.html';
+      }
+    });
+
+    // Previous button
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion(currentIndex);
+      } else {
+        window.location.href = 'session-intro.html';
+      }
+    });
+
+    // Start with Question 1
+    renderQuestion(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Review Assessment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="session-intro.html" class="nav-link active">Session</a>
+        <a href="data-live.html" class="nav-link">Data / Live</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="login.html" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" title="User Profile" style="text-decoration: none;">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Session Container -->
+  <main class="session-layout-section">
+    <div class="session-layout-container">
+      <!-- Left Sidebar / Stepper Navigation -->
+      <aside class="session-sidebar">
+        <h2 class="sidebar-title">Session</h2>
+        <p class="sidebar-subtitle">PTSD & Well-Being Screening</p>
+
+        <ul class="stepper-list">
+          <!-- Step 1: Completed -->
+          <li class="stepper-item completed">
+            <span class="stepper-circle check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="stepper-text">Introduction</span>
+          </li>
+
+          <!-- Step 2: Completed -->
+          <li class="stepper-item completed">
+            <span class="stepper-circle check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="stepper-text">Session</span>
+          </li>
+
+          <!-- Step 3: Review (Active) -->
+          <li class="stepper-item active">
+            <span class="stepper-circle">3</span>
+            <span class="stepper-text">Review</span>
+          </li>
+
+          <!-- Step 4: Result -->
+          <li class="stepper-item">
+            <span class="stepper-circle">4</span>
+            <span class="stepper-text">Result</span>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Right Review Step Card -->
+      <section class="session-main-card">
+        <span class="step-indicator-label">STEP 3 OF 4</span>
+        <h1 class="card-heading">Review your answers</h1>
+        <p class="card-subheading">Please review your responses to all 20 screening questions before submitting.</p>
+
+        <div id="statusNotice" style="margin-bottom: 16px; font-weight: 600; font-size: 0.9rem; color: #2563EB;">
+          Loading answered questions...
+        </div>
+
+        <!-- Dynamic Review Answers List -->
+        <div class="review-items-list" id="reviewList"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="step-actions-footer">
+          <a href="session-question.html" class="btn btn-secondary">
+            <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Questions
+          </a>
+
+          <button type="button" class="btn btn-primary" id="submitAssessmentBtn">
+            Submit Assessment
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">Screening & educational prototype — not a clinical diagnosis.</span>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Small steps today. A stronger tomorrow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Load answers from sessionStorage
+    const storedAnswers = JSON.parse(sessionStorage.getItem('neurotech_answers') || '[]');
+    const reviewList = document.getElementById('reviewList');
+    const statusNotice = document.getElementById('statusNotice');
+    const submitBtn = document.getElementById('submitAssessmentBtn');
+
+    // Filter valid answered questions
+    const validAnswers = storedAnswers.filter(a => a && a.questionNumber);
+
+    statusNotice.textContent = `Completed ${validAnswers.length} of 20 questions`;
+    if (validAnswers.length < 20) {
+      statusNotice.style.color = '#DC2626';
+      statusNotice.textContent = `⚠️ You have answered ${validAnswers.length} of 20 questions. Please complete all questions before submitting.`;
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+    } else {
+      statusNotice.style.color = '#10B981';
+      statusNotice.textContent = `✓ All 20 questions answered and ready for evaluation.`;
+    }
+
+    // Render list
+    reviewList.innerHTML = '';
+    storedAnswers.forEach((ans, idx) => {
+      if (!ans) return;
+      const card = document.createElement('div');
+      card.className = 'review-item-card';
+
+      card.innerHTML = `
+        <div class="question-badge">Q${ans.questionNumber}</div>
+        <div class="review-question-content">
+          <p class="review-question-text">${ans.questionText}</p>
+          <span class="review-answer-text">${ans.selectedOption}</span>
+        </div>
+        <a href="session-question.html" class="btn-edit" aria-label="Edit Question ${ans.questionNumber}">
+          <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+          <span>Edit</span>
+        </a>
+      `;
+      reviewList.appendChild(card);
+    });
+
+    // Handle Submission
+    submitBtn.addEventListener('click', async () => {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Evaluating Answers...';
+
+      let user = {};
+      try {
+        user = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser')) || {};
+      } catch (e) {
+        user = {};
+      }
+      const userId = user.userId || user.uid || 'NT1001';
+
+      const payload = {
+        userId,
+        answers: storedAnswers
+      };
+
+      try {
+        const res = await fetch('http://localhost:5000/api/session/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (data.success && data.result) {
+          sessionStorage.setItem('neurotech_last_result', JSON.stringify(data.result));
+          window.location.href = 'session-result.html';
+        } else {
+          alert('Submission error: ' + (data.message || 'Please try again'));
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Assessment';
+        }
+      } catch (err) {
+        // Fallback local scoring if backend is offline
+        let rawScore = 0;
+        storedAnswers.forEach(a => { rawScore += Number(a.score || 0); });
+        const score = Math.min(100, Math.round((rawScore / 60) * 100));
+        let riskLevel = score >= 67 ? 'HIGH' : (score >= 34 ? 'MODERATE' : 'LOW');
+
+        const fallbackResult = {
+          assessmentId: `ASM-${Date.now().toString().slice(-6)}`,
+          userId,
+          timestamp: new Date().toISOString(),
+          dateFormatted: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
+          rawScore,
+          score,
+          maxRawScore: 60,
+          riskLevel,
+          explanation: `Demonstration score evaluated as ${riskLevel} Risk.`,
+          recommendations: [
+            'Maintain regular sleep and daily routines.',
+            'Continue healthy social connections.',
+            'Practice relaxation or breathing exercises.'
+          ],
+          disclaimer: 'Screening/educational result — not a clinical diagnosis.',
+          answers: storedAnswers
+        };
+
+        sessionStorage.setItem('neurotech_last_result', JSON.stringify(fallbackResult));
+        window.location.href = 'session-result.html';
+      }
+    });
+  </script>
+</body>
+</html>

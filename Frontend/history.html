@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | History</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="session-intro.html" class="nav-link">Session</a>
+        <a href="data-live.html" class="nav-link">Data / Live</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="#" id="navLogoutBtn" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" id="navUserAvatar" title="User Profile" style="text-decoration: none;">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- User Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Dashboard Sidebar -->
+      <aside class="dashboard-sidebar">
+        <div class="user-greeting-block">
+          <span class="greeting-sub">Hello,</span>
+          <h2 class="greeting-username" id="historyGreetingName">User</h2>
+          <p class="greeting-quote" id="historyUidDisplay">Take care of your mind today.</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="session-intro.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span>Session</span>
+          </a>
+
+          <a href="data-live.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span>Data / Live</span>
+          </a>
+
+          <a href="history.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </a>
+
+          <a href="statistics.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Statistics</span>
+          </a>
+
+          <a href="profile.html" class="sidebar-link">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main History Content Area -->
+      <section class="dashboard-main-content">
+        <!-- Page Title Bar -->
+        <div class="content-header-row">
+          <div>
+            <h1 class="page-title">Assessment History</h1>
+            <p class="page-subtitle">View and track your past assessment sessions.</p>
+          </div>
+
+          <a href="session-intro.html" class="btn btn-primary">
+            <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Take New Assessment
+          </a>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-toolbar">
+          <span class="filter-label">Filter by</span>
+
+          <!-- Time Range Filter -->
+          <div class="filter-select-wrapper">
+            <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <select class="filter-select" id="timeFilterSelect">
+              <option value="ALL" selected>All Time</option>
+              <option value="7">Last 7 Days</option>
+              <option value="30">Last 30 Days</option>
+              <option value="90">Last 3 Months</option>
+            </select>
+          </div>
+
+          <!-- Risk Level Filter -->
+          <div class="filter-select-wrapper">
+            <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <select class="filter-select" id="riskFilterSelect">
+              <option value="ALL" selected>All Risk Levels</option>
+              <option value="LOW">Low Risk</option>
+              <option value="MODERATE">Moderate Risk</option>
+              <option value="HIGH">High Risk</option>
+            </select>
+          </div>
+
+          <!-- Clear Filters -->
+          <button type="button" class="btn btn-clear-filters" id="clearFiltersBtn">
+            <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            Clear Filters
+          </button>
+        </div>
+
+        <!-- History Split Layout: Table (left) + Side Summary (right) -->
+        <div class="history-split-grid">
+          <!-- Left: Assessments Table Card -->
+          <div class="table-card">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Risk Level</th>
+                  <th>Score</th>
+                  <th>Notes</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 32px;">Loading history...</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Pagination Row -->
+            <div class="table-pagination">
+              <span class="pagination-info" id="paginationInfo">Showing 0 results</span>
+            </div>
+          </div>
+
+          <!-- Right: Summary Cards Side Panel -->
+          <div class="history-side-panel">
+            <!-- Your Progress Donut Card -->
+            <div class="summary-widget-card">
+              <h3 class="widget-title">Your Progress</h3>
+              <p class="widget-subtitle">A quick overview of your assessment history.</p>
+
+              <!-- Donut Chart SVG -->
+              <div class="donut-chart-container">
+                <svg class="donut-chart-svg" viewBox="0 0 160 160">
+                  <!-- Low (Green) segment -->
+                  <circle id="donutCircleLow" cx="80" cy="80" r="60" fill="none" stroke="#10B981" stroke-width="16" stroke-dasharray="0 377" stroke-dashoffset="0"/>
+                  <!-- Moderate (Amber) segment -->
+                  <circle id="donutCircleMod" cx="80" cy="80" r="60" fill="none" stroke="#F59E0B" stroke-width="16" stroke-dasharray="0 377" stroke-dashoffset="0"/>
+                  <!-- High (Red) segment -->
+                  <circle id="donutCircleHigh" cx="80" cy="80" r="60" fill="none" stroke="#EF4444" stroke-width="16" stroke-dasharray="0 377" stroke-dashoffset="0"/>
+                </svg>
+                <div class="donut-center-text">
+                  <span class="donut-number" id="donutTotalSessions">0</span>
+                  <span class="donut-label">Total Sessions</span>
+                </div>
+              </div>
+
+              <!-- Donut Legend -->
+              <div class="donut-legend-list">
+                <div class="legend-row">
+                  <div class="legend-label-group">
+                    <span class="legend-color-dot dot-low"></span>
+                    <span>Low</span>
+                  </div>
+                  <strong id="legendLowCount">0</strong>
+                </div>
+                <div class="legend-row">
+                  <div class="legend-label-group">
+                    <span class="legend-color-dot dot-moderate"></span>
+                    <span>Moderate</span>
+                  </div>
+                  <strong id="legendModCount">0</strong>
+                </div>
+                <div class="legend-row">
+                  <div class="legend-label-group">
+                    <span class="legend-color-dot dot-high"></span>
+                    <span>High</span>
+                  </div>
+                  <strong id="legendHighCount">0</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Latest Assessment Card -->
+            <div class="summary-widget-card">
+              <div class="widget-header-row">
+                <h3 class="widget-title">Latest Assessment</h3>
+                <span class="badge badge-low" id="latestWidgetBadge">--</span>
+              </div>
+              <small class="widget-timestamp" id="latestWidgetTime">No sessions yet</small>
+              <div class="latest-score-row">
+                <span class="score-label">Score</span>
+                <span class="score-val"><strong id="latestWidgetScore">--</strong> / 100</span>
+              </div>
+              <p class="latest-note" id="latestWidgetNote">Complete your 20-question screening to see insights.</p>
+              <a href="session-result.html" class="btn-full-report" id="latestWidgetBtn">
+                <svg class="report-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                View Full Report
+              </a>
+            </div>
+
+            <!-- Keep Going Informational Card -->
+            <div class="summary-widget-card info-tip-box">
+              <div class="tip-icon-row">
+                <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <h4 class="tip-title">Keep Going</h4>
+              </div>
+              <p class="tip-text">
+                Regular assessments help you track changes and take better care of your well-being.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <a href="#" id="footerLogoutBtn">Logout</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Small steps today. A stronger tomorrow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Verify session
+    const currentUser = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
+    if (!currentUser) {
+      window.location.href = 'login.html';
+    }
+
+    const userId = currentUser.userId || currentUser.uid || 'NT1001';
+    const userName = currentUser.fullName || currentUser.name || 'User';
+
+    document.getElementById('historyGreetingName').textContent = userName;
+    document.getElementById('historyUidDisplay').textContent = `User ID: ${userId} • Assessment Records`;
+    const avatarLetter = (userName || 'U')[0].toUpperCase();
+    document.getElementById('navUserAvatar').textContent = avatarLetter;
+
+    // Logout
+    function handleLogout(e) {
+      if (e) e.preventDefault();
+      localStorage.removeItem('neurotech_currentUser');
+      localStorage.removeItem('currentUser');
+      sessionStorage.removeItem('neurotech_latest_result');
+      window.location.href = 'login.html';
+    }
+    document.getElementById('navLogoutBtn').addEventListener('click', handleLogout);
+    document.getElementById('footerLogoutBtn').addEventListener('click', handleLogout);
+
+    let allSessions = [];
+
+    // Load history from API
+    async function loadSessions() {
+      const tbody = document.getElementById('historyTableBody');
+      try {
+        const res = await fetch(`/api/session/history/${userId}`);
+        const data = await res.json();
+        allSessions = (data && data.success && Array.isArray(data.history)) ? data.history : [];
+
+        renderTable(allSessions);
+        renderSummaryWidgets(allSessions);
+      } catch (err) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 32px;">
+              No records found. <a href="session-intro.html" style="color: var(--primary-color);">Take your first assessment &rarr;</a>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    // Render table
+    function renderTable(sessions) {
+      const tbody = document.getElementById('historyTableBody');
+      const pagInfo = document.getElementById('paginationInfo');
+
+      if (!sessions || sessions.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 32px;">
+              No assessments match this criteria.
+            </td>
+          </tr>
+        `;
+        pagInfo.textContent = 'Showing 0 results';
+        return;
+      }
+
+      pagInfo.textContent = `Showing 1–${sessions.length} of ${sessions.length} results`;
+      tbody.innerHTML = '';
+
+      sessions.forEach(s => {
+        const tr = document.createElement('tr');
+        const lvl = (s.riskLevel || 'LOW').toUpperCase();
+        const badgeClass = lvl === 'HIGH' ? 'badge-high' : (lvl === 'MODERATE' ? 'badge-moderate' : 'badge-low');
+        const dateStr = s.dateFormatted || new Date(s.timestamp).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+
+        tr.innerHTML = `
+          <td>
+            <strong>${dateStr}</strong>
+          </td>
+          <td><span class="badge ${badgeClass}">${s.riskLevel}</span></td>
+          <td><strong>${s.score}</strong> / 100</td>
+          <td class="notes-col">${s.explanation ? s.explanation.slice(0, 50) + '...' : 'Completed screening'}</td>
+          <td class="action-col">
+            <a href="session-result.html" class="btn-table-action view-btn">View Report</a>
+          </td>
+        `;
+
+        tr.querySelector('.view-btn').addEventListener('click', () => {
+          sessionStorage.setItem('neurotech_latest_result', JSON.stringify(s));
+        });
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Calculate donut chart and latest widget
+    function renderSummaryWidgets(sessions) {
+      const total = sessions.length;
+      document.getElementById('donutTotalSessions').textContent = total;
+
+      const lowCount = sessions.filter(s => (s.riskLevel || '').toUpperCase() === 'LOW').length;
+      const modCount = sessions.filter(s => (s.riskLevel || '').toUpperCase() === 'MODERATE').length;
+      const highCount = sessions.filter(s => (s.riskLevel || '').toUpperCase() === 'HIGH').length;
+
+      document.getElementById('legendLowCount').textContent = lowCount;
+      document.getElementById('legendModCount').textContent = modCount;
+      document.getElementById('legendHighCount').textContent = highCount;
+
+      // Donut circumference for r=60 is ~377
+      const circ = 377;
+      const cLow = document.getElementById('donutCircleLow');
+      const cMod = document.getElementById('donutCircleMod');
+      const cHigh = document.getElementById('donutCircleHigh');
+
+      if (total > 0) {
+        const lenLow = (lowCount / total) * circ;
+        const lenMod = (modCount / total) * circ;
+        const lenHigh = (highCount / total) * circ;
+
+        cLow.setAttribute('stroke-dasharray', `${lenLow} ${circ}`);
+        cLow.setAttribute('stroke-dashoffset', '0');
+
+        cMod.setAttribute('stroke-dasharray', `${lenMod} ${circ}`);
+        cMod.setAttribute('stroke-dashoffset', `${-lenLow}`);
+
+        cHigh.setAttribute('stroke-dasharray', `${lenHigh} ${circ}`);
+        cHigh.setAttribute('stroke-dashoffset', `${-(lenLow + lenMod)}`);
+
+        // Latest assessment widget
+        const latest = sessions[0];
+        const badgeEl = document.getElementById('latestWidgetBadge');
+        const lvl = (latest.riskLevel || 'LOW').toUpperCase();
+        badgeEl.textContent = latest.riskLevel;
+        badgeEl.className = 'badge ' + (lvl === 'HIGH' ? 'badge-high' : (lvl === 'MODERATE' ? 'badge-moderate' : 'badge-low'));
+        document.getElementById('latestWidgetTime').textContent = latest.dateFormatted || new Date(latest.timestamp).toLocaleDateString();
+        document.getElementById('latestWidgetScore').textContent = latest.score;
+        document.getElementById('latestWidgetNote').textContent = latest.explanation || 'Latest assessment on file.';
+        document.getElementById('latestWidgetBtn').onclick = () => {
+          sessionStorage.setItem('neurotech_latest_result', JSON.stringify(latest));
+        };
+      } else {
+        cLow.setAttribute('stroke-dasharray', `0 ${circ}`);
+        cMod.setAttribute('stroke-dasharray', `0 ${circ}`);
+        cHigh.setAttribute('stroke-dasharray', `0 ${circ}`);
+      }
+    }
+
+    // Filters
+    function applyFilters() {
+      const timeVal = document.getElementById('timeFilterSelect').value;
+      const riskVal = document.getElementById('riskFilterSelect').value;
+
+      const now = Date.now();
+      const filtered = allSessions.filter(s => {
+        // Risk check
+        const matchRisk = riskVal === 'ALL' || (s.riskLevel && s.riskLevel.toUpperCase() === riskVal);
+        // Time check
+        let matchTime = true;
+        if (timeVal !== 'ALL') {
+          const days = parseInt(timeVal, 10);
+          const cutoff = now - (days * 24 * 60 * 60 * 1000);
+          const t = new Date(s.timestamp || s.createdAt).getTime();
+          matchTime = t >= cutoff;
+        }
+        return matchRisk && matchTime;
+      });
+
+      renderTable(filtered);
+    }
+
+    document.getElementById('timeFilterSelect').addEventListener('change', applyFilters);
+    document.getElementById('riskFilterSelect').addEventListener('change', applyFilters);
+    document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+      document.getElementById('timeFilterSelect').value = 'ALL';
+      document.getElementById('riskFilterSelect').value = 'ALL';
+      renderTable(allSessions);
+    });
+
+    loadSessions();
+  </script>
+</body>
+</html>

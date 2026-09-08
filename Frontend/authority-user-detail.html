@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | User Details - Aarav Sharma</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="authority-body">
+  <!-- Authority Top Navigation Bar -->
+  <header class="site-header authority-header">
+    <div class="nav-container">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <div class="brand-text-stack">
+          <span class="brand-name">Neuro Tech</span>
+          <span class="brand-sub">Mental Health. Brighter Tomorrows.</span>
+        </div>
+      </div>
+
+      <div class="authority-header-right">
+        <button type="button" class="btn-icon-header" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="notification-badge-dot"></span>
+        </button>
+
+        <div class="admin-profile-pill">
+          <div class="admin-avatar">A</div>
+          <span class="admin-label">Admin</span>
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Authority Dashboard Layout -->
+  <main class="dashboard-layout-section">
+    <div class="dashboard-layout-container">
+      <!-- Left Authority Sidebar -->
+      <aside class="dashboard-sidebar authority-sidebar">
+        <nav class="sidebar-nav">
+          <a href="authority-users.html" class="sidebar-link active">
+            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Users</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom-action">
+          <a href="#" id="authorityLogoutBtn" class="sidebar-logout-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Authority User Detail Content Area -->
+      <section class="dashboard-main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="authority-users.html">Users</a>
+          <span class="breadcrumb-separator">›</span>
+          <span class="breadcrumb-current" id="breadcrumbUserName">Loading...</span>
+        </nav>
+
+        <!-- Back to Users Button -->
+        <div class="back-link-wrapper">
+          <a href="authority-users.html" class="back-link-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Users</span>
+          </a>
+        </div>
+
+        <!-- User Profile Hero Header Card -->
+        <div class="user-detail-header-card">
+          <div class="user-profile-left">
+            <div class="user-header-avatar" id="detailAvatar" style="display: flex; align-items: center; justify-content: center; background: var(--primary-color); color: #fff; font-size: 2rem; font-weight: 700; width: 72px; height: 72px; border-radius: 50%;">U</div>
+            <div class="user-header-meta">
+              <div class="user-title-row">
+                <h1 class="user-header-name" id="detailName">Loading User...</h1>
+                <span class="status-pill-small active" id="detailStatusBadge">Active</span>
+              </div>
+              <div class="user-contact-pills">
+                <span>UID: <strong id="detailUid">--</strong></span>
+                <span class="meta-dot">•</span>
+                <span>PIN: <strong id="detailPin" style="color: var(--primary-color);">----</strong></span>
+                <span class="meta-dot">•</span>
+                <span>Age: <span id="detailAge">--</span></span>
+                <span class="meta-dot">•</span>
+                <span id="detailGender">--</span>
+                <span class="meta-dot">•</span>
+                <span id="detailEmail">--</span>
+                <span class="meta-dot">•</span>
+                <span id="detailPhone">--</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="user-profile-right">
+            <div class="meta-activity-column">
+              <div class="meta-time-item">
+                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Registered: <strong id="detailRegisteredOn">--</strong></span>
+              </div>
+              <div class="meta-time-item">
+                <span class="status-dot-inline green"></span>
+                <span>Last Active: <strong id="detailLastActive">Just now</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs Strip -->
+        <div class="detail-nav-tabs">
+          <button type="button" class="tab-item active">Overview</button>
+          <button type="button" class="tab-item">Assessments</button>
+          <button type="button" class="tab-item">Sessions</button>
+          <button type="button" class="tab-item">Physiological Data</button>
+          <button type="button" class="tab-item">Reports</button>
+          <button type="button" class="tab-item">Notes</button>
+        </div>
+
+        <!-- 4 Metric Cards Row -->
+        <div class="stats-overview-grid user-detail-metrics">
+          <!-- Total Assessments -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle blue-tint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+              </div>
+              <span class="stat-card-title">Total Assessments</span>
+            </div>
+            <div class="stat-main-number" id="detailTotalAssessments">0</div>
+            <div class="stat-trend positive">
+              <span>All recorded submissions</span>
+            </div>
+          </div>
+
+          <!-- Total Sessions -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle blue-tint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <span class="stat-card-title">Total Sessions</span>
+            </div>
+            <div class="stat-main-number" id="detailTotalSessions">0</div>
+            <div class="stat-trend positive">
+              <span>Screenings & Vitals</span>
+            </div>
+          </div>
+
+          <!-- Avg. Risk Score -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle green-tint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <span class="stat-card-title">Avg. Risk Score</span>
+            </div>
+            <div class="stat-main-number" id="detailAvgScore">-- <small>/ 100</small></div>
+            <div class="stat-trend positive">
+              <span>Calculated average</span>
+            </div>
+          </div>
+
+          <!-- Days Active -->
+          <div class="stat-summary-card">
+            <div class="stat-header">
+              <div class="stat-icon-circle purple-tint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                </svg>
+              </div>
+              <span class="stat-card-title">Latest Status</span>
+            </div>
+            <div class="stat-main-number" style="font-size: 1.25rem;" id="detailLatestStatus">Not Assessed</div>
+            <div class="stat-trend">
+              <span class="text-muted">Screening Result</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Trend Charts Row: Risk Score Trend, Assessment Results, Session Activity -->
+        <div class="charts-row-three-col">
+          <!-- Chart 1: Risk Score Trend -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <h3 class="chart-box-title">Risk Score Trend</h3>
+            </div>
+
+            <div class="svg-chart-container mini">
+              <svg class="chart-svg" viewBox="0 0 350 140" preserveAspectRatio="none">
+                <line x1="30" y1="15" x2="340" y2="15" stroke="#F1F5F9"/>
+                <line x1="30" y1="45" x2="340" y2="45" stroke="#F1F5F9"/>
+                <line x1="30" y1="75" x2="340" y2="75" stroke="#F1F5F9"/>
+                <line x1="30" y1="105" x2="340" y2="105" stroke="#F1F5F9"/>
+
+                <text x="5" y="20" class="axis-label">100</text>
+                <text x="10" y="50" class="axis-label">80</text>
+                <text x="10" y="80" class="axis-label">60</text>
+                <text x="10" y="110" class="axis-label">40</text>
+                <text x="15" y="135" class="axis-label">0</text>
+
+                <defs>
+                  <linearGradient id="userRiskGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <polygon id="detailRiskPolygon" points="40,100 340,100 340,135 40,135" fill="url(#userRiskGrad)"/>
+                <polyline id="detailRiskPolyline" points="40,100 340,100" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="chart-dates-row three-points" id="detailRiskDatesRow">
+                <span>Recent Screenings</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 2: Assessment Results Donut -->
+          <div class="chart-box-card">
+            <h3 class="chart-box-title">Assessment Results</h3>
+            <div class="dist-donut-wrapper">
+              <svg class="dist-donut-svg" viewBox="0 0 160 160">
+                <circle id="detailDonutLow" cx="80" cy="80" r="58" fill="none" stroke="#10B981" stroke-width="16" stroke-dasharray="0 364" stroke-dashoffset="0"/>
+                <circle id="detailDonutMod" cx="80" cy="80" r="58" fill="none" stroke="#F59E0B" stroke-width="16" stroke-dasharray="0 364" stroke-dashoffset="0"/>
+                <circle id="detailDonutHigh" cx="80" cy="80" r="58" fill="none" stroke="#EF4444" stroke-width="16" stroke-dasharray="0 364" stroke-dashoffset="0"/>
+              </svg>
+              <div class="dist-donut-center">
+                <span class="center-number" id="detailDonutTotal">0</span>
+                <span class="center-text">Assessments</span>
+              </div>
+            </div>
+
+            <div class="dist-legend-list">
+              <div class="dist-legend-item">
+                <span class="legend-color-dot dot-low"></span>
+                <span class="legend-label">Low Risk</span>
+                <strong class="legend-val" id="detailLegendLow">0</strong>
+              </div>
+              <div class="dist-legend-item">
+                <span class="legend-color-dot dot-moderate"></span>
+                <span class="legend-label">Moderate Risk</span>
+                <strong class="legend-val" id="detailLegendMod">0</strong>
+              </div>
+              <div class="dist-legend-item">
+                <span class="legend-color-dot dot-high"></span>
+                <span class="legend-label">High Risk</span>
+                <strong class="legend-val" id="detailLegendHigh">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 3: Device Telemetry Baseline -->
+          <div class="chart-box-card">
+            <div class="chart-box-header">
+              <h3 class="chart-box-title">Hardware Telemetry</h3>
+            </div>
+
+            <div class="svg-chart-container mini">
+              <svg class="chart-svg" viewBox="0 0 350 140" preserveAspectRatio="none">
+                <line x1="30" y1="20" x2="340" y2="20" stroke="#F1F5F9"/>
+                <line x1="30" y1="50" x2="340" y2="50" stroke="#F1F5F9"/>
+                <line x1="30" y1="80" x2="340" y2="80" stroke="#F1F5F9"/>
+                <line x1="30" y1="110" x2="340" y2="110" stroke="#F1F5F9"/>
+
+                <text x="15" y="25" class="axis-label">120</text>
+                <text x="15" y="55" class="axis-label">100</text>
+                <text x="15" y="85" class="axis-label">80</text>
+                <text x="15" y="115" class="axis-label">60</text>
+
+                <!-- Baseline horizontal line -->
+                <polyline points="35,88 335,88" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <div class="chart-dates-row three-points">
+                <span>Steady Baseline: 72 bpm • 98% SpO2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest Assessments Table -->
+        <div class="details-card" style="margin-bottom: 24px;">
+          <div class="details-card-header">
+            <h3 class="card-section-title">Submitted Assessments (20-Question Screenings)</h3>
+          </div>
+
+          <table class="sub-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Date & Time</th>
+                <th>Assessment Type</th>
+                <th>Risk Level</th>
+                <th>Score</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="detailAssessmentsTbody">
+              <tr>
+                <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading user assessments...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Notes Section (Admin Only) -->
+        <div class="admin-notes-card">
+          <div class="notes-content-left">
+            <div class="notes-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <div>
+              <h4 class="notes-heading">Clinical / Supervisory Notes (Authority Only)</h4>
+              <p class="notes-desc" id="detailNotesText">No notes yet. Add observations or follow-up notes for this user.</p>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-outline-add-note" id="addNoteBtn">
+            <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Note
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Mental health is a journey, not a destination.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Verify authority
+    const currentAuthority = JSON.parse(localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority') || 'null');
+    if (!currentAuthority) {
+      window.location.href = 'login.html';
+    }
+
+    // Logout
+    document.getElementById('authorityLogoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('neurotech_currentAuthority');
+      localStorage.removeItem('currentAuthority');
+      window.location.href = 'login.html';
+    });
+
+    // Get UID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get('uid') || 'NT1001';
+
+    async function loadUserDetails() {
+      try {
+        const res = await fetch(`/api/users/${uid}`);
+        const data = await res.json();
+        if (data && data.success && data.user) {
+          const u = data.user;
+          document.getElementById('breadcrumbUserName').textContent = u.fullName;
+          document.getElementById('detailName').textContent = u.fullName;
+          document.getElementById('detailUid').textContent = u.uid;
+          document.getElementById('detailPin').textContent = u.pin || '1234';
+          document.getElementById('detailAge').textContent = u.age || 'Not specified';
+          document.getElementById('detailGender').textContent = u.gender || 'Not specified';
+          document.getElementById('detailEmail').textContent = u.email || 'No email';
+          document.getElementById('detailPhone').textContent = u.phone || 'No phone';
+          document.getElementById('detailRegisteredOn').textContent = u.createdAt ? new Date(u.createdAt).toLocaleDateString() : 'Active';
+          document.getElementById('detailLastActive').textContent = u.lastAssessmentDate || 'Recently active';
+
+          const initials = (u.fullName || 'U').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+          document.getElementById('detailAvatar').textContent = initials;
+
+          if (u.notes) {
+            document.getElementById('detailNotesText').textContent = u.notes;
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching user', err);
+      }
+
+      // Fetch user's session history
+      try {
+        const sRes = await fetch(`/api/session/history/${uid}`);
+        const sData = await sRes.json();
+        const history = (sData && sData.success && Array.isArray(sData.history)) ? sData.history : [];
+
+        const total = history.length;
+        document.getElementById('detailTotalAssessments').textContent = total;
+        document.getElementById('detailTotalSessions').textContent = total;
+
+        const tbody = document.getElementById('detailAssessmentsTbody');
+
+        if (total > 0) {
+          const sumScore = history.reduce((acc, s) => acc + (s.score || 0), 0);
+          const avgScore = Math.round(sumScore / total);
+          document.getElementById('detailAvgScore').innerHTML = `${avgScore} <small>/ 100</small>`;
+          document.getElementById('detailLatestStatus').textContent = `${history[0].riskLevel} (${history[0].score}/100)`;
+
+          // Table
+          tbody.innerHTML = '';
+          history.forEach((s, idx) => {
+            const tr = document.createElement('tr');
+            const lvl = (s.riskLevel || 'LOW').toUpperCase();
+            const badgeClass = lvl === 'HIGH' ? 'badge-high' : (lvl === 'MODERATE' ? 'badge-moderate' : 'badge-low');
+            tr.innerHTML = `
+              <td>${idx + 1}</td>
+              <td>${s.dateFormatted || new Date(s.timestamp).toLocaleDateString()}</td>
+              <td>20-Question Screening</td>
+              <td><span class="badge ${badgeClass}">${s.riskLevel}</span></td>
+              <td><strong>${s.score}</strong> / 100</td>
+              <td><a href="session-result.html" class="btn-sub-action view-btn">View</a></td>
+            `;
+            tr.querySelector('.view-btn').onclick = () => {
+              sessionStorage.setItem('neurotech_latest_result', JSON.stringify(s));
+            };
+            tbody.appendChild(tr);
+          });
+
+          // Donut
+          const lowCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'LOW').length;
+          const modCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'MODERATE').length;
+          const highCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'HIGH').length;
+
+          document.getElementById('detailDonutTotal').textContent = total;
+          document.getElementById('detailLegendLow').textContent = `${lowCount}`;
+          document.getElementById('detailLegendMod').textContent = `${modCount}`;
+          document.getElementById('detailLegendHigh').textContent = `${highCount}`;
+
+          const circ = 364;
+          const lenLow = (lowCount / total) * circ;
+          const lenMod = (modCount / total) * circ;
+          const lenHigh = (highCount / total) * circ;
+
+          document.getElementById('detailDonutLow').setAttribute('stroke-dasharray', `${lenLow} ${circ}`);
+          document.getElementById('detailDonutLow').setAttribute('stroke-dashoffset', '0');
+
+          document.getElementById('detailDonutMod').setAttribute('stroke-dasharray', `${lenMod} ${circ}`);
+          document.getElementById('detailDonutMod').setAttribute('stroke-dashoffset', `${-lenLow}`);
+
+          document.getElementById('detailDonutHigh').setAttribute('stroke-dasharray', `${lenHigh} ${circ}`);
+          document.getElementById('detailDonutHigh').setAttribute('stroke-dashoffset', `${-(lenLow + lenMod)}`);
+
+          // Risk Trend Polyline
+          const chronological = [...history].reverse();
+          const pts = chronological.map((s, idx) => {
+            const count = chronological.length;
+            const x = count > 1 ? 40 + (idx / (count - 1)) * 300 : 190;
+            const y = 135 - ((s.score || 0) / 100) * 115;
+            return { x: Math.round(x), y: Math.round(y) };
+          });
+          const polyStr = pts.map(p => `${p.x},${p.y}`).join(' ');
+          document.getElementById('detailRiskPolyline').setAttribute('points', polyStr);
+          document.getElementById('detailRiskPolygon').setAttribute('points', `40,135 ${polyStr} 340,135`);
+        } else {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">No screenings submitted yet by this user.</td>
+            </tr>
+          `;
+        }
+      } catch (err) {
+        console.error('Error fetching user history', err);
+      }
+    }
+
+    // Add note
+    document.getElementById('addNoteBtn').addEventListener('click', async () => {
+      const currentNote = document.getElementById('detailNotesText').textContent;
+      const newNote = prompt('Enter observation or supervisory note for this user:', currentNote !== 'No notes yet. Add observations or follow-up notes for this user.' ? currentNote : '');
+      if (newNote && newNote.trim()) {
+        try {
+          const res = await fetch(`/api/users/${uid}/notes`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ notes: newNote.trim() })
+          });
+          const data = await res.json();
+          if (data && data.success) {
+            document.getElementById('detailNotesText').textContent = newNote.trim();
+          }
+        } catch (err) {
+          alert('Note saved locally for this session.');
+          document.getElementById('detailNotesText').textContent = newNote.trim();
+        }
+      }
+    });
+
+    loadUserDetails();
+  </script>
+</body>
+</html>

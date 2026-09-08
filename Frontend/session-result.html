@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Tech | Assessment Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header (Logged In State) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Brain Logo Icon -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
+        </svg>
+        <span class="brand-name">Neuro Tech</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="session-intro.html" class="nav-link active">Session</a>
+        <a href="data-live.html" class="nav-link">Data / Live</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="login.html" class="nav-link">Logout</a>
+      </nav>
+
+      <div class="user-profile-badge">
+        <a href="profile.html" class="user-avatar" title="User Profile" style="text-decoration: none;">U</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Session Container -->
+  <main class="session-layout-section">
+    <div class="session-layout-container">
+      <!-- Left Sidebar / Stepper Navigation -->
+      <aside class="session-sidebar">
+        <h2 class="sidebar-title">Session</h2>
+        <p class="sidebar-subtitle">PTSD & Well-Being Screening</p>
+
+        <ul class="stepper-list">
+          <!-- Step 1: Completed -->
+          <li class="stepper-item completed">
+            <span class="stepper-circle check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="stepper-text">Introduction</span>
+          </li>
+
+          <!-- Step 2: Completed -->
+          <li class="stepper-item completed">
+            <span class="stepper-circle check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="stepper-text">Session</span>
+          </li>
+
+          <!-- Step 3: Completed -->
+          <li class="stepper-item completed">
+            <span class="stepper-circle check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="stepper-text">Review</span>
+          </li>
+
+          <!-- Step 4: Result (Active) -->
+          <li class="stepper-item active">
+            <span class="stepper-circle">4</span>
+            <span class="stepper-text">Result</span>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Right Result Step Card -->
+      <section class="session-main-card result-page-card">
+        <!-- Card Header with Timestamp -->
+        <div class="result-header-row">
+          <div>
+            <span class="step-indicator-label">STEP 4 OF 4</span>
+            <h1 class="card-heading">Your Assessment Result</h1>
+            <p class="card-subheading">Here is a summary of your screening session.</p>
+          </div>
+          <div class="completion-timestamp">
+            <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span id="timestampDisplay">Completed on <strong>Just now</strong></span>
+          </div>
+        </div>
+
+        <!-- Prominent Non-Clinical Disclaimer Banner -->
+        <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 12px 16px; border-radius: 6px; margin-bottom: 24px; color: #92400E; font-size: 0.9rem; font-weight: 500;">
+          ⚠️ <strong>Notice:</strong> Screening/educational result — not a clinical diagnosis. This educational prototype is intended for demonstration only.
+        </div>
+
+        <!-- Result Overview Grid (2 Columns) -->
+        <div class="result-overview-grid">
+          <!-- Left: Risk Level & Score Card -->
+          <div class="risk-summary-card low-risk" id="riskSummaryCard">
+            <div class="risk-badge-icon" id="riskBadgeIcon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9c0-4.97-4.03-9-9-9z"/>
+              </svg>
+            </div>
+            <div class="risk-text-block">
+              <span class="risk-level-label">Screening Risk Level</span>
+              <h2 class="risk-level-value text-low" id="riskLevelValue">LOW RISK</h2>
+              <span class="risk-score-label">Risk Score</span>
+              <div class="risk-score-value">
+                <span class="score-number text-low" id="scoreNumber">28</span>
+                <span class="score-max">/ 100</span>
+              </div>
+              <div style="font-size: 0.8rem; color: #64748B; margin-top: 4px;" id="rawScoreDisplay">Raw Score: 17 / 60</div>
+            </div>
+            <p class="risk-feedback-note" id="riskFeedbackNote">
+              Your responses suggest minimal or mild indications of stress and emotional distress at this time.
+            </p>
+          </div>
+
+          <!-- Right: What This Means & Recommendations -->
+          <div class="insights-and-recommendations-card">
+            <!-- Section 1: What this means -->
+            <div class="insight-block">
+              <div class="insight-header">
+                <svg class="insight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <h4 class="insight-title">What this means</h4>
+              </div>
+              <p class="insight-desc" id="insightDesc">
+                Your responses indicate that your current symptoms are within a lower risk range. Keep maintaining your healthy habits and continue to monitor your well-being.
+              </p>
+            </div>
+
+            <!-- Section 2: Recommendations -->
+            <div class="recommendations-block">
+              <h4 class="recommendations-title">Supportive Recommendations</h4>
+              <ul class="recommendation-list" id="recommendationList">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Row: Sleep, Heart Rate, SpO2 -->
+        <div class="result-metrics-row">
+          <!-- Average Sleep -->
+          <div class="result-metric-card">
+            <div class="metric-icon-circle purple-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </div>
+            <div class="metric-details">
+              <span class="metric-name">Average Sleep (Q8)</span>
+              <strong class="metric-stat" id="sleepStatDisplay">7 hours</strong>
+              <small class="metric-source">From Questionnaire</small>
+            </div>
+          </div>
+
+          <!-- Heart Rate -->
+          <div class="result-metric-card">
+            <div class="metric-icon-circle red-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <div class="metric-details">
+              <span class="metric-name">Heart Rate (BPM)</span>
+              <strong class="metric-stat" id="hrStatDisplay" style="font-size: 1.15rem; color: #475569;">Not Applicable</strong>
+              <small class="metric-source" id="hrSourceDisplay">Hardware Not Connected</small>
+            </div>
+          </div>
+
+          <!-- SpO2 -->
+          <div class="result-metric-card">
+            <div class="metric-icon-circle blue-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 4v16m-6-8c0-3.5 2.5-6 6-6s6 2.5 6 6-2.5 6-6 6"/>
+              </svg>
+            </div>
+            <div class="metric-details">
+              <span class="metric-name">Blood Oxygen (SpO<sub>2</sub>)</span>
+              <strong class="metric-stat" id="spo2StatDisplay" style="font-size: 1.15rem; color: #475569;">Not Applicable</strong>
+              <small class="metric-source" id="spo2SourceDisplay">Hardware Not Connected</small>
+            </div>
+          </div>
+
+          <!-- Body Temperature -->
+          <div class="result-metric-card">
+            <div class="metric-icon-circle temp-box" style="background-color: #FEF3C7; color: #D97706;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+              </svg>
+            </div>
+            <div class="metric-details">
+              <span class="metric-name">Body Temperature</span>
+              <strong class="metric-stat" id="tempStatDisplay" style="font-size: 1.15rem; color: #475569;">Not Applicable</strong>
+              <small class="metric-source" id="tempSourceDisplay">Hardware Not Connected</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Action Buttons -->
+        <div class="result-actions-footer">
+          <a href="dashboard.html" class="btn btn-secondary">
+            <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Dashboard
+          </a>
+
+          <div class="action-buttons-right">
+            <button type="button" class="btn btn-secondary btn-download" onclick="window.print()">
+              <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Print / Save Report
+            </button>
+
+            <a href="session-intro.html" class="btn btn-primary" onclick="sessionStorage.removeItem('neurotech_answers');">
+              <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+              Take Another Session
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-desc">Screening & educational prototype — not a clinical diagnosis.</span>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-quote">Mental health is a journey, not a destination.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Load result from sessionStorage or fetch latest from backend
+    let result = null;
+    try {
+      result = JSON.parse(sessionStorage.getItem('neurotech_last_result') || sessionStorage.getItem('neurotech_latest_result'));
+    } catch (e) {
+      result = null;
+    }
+
+    async function loadAssessmentResult() {
+      if (!result) {
+        // Try fetching latest from backend
+        let user = {};
+        try { user = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser')) || {}; } catch (e) {}
+        const userId = user.userId || user.uid || 'NT1001';
+
+        try {
+          const res = await fetch(`/api/session/latest/${userId}`).catch(() => fetch(`http://localhost:5000/api/session/latest/${userId}`));
+          const data = await res.json();
+          if (data.success && (data.latest || data.session)) {
+            result = data.latest || data.session;
+          }
+        } catch (e) {}
+      }
+
+      // If still no result, fallback to a balanced demo result
+      if (!result) {
+        result = {
+          assessmentId: 'ASM-1001',
+          dateFormatted: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
+          rawScore: 17,
+          score: 28,
+          riskLevel: 'LOW',
+          explanation: 'Your responses suggest minimal or mild indications of stress and emotional distress at this time.',
+          recommendations: [
+            'Maintain regular sleep and daily routines.',
+            'Continue healthy social connections.',
+            'Practice relaxation or breathing exercises.',
+            'Continue monitoring your well-being.'
+          ],
+          answers: []
+        };
+      }
+
+      // Populate elements
+      document.getElementById('timestampDisplay').innerHTML = `Completed on <strong>${result.dateFormatted || 'Recent Session'}</strong>`;
+      document.getElementById('scoreNumber').textContent = result.score;
+      document.getElementById('rawScoreDisplay').textContent = `Raw Score: ${result.rawScore || Math.round(result.score * 0.6)} / 60`;
+
+      const riskLevelVal = document.getElementById('riskLevelValue');
+      const riskCard = document.getElementById('riskSummaryCard');
+      const scoreNum = document.getElementById('scoreNumber');
+      const feedbackNote = document.getElementById('riskFeedbackNote');
+      const insightDesc = document.getElementById('insightDesc');
+
+      const level = (result.riskLevel || 'LOW').toUpperCase();
+      riskLevelVal.textContent = level + ' RISK';
+      feedbackNote.textContent = result.explanation || '';
+      insightDesc.textContent = result.explanation || '';
+
+      // Set badge color classes
+      riskCard.classList.remove('low-risk', 'moderate-risk', 'high-risk');
+      riskLevelVal.classList.remove('text-low', 'text-moderate', 'text-high');
+      scoreNum.classList.remove('text-low', 'text-moderate', 'text-high');
+
+      if (level === 'HIGH') {
+        riskCard.classList.add('high-risk');
+        riskLevelVal.classList.add('text-high');
+        scoreNum.classList.add('text-high');
+      } else if (level === 'MODERATE') {
+        riskCard.classList.add('moderate-risk');
+        riskLevelVal.classList.add('text-moderate');
+        scoreNum.classList.add('text-moderate');
+      } else {
+        riskCard.classList.add('low-risk');
+        riskLevelVal.classList.add('text-low');
+        scoreNum.classList.add('text-low');
+      }
+
+      // Render recommendations
+      const recList = document.getElementById('recommendationList');
+      recList.innerHTML = '';
+      const recs = result.recommendations || [
+        'Maintain regular sleep and daily routines.',
+        'Continue healthy social connections.',
+        'Practice relaxation or breathing exercises.'
+      ];
+
+      recs.forEach(r => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <svg class="check-icon-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>${r}</span>
+        `;
+        recList.appendChild(li);
+      });
+
+      // Find sleep answer from Q8 if present
+      if (Array.isArray(result.answers)) {
+        const q8 = result.answers.find(a => a && a.questionNumber === 8);
+        if (q8 && q8.selectedOption) {
+          document.getElementById('sleepStatDisplay').textContent = q8.selectedOption;
+        }
+      }
+
+      // Check physiological vitals from ESP32
+      const hrEl = document.getElementById('hrStatDisplay');
+      const hrSrc = document.getElementById('hrSourceDisplay');
+      const spo2El = document.getElementById('spo2StatDisplay');
+      const spo2Src = document.getElementById('spo2SourceDisplay');
+      const tempEl = document.getElementById('tempStatDisplay');
+      const tempSrc = document.getElementById('tempSourceDisplay');
+
+      const isHwActive = result.vitals && result.vitals.isHardwareActive === true && typeof result.vitals.heartRate === 'number';
+
+      if (isHwActive) {
+        hrEl.innerHTML = `${result.vitals.heartRate} <small>bpm</small>`;
+        hrEl.style.color = '#0F172A';
+        if (hrSrc) hrSrc.textContent = 'Live ESP32 Stream';
+
+        spo2El.innerHTML = `${result.vitals.spo2} <small>%</small>`;
+        spo2El.style.color = '#0F172A';
+        if (spo2Src) spo2Src.textContent = 'Live ESP32 Stream';
+
+        if (tempEl) {
+          tempEl.innerHTML = `${result.vitals.temperature || '36.6'} <small>°C</small>`;
+          tempEl.style.color = '#0F172A';
+        }
+        if (tempSrc) tempSrc.textContent = 'DS18B20 Sensor';
+
+        // If sleep hours recorded by wearable, reflect that or keep questionnaire
+        if (result.vitals.sleepHours) {
+          const sleepStat = document.getElementById('sleepStatDisplay');
+          if (sleepStat && (!result.answers || result.answers.length === 0)) {
+            sleepStat.textContent = `${result.vitals.sleepHours} hours`;
+          }
+        }
+      } else {
+        hrEl.innerHTML = `<span style="font-size: 1.05rem; color: #64748B;">Not Applicable</span>`;
+        if (hrSrc) hrSrc.textContent = 'Hardware Not Connected';
+
+        spo2El.innerHTML = `<span style="font-size: 1.05rem; color: #64748B;">Not Applicable</span>`;
+        if (spo2Src) spo2Src.textContent = 'Hardware Not Connected';
+
+        if (tempEl) {
+          tempEl.innerHTML = `<span style="font-size: 1.05rem; color: #64748B;">Not Applicable</span>`;
+        }
+        if (tempSrc) tempSrc.textContent = 'Hardware Not Connected';
+      }
+    }
+
+    loadAssessmentResult();
+  </script>
+</body>
+</html>
