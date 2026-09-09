@@ -169,6 +169,6 @@ This project was developed and maintained by:
 - **Anwesha Mondal** — [@AnweshaArc](https://github.com/AnweshaArc)
 - **Avik Mallick** — [@Avikmallick27](https://github.com/Avikmallick27)
 - **Arkajit Roy** — [@arkajit-roy](https://github.com/arkajit-roy)
-- **Monali De** — [@arkajit-roy](https://github.com/Mavisha1)
+- **Monali De** — [@Mavisha1](https://github.com/Mavisha1)
 
 *An open-source student initiative for youth health, wellness, and physiological telemetry.*
