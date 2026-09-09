@@ -7,7 +7,7 @@ const { dbHelper } = require('./firebase');
 router.get('/', async (req, res) => {
   try {
     const usersMap = await dbHelper.get('users') || {};
-    const users = Object.values(usersMap);
+    const users = Object.values(usersMap).filter(u => u && u.uid && u.fullName);
     res.json({ success: true, users });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Failed to fetch users' });
@@ -77,7 +77,11 @@ router.get('/:userId', async (req, res) => {
     }
 
     const assessmentsMap = await dbHelper.get(`assessments/${userId}`) || {};
-    const assessments = Object.values(assessmentsMap).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    const assessments = Object.values(assessmentsMap).sort((a, b) => {
+      const tA = typeof a.timestamp === 'number' ? a.timestamp : new Date(a.timestamp).getTime();
+      const tB = typeof b.timestamp === 'number' ? b.timestamp : new Date(b.timestamp).getTime();
+      return (tB || 0) - (tA || 0);
+    });
 
     res.json({
       success: true,

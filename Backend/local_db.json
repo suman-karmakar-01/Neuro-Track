@@ -7,354 +7,96 @@
       "phone": "9876543210",
       "password": "admin123",
       "role": "authority",
-      "createdAt": "2026-09-07T16:43:28.827Z"
-    },
-    "auth_1788880286871": {
-      "id": "auth_1788880286871",
-      "fullName": "Suman Karmakar",
-      "email": "suman.karmakar@stu.adamasuniversity.ac.in",
-      "phone": "9826931189",
-      "designation": "Student",
-      "department": "Adamas",
-      "password": "suman@123@",
-      "role": "authority",
-      "createdAt": "2026-09-08T15:11:26.871Z"
+      "createdAt": "2026-09-09T10:25:55.542Z"
     }
   },
   "users": {
     "NT1001": {
-      "uid": "NT1001",
-      "pin": "1234",
-      "fullName": "Aarav Sharma",
-      "email": "aarav.sharma@college.edu",
-      "phone": "9123456780",
       "age": 20,
+      "createdAt": "2026-09-07T16:43:28.830Z",
+      "email": "aarav.sharma@college.edu",
+      "fullName": "Aarav Sharma",
       "gender": "Male",
-      "role": "user",
+      "lastAssessmentDate": "9 Sept 2026, 4:53 pm",
       "latestRiskLevel": "LOW",
       "latestScore": 2,
-      "createdAt": "2026-09-07T16:43:28.830Z",
-      "lastAssessmentDate": "8 Sept 2026, 8:38 pm"
+      "phone": "9123456780",
+      "pin": "1234",
+      "role": "user",
+      "uid": "NT1001"
     },
-    "NT1002": {
-      "uid": "NT1002",
-      "pin": "7695",
-      "fullName": "Sammer Verma",
-      "phone": "9876543219",
-      "email": "sammerverma@67",
-      "age": 67,
+    "NT1004": {
+      "age": 21,
+      "createdAt": "2026-09-09T10:46:55.862Z",
+      "email": "",
+      "emergencyContact": "",
+      "fullName": "Rohan Sharma",
+      "gender": "Male",
+      "latestRiskLevel": "LOW",
+      "notes": "",
+      "phone": "9876543210",
+      "pin": "7461",
+      "role": "user",
+      "uid": "NT1004",
+      "latestScore": 5,
+      "lastAssessmentDate": "9 Sept 2026, 4:17 pm"
+    },
+    "NT1005": {
+      "age": 19,
+      "createdAt": "2026-09-09T10:50:20.579Z",
+      "email": "priya@college.edu",
+      "emergencyContact": "",
+      "fullName": "Priya Patel",
       "gender": "Female",
+      "latestRiskLevel": "LOW",
+      "notes": "",
+      "phone": "9123456789",
+      "pin": "7300",
+      "role": "user",
+      "uid": "NT1005",
+      "latestScore": 0,
+      "lastAssessmentDate": "9 Sept 2026, 4:20 pm"
+    },
+    "NT1006": {
+      "uid": "NT1006",
+      "pin": "8439",
+      "fullName": "Rohan Sharma",
+      "phone": "9876543210",
+      "email": "rohan.sharma@example.com",
+      "age": 22,
+      "gender": "Male",
       "emergencyContact": "",
       "notes": "",
       "role": "user",
-      "latestRiskLevel": "LOW",
-      "latestScore": 33,
-      "createdAt": "2026-09-07T16:52:43.514Z",
-      "studentId": "NT1002",
-      "lastAssessmentDate": "8 Sept 2026, 12:22 am"
+      "latestRiskLevel": "Not Assessed",
+      "latestScore": null,
+      "createdAt": "2026-09-09T11:11:06.492Z"
+    },
+    "NT1007": {
+      "uid": "NT1007",
+      "pin": "8379",
+      "fullName": "Rohan Sharma",
+      "phone": "9876543210",
+      "email": "rohan.sharma@example.com",
+      "age": 22,
+      "gender": "Male",
+      "emergencyContact": "",
+      "notes": "",
+      "role": "user",
+      "latestRiskLevel": "Not Assessed",
+      "latestScore": null,
+      "createdAt": "2026-09-09T11:22:56.163Z"
     }
   },
   "assessments": {
-    "NT1002": {
-      "ASM-989529": {
-        "assessmentId": "ASM-989529",
-        "userId": "NT1002",
-        "timestamp": "2026-09-07T18:16:29.530Z",
-        "dateFormatted": "7 Sept 2026, 11:46 pm",
-        "rawScore": 53,
-        "score": 88,
-        "maxRawScore": 60,
-        "riskLevel": "HIGH",
-        "explanation": "Your responses suggest elevated levels of distress that may be interfering with your everyday activities and well-being.",
-        "recommendations": [
-          "Consider seeking support from a qualified mental-health professional.",
-          "Reach out to a trusted person rather than dealing with distress alone.",
-          "If you feel unsafe or are in immediate danger, contact local emergency services or an appropriate crisis service.",
-          "Please note: this system does not attempt to diagnose or prescribe treatment."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
-          {
-            "questionNumber": 1,
-            "questionText": "During the past two weeks, how often have you felt nervous, anxious, or on edge?",
-            "selectedOption": "Nearly every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "How often have you experienced unwanted or distressing memories of a difficult or traumatic event?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "How often have you had upsetting dreams or nightmares related to a difficult experience?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "How often have you tried to avoid thoughts, feelings, people, places, or situations that remind you of a difficult experience?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "How often have you felt unusually alert, watchful, or 'on guard'?",
-            "selectedOption": "Almost constantly",
-            "score": 3
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "How easily are you startled by sudden sounds or unexpected events?",
-            "selectedOption": "Extremely easily",
-            "score": 3
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "How often have you had difficulty falling asleep or staying asleep?",
-            "selectedOption": "Almost every night",
-            "score": 3
-          },
-          {
-            "questionNumber": 8,
-            "questionText": "How would you describe your average sleep duration during the past week?",
-            "selectedOption": "8 hours or more",
-            "score": 0
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "How often have you experienced difficulty concentrating on studies, work, or daily activities?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "How often have you felt emotionally numb, detached, or disconnected from people around you?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "How often have you experienced sudden feelings of fear, panic, or intense discomfort?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "How often have you felt that you are unable to relax even when you are in a safe environment?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "How often have you experienced sudden physical reactions when something reminded you of a stressful or difficult experience?",
-            "selectedOption": "Frequently",
-            "score": 2
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "How often have you experienced changes in your mood, such as irritability, sadness, or frustration?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "How much have these experiences affected your studies, work, relationships, or normal daily activities?",
-            "selectedOption": "Severely",
-            "score": 3
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "How often have you felt that something bad might happen even when there is no immediate danger?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "How often have you found yourself thinking repeatedly about a stressful or difficult experience when you did not want to?",
-            "selectedOption": "Almost constantly",
-            "score": 3
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "How often have you avoided social interaction because you did not feel comfortable or safe?",
-            "selectedOption": "Never",
-            "score": 0
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "How would you rate your overall emotional well-being during the past two weeks?",
-            "selectedOption": "Very poor",
-            "score": 3
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "How difficult have these symptoms or feelings made your everyday life?",
-            "selectedOption": "Extremely difficult",
-            "score": 3
-          }
-        ],
-        "vitals": {
-          "heartRate": 72,
-          "spo2": 98,
-          "temperature": 36.6,
-          "motion": 0.1
-        }
-      },
-      "ASM-990664": {
-        "assessmentId": "ASM-990664",
-        "userId": "NT1002",
-        "timestamp": "2026-09-07T18:16:30.664Z",
-        "dateFormatted": "7 Sept 2026, 11:46 pm",
-        "rawScore": 53,
-        "score": 88,
-        "maxRawScore": 60,
-        "riskLevel": "HIGH",
-        "explanation": "Your responses suggest elevated levels of distress that may be interfering with your everyday activities and well-being.",
-        "recommendations": [
-          "Consider seeking support from a qualified mental-health professional.",
-          "Reach out to a trusted person rather than dealing with distress alone.",
-          "If you feel unsafe or are in immediate danger, contact local emergency services or an appropriate crisis service.",
-          "Please note: this system does not attempt to diagnose or prescribe treatment."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
-          {
-            "questionNumber": 1,
-            "questionText": "During the past two weeks, how often have you felt nervous, anxious, or on edge?",
-            "selectedOption": "Nearly every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "How often have you experienced unwanted or distressing memories of a difficult or traumatic event?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "How often have you had upsetting dreams or nightmares related to a difficult experience?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "How often have you tried to avoid thoughts, feelings, people, places, or situations that remind you of a difficult experience?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "How often have you felt unusually alert, watchful, or 'on guard'?",
-            "selectedOption": "Almost constantly",
-            "score": 3
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "How easily are you startled by sudden sounds or unexpected events?",
-            "selectedOption": "Extremely easily",
-            "score": 3
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "How often have you had difficulty falling asleep or staying asleep?",
-            "selectedOption": "Almost every night",
-            "score": 3
-          },
-          {
-            "questionNumber": 8,
-            "questionText": "How would you describe your average sleep duration during the past week?",
-            "selectedOption": "8 hours or more",
-            "score": 0
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "How often have you experienced difficulty concentrating on studies, work, or daily activities?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "How often have you felt emotionally numb, detached, or disconnected from people around you?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "How often have you experienced sudden feelings of fear, panic, or intense discomfort?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "How often have you felt that you are unable to relax even when you are in a safe environment?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "How often have you experienced sudden physical reactions when something reminded you of a stressful or difficult experience?",
-            "selectedOption": "Frequently",
-            "score": 2
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "How often have you experienced changes in your mood, such as irritability, sadness, or frustration?",
-            "selectedOption": "Almost every day",
-            "score": 3
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "How much have these experiences affected your studies, work, relationships, or normal daily activities?",
-            "selectedOption": "Severely",
-            "score": 3
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "How often have you felt that something bad might happen even when there is no immediate danger?",
-            "selectedOption": "Almost always",
-            "score": 3
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "How often have you found yourself thinking repeatedly about a stressful or difficult experience when you did not want to?",
-            "selectedOption": "Almost constantly",
-            "score": 3
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "How often have you avoided social interaction because you did not feel comfortable or safe?",
-            "selectedOption": "Never",
-            "score": 0
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "How would you rate your overall emotional well-being during the past two weeks?",
-            "selectedOption": "Very poor",
-            "score": 3
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "How difficult have these symptoms or feelings made your everyday life?",
-            "selectedOption": "Extremely difficult",
-            "score": 3
-          }
-        ],
-        "vitals": {
-          "heartRate": 72,
-          "spo2": 98,
-          "temperature": 36.6,
-          "motion": 0.1
-        }
-      },
-      "ASM-130883": {
-        "assessmentId": "ASM-130883",
-        "userId": "NT1002",
-        "timestamp": "2026-09-07T18:52:10.883Z",
-        "dateFormatted": "8 Sept 2026, 12:22 am",
-        "rawScore": 20,
-        "score": 33,
+    "NT1001": {
+      "ASM-562341": {
+        "assessmentId": "ASM-562341",
+        "userId": "NT1001",
+        "timestamp": 1788949562341,
+        "dateFormatted": "9 Sept 2026, 3:56 pm",
+        "rawScore": 1,
+        "score": 2,
         "maxRawScore": 60,
         "riskLevel": "LOW",
         "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
@@ -368,140 +110,32 @@
         "answers": [
           {
             "questionNumber": 1,
-            "questionText": "Q1",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "Q2",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "Q3",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "Q4",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "Q5",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "Q6",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "Q7",
-            "selectedOption": "Rarely",
+            "selectedOption": "Sometimes",
             "score": 1
           },
           {
             "questionNumber": 8,
-            "questionText": "Q8",
-            "selectedOption": "8 hours",
-            "score": 1
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "Q9",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "Q10",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "Q11",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "Q12",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "Q13",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "Q14",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "Q15",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "Q16",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "Q17",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "Q18",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "Q19",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "Q20",
-            "selectedOption": "Rarely",
-            "score": 1
+            "selectedOption": "7-8 hours",
+            "score": 0
           }
         ],
         "vitals": {
-          "isHardwareActive": false,
-          "heartRate": "Not Applicable",
-          "spo2": "Not Applicable",
-          "temperature": "Not Applicable",
-          "status": "Hardware Not Connected"
+          "isHardwareActive": true,
+          "heartRate": 72,
+          "spo2": 99,
+          "temperature": 36.5,
+          "sleepHours": 8,
+          "sleepQuality": "Optimal (Restful)",
+          "status": "Live Stream Active"
         }
       },
-      "ASM-130934": {
-        "assessmentId": "ASM-130934",
-        "userId": "NT1002",
-        "timestamp": "2026-09-07T18:52:10.934Z",
-        "dateFormatted": "8 Sept 2026, 12:22 am",
-        "rawScore": 20,
-        "score": 33,
+      "ASM-586667": {
+        "assessmentId": "ASM-586667",
+        "userId": "NT1001",
+        "timestamp": 1788949586667,
+        "dateFormatted": "9 Sept 2026, 3:56 pm",
+        "rawScore": 1,
+        "score": 2,
         "maxRawScore": 60,
         "riskLevel": "LOW",
         "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
@@ -515,142 +149,307 @@
         "answers": [
           {
             "questionNumber": 1,
-            "questionText": "Q1",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "Q2",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "Q3",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "Q4",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "Q5",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "Q6",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "Q7",
-            "selectedOption": "Rarely",
+            "selectedOption": "Sometimes",
             "score": 1
           },
           {
             "questionNumber": 8,
-            "questionText": "Q8",
-            "selectedOption": "8 hours",
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 72,
+          "spo2": 99,
+          "temperature": 36.5,
+          "sleepHours": 8,
+          "sleepQuality": "Optimal (Restful)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-665726": {
+        "assessmentId": "ASM-665726",
+        "userId": "NT1001",
+        "timestamp": 1788949665726,
+        "dateFormatted": "9 Sept 2026, 3:57 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
             "score": 1
           },
           {
-            "questionNumber": 9,
-            "questionText": "Q9",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "Q10",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "Q11",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "Q12",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "Q13",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "Q14",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "Q15",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "Q16",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "Q17",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "Q18",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "Q19",
-            "selectedOption": "Rarely",
-            "score": 1
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "Q20",
-            "selectedOption": "Rarely",
-            "score": 1
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
           }
         ],
         "vitals": {
           "isHardwareActive": true,
           "heartRate": 78,
-          "spo2": 99,
-          "temperature": 36.6,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-714010": {
+        "assessmentId": "ASM-714010",
+        "userId": "NT1001",
+        "timestamp": 1788949714010,
+        "dateFormatted": "9 Sept 2026, 3:58 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-412283": {
+        "assessmentId": "ASM-412283",
+        "userId": "NT1001",
+        "timestamp": 1788950412283,
+        "dateFormatted": "9 Sept 2026, 4:10 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-672467": {
+        "assessmentId": "ASM-672467",
+        "userId": "NT1001",
+        "timestamp": 1788950672467,
+        "dateFormatted": "9 Sept 2026, 4:14 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-033574": {
+        "assessmentId": "ASM-033574",
+        "userId": "NT1001",
+        "timestamp": 1788951033574,
+        "dateFormatted": "9 Sept 2026, 4:20 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-995264": {
+        "assessmentId": "ASM-995264",
+        "userId": "NT1001",
+        "timestamp": 1788952995264,
+        "dateFormatted": "9 Sept 2026, 4:53 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
+      },
+      "ASM-038525": {
+        "assessmentId": "ASM-038525",
+        "userId": "NT1001",
+        "timestamp": 1788953038525,
+        "dateFormatted": "9 Sept 2026, 4:53 pm",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
           "status": "Live Stream Active"
         }
       }
     },
-    "NT1001": {
-      "ASM-902494": {
-        "assessmentId": "ASM-902494",
-        "userId": "NT1001",
-        "timestamp": "2026-09-07T18:48:22.494Z",
-        "dateFormatted": "8 Sept 2026, 12:18 am",
-        "rawScore": 20,
-        "score": 33,
+    "NT1004": {
+      "ASM-852774": {
+        "assessmentId": "ASM-852774",
+        "userId": "NT1004",
+        "timestamp": 1788950852774,
+        "dateFormatted": "9 Sept 2026, 4:17 pm",
+        "rawScore": 3,
+        "score": 5,
         "maxRawScore": 60,
         "riskLevel": "LOW",
         "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
@@ -664,806 +463,41 @@
         "answers": [
           {
             "questionNumber": 1,
-            "questionText": "Question 1",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "Question 2",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "Question 3",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "Question 4",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "Question 5",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "Question 6",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "Question 7",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 8,
-            "questionText": "Question 8",
-            "selectedOption": "7-8 hours",
-            "score": 1
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "Question 9",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "Question 10",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "Question 11",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "Question 12",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "Question 13",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "Question 14",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "Question 15",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "Question 16",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "Question 17",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "Question 18",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "Question 19",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "Question 20",
-            "selectedOption": "Option A",
-            "score": 1
-          }
-        ],
-        "vitals": {
-          "isHardwareActive": false,
-          "heartRate": "Not Applicable",
-          "spo2": "Not Applicable",
-          "temperature": "Not Applicable",
-          "status": "Hardware Not Connected"
-        }
-      },
-      "ASM-912454": {
-        "assessmentId": "ASM-912454",
-        "userId": "NT1001",
-        "timestamp": "2026-09-07T18:48:32.454Z",
-        "dateFormatted": "8 Sept 2026, 12:18 am",
-        "rawScore": 20,
-        "score": 33,
-        "maxRawScore": 60,
-        "riskLevel": "LOW",
-        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
-        "recommendations": [
-          "Maintain regular sleep and daily routines.",
-          "Continue healthy social connections.",
-          "Practice relaxation or breathing exercises.",
-          "Continue monitoring your well-being."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
-          {
-            "questionNumber": 1,
-            "questionText": "Question 1",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "Question 2",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "Question 3",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "Question 4",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "Question 5",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "Question 6",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "Question 7",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 8,
-            "questionText": "Question 8",
-            "selectedOption": "7-8 hours",
-            "score": 1
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "Question 9",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "Question 10",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "Question 11",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "Question 12",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "Question 13",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "Question 14",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "Question 15",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "Question 16",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "Question 17",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "Question 18",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "Question 19",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "Question 20",
-            "selectedOption": "Option A",
-            "score": 1
-          }
-        ],
-        "vitals": {
-          "isHardwareActive": false,
-          "heartRate": "Not Applicable",
-          "spo2": "Not Applicable",
-          "temperature": "Not Applicable",
-          "status": "Hardware Not Connected"
-        }
-      },
-      "ASM-977390": {
-        "assessmentId": "ASM-977390",
-        "userId": "NT1001",
-        "timestamp": "2026-09-07T18:49:37.390Z",
-        "dateFormatted": "8 Sept 2026, 12:19 am",
-        "rawScore": 20,
-        "score": 33,
-        "maxRawScore": 60,
-        "riskLevel": "LOW",
-        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
-        "recommendations": [
-          "Maintain regular sleep and daily routines.",
-          "Continue healthy social connections.",
-          "Practice relaxation or breathing exercises.",
-          "Continue monitoring your well-being."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
-          {
-            "questionNumber": 1,
-            "questionText": "Question 1",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "Question 2",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "Question 3",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "Question 4",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "Question 5",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "Question 6",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "Question 7",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 8,
-            "questionText": "Question 8",
-            "selectedOption": "7-8 hours",
-            "score": 1
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "Question 9",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "Question 10",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "Question 11",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "Question 12",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "Question 13",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "Question 14",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "Question 15",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "Question 16",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "Question 17",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "Question 18",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "Question 19",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "Question 20",
-            "selectedOption": "Option A",
-            "score": 1
-          }
-        ],
-        "vitals": {
-          "isHardwareActive": false,
-          "heartRate": "Not Applicable",
-          "spo2": "Not Applicable",
-          "temperature": "Not Applicable",
-          "status": "Hardware Not Connected"
-        }
-      },
-      "ASM-095155": {
-        "assessmentId": "ASM-095155",
-        "userId": "NT1001",
-        "timestamp": "2026-09-07T18:51:35.155Z",
-        "dateFormatted": "8 Sept 2026, 12:21 am",
-        "rawScore": 20,
-        "score": 33,
-        "maxRawScore": 60,
-        "riskLevel": "LOW",
-        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
-        "recommendations": [
-          "Maintain regular sleep and daily routines.",
-          "Continue healthy social connections.",
-          "Practice relaxation or breathing exercises.",
-          "Continue monitoring your well-being."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
-          {
-            "questionNumber": 1,
-            "questionText": "Question 1",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "Question 2",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "Question 3",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "Question 4",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "Question 5",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "Question 6",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "Question 7",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 8,
-            "questionText": "Question 8",
-            "selectedOption": "7-8 hours",
-            "score": 1
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "Question 9",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "Question 10",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "Question 11",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "Question 12",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "Question 13",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "Question 14",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "Question 15",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "Question 16",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "Question 17",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "Question 18",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "Question 19",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "Question 20",
-            "selectedOption": "Option A",
-            "score": 1
-          }
-        ],
-        "vitals": {
-          "isHardwareActive": false,
-          "heartRate": "Not Applicable",
-          "spo2": "Not Applicable",
-          "temperature": "Not Applicable",
-          "status": "Hardware Not Connected"
-        }
-      },
-      "ASM-165126": {
-        "assessmentId": "ASM-165126",
-        "userId": "NT1001",
-        "timestamp": "2026-09-07T18:52:45.126Z",
-        "dateFormatted": "8 Sept 2026, 12:22 am",
-        "rawScore": 20,
-        "score": 33,
-        "maxRawScore": 60,
-        "riskLevel": "LOW",
-        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
-        "recommendations": [
-          "Maintain regular sleep and daily routines.",
-          "Continue healthy social connections.",
-          "Practice relaxation or breathing exercises.",
-          "Continue monitoring your well-being."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
-          {
-            "questionNumber": 1,
-            "questionText": "Question 1",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 2,
-            "questionText": "Question 2",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 3,
-            "questionText": "Question 3",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 4,
-            "questionText": "Question 4",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 5,
-            "questionText": "Question 5",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 6,
-            "questionText": "Question 6",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 7,
-            "questionText": "Question 7",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 8,
-            "questionText": "Question 8",
-            "selectedOption": "7-8 hours",
-            "score": 1
-          },
-          {
-            "questionNumber": 9,
-            "questionText": "Question 9",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 10,
-            "questionText": "Question 10",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 11,
-            "questionText": "Question 11",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 12,
-            "questionText": "Question 12",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 13,
-            "questionText": "Question 13",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 14,
-            "questionText": "Question 14",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 15,
-            "questionText": "Question 15",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 16,
-            "questionText": "Question 16",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 17,
-            "questionText": "Question 17",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 18,
-            "questionText": "Question 18",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 19,
-            "questionText": "Question 19",
-            "selectedOption": "Option A",
-            "score": 1
-          },
-          {
-            "questionNumber": 20,
-            "questionText": "Question 20",
-            "selectedOption": "Option A",
-            "score": 1
-          }
-        ],
-        "vitals": {
-          "isHardwareActive": false,
-          "heartRate": "Not Applicable",
-          "spo2": "Not Applicable",
-          "temperature": "Not Applicable",
-          "status": "Hardware Not Connected"
-        }
-      },
-      "ASM-751368": {
-        "assessmentId": "ASM-751368",
-        "userId": "NT1001",
-        "timestamp": "2026-09-08T13:55:51.368Z",
-        "dateFormatted": "8 Sept 2026, 7:25 pm",
-        "rawScore": 1,
-        "score": 2,
-        "maxRawScore": 60,
-        "riskLevel": "LOW",
-        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
-        "recommendations": [
-          "Maintain regular sleep and daily routines.",
-          "Continue healthy social connections.",
-          "Practice relaxation or breathing exercises.",
-          "Continue monitoring your well-being."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
-          {
-            "questionNumber": 1,
-            "selectedOption": "Sometimes",
-            "score": 1
-          },
-          {
-            "questionNumber": 8,
-            "selectedOption": "7-8 hours",
             "score": 0
-          }
-        ],
-        "vitals": {
-          "isHardwareActive": false,
-          "heartRate": "Not Applicable",
-          "spo2": "Not Applicable",
-          "temperature": "Not Applicable",
-          "sleepHours": "Not Applicable",
-          "sleepQuality": "Not Applicable",
-          "status": "Hardware Not Connected"
-        }
-      },
-      "ASM-803387": {
-        "assessmentId": "ASM-803387",
-        "userId": "NT1001",
-        "timestamp": "2026-09-08T13:56:43.387Z",
-        "dateFormatted": "8 Sept 2026, 7:26 pm",
-        "rawScore": 1,
-        "score": 2,
-        "maxRawScore": 60,
-        "riskLevel": "LOW",
-        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
-        "recommendations": [
-          "Maintain regular sleep and daily routines.",
-          "Continue healthy social connections.",
-          "Practice relaxation or breathing exercises.",
-          "Continue monitoring your well-being."
-        ],
-        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
-        "answers": [
+          },
           {
-            "questionNumber": 1,
-            "selectedOption": "Sometimes",
+            "questionNumber": 2,
             "score": 1
           },
           {
             "questionNumber": 8,
-            "selectedOption": "7-8 hours",
-            "score": 0
+            "selectedOption": "7 hours",
+            "score": 1
+          },
+          {
+            "questionNumber": 20,
+            "score": 1
           }
         ],
         "vitals": {
           "isHardwareActive": true,
-          "heartRate": 78,
-          "spo2": 98,
-          "temperature": 36.7,
+          "heartRate": 75,
+          "spo2": 97,
+          "temperature": 25.1,
           "sleepHours": 7.5,
-          "sleepQuality": "Good (88%)",
+          "sleepQuality": "Light Movement",
           "status": "Live Stream Active"
         }
-      },
-      "ASM-110840": {
-        "assessmentId": "ASM-110840",
-        "userId": "NT1001",
-        "timestamp": "2026-09-08T15:08:30.840Z",
-        "dateFormatted": "8 Sept 2026, 8:38 pm",
-        "rawScore": 1,
-        "score": 2,
+      }
+    },
+    "NT1005": {
+      "ASM-022446": {
+        "assessmentId": "ASM-022446",
+        "userId": "NT1005",
+        "timestamp": 1788951022446,
+        "dateFormatted": "9 Sept 2026, 4:20 pm",
+        "rawScore": 0,
+        "score": 0,
         "maxRawScore": 60,
         "riskLevel": "LOW",
         "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
@@ -1477,72 +511,1801 @@
         "answers": [
           {
             "questionNumber": 1,
-            "selectedOption": "Sometimes",
-            "score": 1
+            "score": 0
           },
           {
             "questionNumber": 8,
-            "selectedOption": "7-8 hours",
+            "selectedOption": "8 hours",
+            "score": 0
+          },
+          {
+            "questionNumber": 20,
             "score": 0
           }
         ],
         "vitals": {
           "isHardwareActive": true,
-          "heartRate": 78,
-          "spo2": 98,
-          "temperature": 36.7,
+          "heartRate": 75,
+          "spo2": 97,
+          "temperature": 25.1,
           "sleepHours": 7.5,
-          "sleepQuality": "Good (88%)",
+          "sleepQuality": "Light Movement",
           "status": "Live Stream Active"
         }
       }
     }
   },
   "liveData": {
+    "global": {
+      "deviceId": "NT-ESP32-001",
+      "userId": "global",
+      "heartRate": 79,
+      "spo2": 99,
+      "temperature": 25.4,
+      "motion": 0.27,
+      "sleepHours": 7.5,
+      "sleepQuality": "Active Motion",
+      "battery": 95,
+      "status": "Live Stream Active",
+      "time": "04:54:54 pm",
+      "timestamp": 1788953094554
+    },
     "NT1001": {
       "deviceId": "NT-ESP32-001",
       "userId": "NT1001",
-      "heartRate": 78,
-      "spo2": 98,
-      "temperature": 36.7,
-      "motion": 0.03,
+      "heartRate": "Not Applicable",
+      "spo2": "Not Applicable",
+      "temperature": 36.8,
+      "motion": 0.01,
       "sleepHours": 7.5,
-      "sleepQuality": "Good (88%)",
-      "battery": 92,
+      "sleepQuality": "Optimal (Restful)",
+      "battery": 95,
       "status": "Live Stream Active",
-      "time": "08:38:30 pm",
-      "timestamp": "2026-09-08T15:08:30.830Z"
+      "time": "04:54:00 pm",
+      "timestamp": 1788953040082
+    },
+    "NT1002": {
+      "deviceId": "NT-ESP32-001",
+      "userId": "NT1002",
+      "heartRate": 72,
+      "spo2": 99,
+      "temperature": 36.5,
+      "motion": 0.03,
+      "sleepHours": 8,
+      "sleepQuality": "Optimal (Restful)",
+      "battery": 88,
+      "status": "Live Stream Active",
+      "time": "11:59:59 pm",
+      "timestamp": 1788892199000
     }
   },
   "sensorHistory": {
-    "NT1001": [
+    "global": [
       {
         "deviceId": "NT-ESP32-001",
-        "userId": "NT1001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 98,
+        "temperature": 30.8,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:46:23 pm",
+        "timestamp": 1788952583223
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 24.1,
+        "motion": 0.56,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:52:43 pm",
+        "timestamp": 1788952963755
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 24.1,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:52:46 pm",
+        "timestamp": 1788952966863
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 24.5,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:52:49 pm",
+        "timestamp": 1788952969988
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 24.8,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:52:53 pm",
+        "timestamp": 1788952973012
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 24.9,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:52:56 pm",
+        "timestamp": 1788952976031
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.1,
+        "motion": 0.26,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:52:59 pm",
+        "timestamp": 1788952979204
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.1,
+        "motion": 0.09,
+        "sleepHours": 7.5,
+        "sleepQuality": "Optimal (Restful)",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:03 pm",
+        "timestamp": 1788952983001
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.7,
+        "motion": 0.27,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:06 pm",
+        "timestamp": 1788952986137
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.7,
+        "motion": 0.26,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:09 pm",
+        "timestamp": 1788952989170
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 71,
+        "spo2": 97,
+        "temperature": 26.3,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:22 pm",
+        "timestamp": 1788953002396
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 72,
+        "spo2": 97,
+        "temperature": 26.3,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:26 pm",
+        "timestamp": 1788953006065
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 70,
+        "spo2": 97,
+        "temperature": 26.3,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:29 pm",
+        "timestamp": 1788953009259
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 97,
+        "temperature": 26.3,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:32 pm",
+        "timestamp": 1788953012273
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 98,
+        "temperature": 26.2,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:35 pm",
+        "timestamp": 1788953015316
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 78,
+        "spo2": 97,
+        "temperature": 26.2,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:38 pm",
+        "timestamp": 1788953018356
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 78,
+        "spo2": 97,
+        "temperature": 26.2,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:42 pm",
+        "timestamp": 1788953022435
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
         "heartRate": 78,
         "spo2": 98,
-        "temperature": 36.7,
+        "temperature": 26.1,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:45 pm",
+        "timestamp": 1788953025524
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 98,
+        "temperature": 26.1,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:48 pm",
+        "timestamp": 1788953028632
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 98,
+        "temperature": 26.1,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:53 pm",
+        "timestamp": 1788953033284
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 26.1,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:56 pm",
+        "timestamp": 1788953036412
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 76,
+        "spo2": 99,
+        "temperature": 26,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:53:59 pm",
+        "timestamp": 1788953039577
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 26,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:02 pm",
+        "timestamp": 1788953042640
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 98,
+        "temperature": 26,
+        "motion": 0.27,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:06 pm",
+        "timestamp": 1788953046455
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.9,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:10 pm",
+        "timestamp": 1788953050140
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.9,
+        "motion": 0.27,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:15 pm",
+        "timestamp": 1788953055847
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.9,
+        "motion": 0.28,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:21 pm",
+        "timestamp": 1788953061374
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.8,
+        "motion": 0.27,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:30 pm",
+        "timestamp": 1788953070585
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.7,
+        "motion": 0.27,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:35 pm",
+        "timestamp": 1788953075091
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.7,
+        "motion": 0.26,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:38 pm",
+        "timestamp": 1788953078775
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.6,
+        "motion": 0.26,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:42 pm",
+        "timestamp": 1788953082235
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.6,
+        "motion": 0.26,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:45 pm",
+        "timestamp": 1788953085323
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": "Not Applicable",
+        "spo2": "Not Applicable",
+        "temperature": 25.5,
+        "motion": 0.27,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:48 pm",
+        "timestamp": 1788953088446
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 99,
+        "temperature": 25.5,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:51 pm",
+        "timestamp": 1788953091545
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "global",
+        "heartRate": 79,
+        "spo2": 99,
+        "temperature": 25.4,
+        "motion": 0.27,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "battery": 95,
+        "status": "Live Stream Active",
+        "time": "04:54:54 pm",
+        "timestamp": 1788953094554
+      }
+    ],
+    "NT1001": [
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:43:47 pm",
+        "timestamp": 1788948827461,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:50 pm",
+        "timestamp": 1788948830570,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:53 pm",
+        "timestamp": 1788948833609,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 73,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:56 pm",
+        "timestamp": 1788948836612,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:59 pm",
+        "timestamp": 1788948839716,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:44:02 pm",
+        "timestamp": 1788948842804,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 71,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:44:05 pm",
+        "timestamp": 1788948845927,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:08 pm",
+        "timestamp": 1788948848951,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:12 pm",
+        "timestamp": 1788948852055,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:15 pm",
+        "timestamp": 1788948855208,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 70,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:18 pm",
+        "timestamp": 1788948858292,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 71,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.4,
+        "time": "03:44:21 pm",
+        "timestamp": 1788948861525,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.2,
+        "time": "03:44:24 pm",
+        "timestamp": 1788948864729,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.7,
+        "time": "03:44:27 pm",
+        "timestamp": 1788948867852,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27,
+        "time": "03:44:30 pm",
+        "timestamp": 1788948870875,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27,
+        "time": "03:44:33 pm",
+        "timestamp": 1788948873893,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:37 pm",
+        "timestamp": 1788948877001,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:40 pm",
+        "timestamp": 1788948880124,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 74,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:43 pm",
+        "timestamp": 1788948883162,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 71,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:46 pm",
+        "timestamp": 1788948886186,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 74,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27,
+        "time": "03:44:49 pm",
+        "timestamp": 1788948889224,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.9,
+        "time": "03:44:52 pm",
+        "timestamp": 1788948892377,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 96,
+        "status": "Live Stream Active",
+        "temperature": 26.9,
+        "time": "03:44:55 pm",
+        "timestamp": 1788948895475,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.9,
+        "time": "03:44:58 pm",
+        "timestamp": 1788948898613,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.8,
+        "time": "03:45:01 pm",
+        "timestamp": 1788948901846,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 70,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.8,
+        "time": "03:45:04 pm",
+        "timestamp": 1788948904869,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 74,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.8,
+        "time": "03:45:08 pm",
+        "timestamp": 1788948908003,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.7,
+        "time": "03:45:11 pm",
+        "timestamp": 1788948911106,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.6,
+        "time": "03:45:14 pm",
+        "timestamp": 1788948914320,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.6,
+        "time": "03:45:17 pm",
+        "timestamp": 1788948917339,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.5,
+        "time": "03:45:20 pm",
+        "timestamp": 1788948920427,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.21,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.5,
+        "time": "03:45:23 pm",
+        "timestamp": 1788948923493,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.4,
+        "time": "03:45:26 pm",
+        "timestamp": 1788948926594,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 70,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.4,
+        "time": "03:45:29 pm",
+        "timestamp": 1788948929617,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.21,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.3,
+        "time": "03:45:32 pm",
+        "timestamp": 1788948932721,
+        "userId": "global"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
         "motion": 0.03,
         "sleepHours": 7.5,
         "sleepQuality": "Good (88%)",
-        "battery": 92,
+        "spo2": 98,
         "status": "Live Stream Active",
-        "time": "07:26:43 pm",
-        "timestamp": "2026-09-08T13:56:43.380Z"
+        "temperature": 36.7,
+        "time": "04:10:00 pm",
+        "timestamp": 1788950400000,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 36.7,
+        "time": "04:10:00 pm",
+        "timestamp": 1788950400000,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 36.7,
+        "time": "04:10:00 pm",
+        "timestamp": 1788950400000,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 36.7,
+        "time": "04:10:00 pm",
+        "timestamp": 1788950400000,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 36.7,
+        "time": "04:10:00 pm",
+        "timestamp": 1788950400000,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.02,
+        "sleepHours": 7.5,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 36.8,
+        "time": "04:10:13 pm",
+        "timestamp": 1788950413110,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.02,
+        "sleepHours": 7.5,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 36.8,
+        "time": "04:14:33 pm",
+        "timestamp": 1788950673190,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.02,
+        "sleepHours": 7.5,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 36.8,
+        "time": "04:20:34 pm",
+        "timestamp": 1788951034304,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.02,
+        "sleepHours": 7.5,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 96,
+        "status": "Live Stream Active",
+        "temperature": 36.8,
+        "time": "04:53:16 pm",
+        "timestamp": 1788952996018,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 36.7,
+        "time": "04:53:56 pm",
+        "timestamp": 1788953036950,
+        "userId": "NT1001"
       },
       {
         "deviceId": "NT-ESP32-001",
         "userId": "NT1001",
         "heartRate": 78,
-        "spo2": 98,
-        "temperature": 36.7,
-        "motion": 0.03,
+        "spo2": 96,
+        "temperature": 36.8,
+        "motion": 0.02,
         "sleepHours": 7.5,
-        "sleepQuality": "Good (88%)",
-        "battery": 92,
+        "sleepQuality": "Optimal (Restful)",
+        "battery": 95,
         "status": "Live Stream Active",
-        "time": "08:38:30 pm",
-        "timestamp": "2026-09-08T15:08:30.830Z"
+        "time": "04:53:59 pm",
+        "timestamp": 1788953039247
+      }
+    ],
+    "NT1002": [
+      {
+        "battery": 88,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 99,
+        "status": "Live Stream Active",
+        "temperature": 36.5,
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000,
+        "userId": "NT1002"
+      },
+      {
+        "battery": 88,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 99,
+        "status": "Live Stream Active",
+        "temperature": 36.5,
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000,
+        "userId": "NT1002"
+      },
+      {
+        "battery": 88,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 99,
+        "status": "Live Stream Active",
+        "temperature": 36.5,
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000,
+        "userId": "NT1002"
+      },
+      {
+        "battery": 88,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 99,
+        "status": "Live Stream Active",
+        "temperature": 36.5,
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000,
+        "userId": "NT1002"
+      },
+      {
+        "battery": 88,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 99,
+        "status": "Live Stream Active",
+        "temperature": 36.5,
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000,
+        "userId": "NT1002"
+      },
+      {
+        "battery": 88,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 99,
+        "status": "Live Stream Active",
+        "temperature": 36.5,
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000,
+        "userId": "NT1002"
+      },
+      {
+        "deviceId": "NT-ESP32-001",
+        "userId": "NT1002",
+        "heartRate": 72,
+        "spo2": 99,
+        "temperature": 36.5,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "battery": 88,
+        "status": "Live Stream Active",
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:43:47 pm",
+        "timestamp": 1788948827461,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:50 pm",
+        "timestamp": 1788948830570,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:53 pm",
+        "timestamp": 1788948833609,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 73,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:56 pm",
+        "timestamp": 1788948836612,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:43:59 pm",
+        "timestamp": 1788948839716,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:44:02 pm",
+        "timestamp": 1788948842804,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 71,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.1,
+        "time": "03:44:05 pm",
+        "timestamp": 1788948845927,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:08 pm",
+        "timestamp": 1788948848951,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:12 pm",
+        "timestamp": 1788948852055,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:15 pm",
+        "timestamp": 1788948855208,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 70,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.2,
+        "time": "03:44:18 pm",
+        "timestamp": 1788948858292,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 71,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 25.4,
+        "time": "03:44:21 pm",
+        "timestamp": 1788948861525,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.2,
+        "time": "03:44:24 pm",
+        "timestamp": 1788948864729,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.7,
+        "time": "03:44:27 pm",
+        "timestamp": 1788948867852,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27,
+        "time": "03:44:30 pm",
+        "timestamp": 1788948870875,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27,
+        "time": "03:44:33 pm",
+        "timestamp": 1788948873893,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:37 pm",
+        "timestamp": 1788948877001,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:40 pm",
+        "timestamp": 1788948880124,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 74,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:43 pm",
+        "timestamp": 1788948883162,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 71,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27.1,
+        "time": "03:44:46 pm",
+        "timestamp": 1788948886186,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 74,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 27,
+        "time": "03:44:49 pm",
+        "timestamp": 1788948889224,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.9,
+        "time": "03:44:52 pm",
+        "timestamp": 1788948892377,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 96,
+        "status": "Live Stream Active",
+        "temperature": 26.9,
+        "time": "03:44:55 pm",
+        "timestamp": 1788948895475,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 76,
+        "motion": 0.25,
+        "sleepHours": 7.5,
+        "sleepQuality": "Active Motion",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.9,
+        "time": "03:44:58 pm",
+        "timestamp": 1788948898613,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.8,
+        "time": "03:45:01 pm",
+        "timestamp": 1788948901846,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 70,
+        "motion": 0.24,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.8,
+        "time": "03:45:04 pm",
+        "timestamp": 1788948904869,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 74,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.8,
+        "time": "03:45:08 pm",
+        "timestamp": 1788948908003,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.7,
+        "time": "03:45:11 pm",
+        "timestamp": 1788948911106,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.23,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.6,
+        "time": "03:45:14 pm",
+        "timestamp": 1788948914320,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.6,
+        "time": "03:45:17 pm",
+        "timestamp": 1788948917339,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.5,
+        "time": "03:45:20 pm",
+        "timestamp": 1788948920427,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.21,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.5,
+        "time": "03:45:23 pm",
+        "timestamp": 1788948923493,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 75,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.4,
+        "time": "03:45:26 pm",
+        "timestamp": 1788948926594,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 70,
+        "motion": 0.22,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 97,
+        "status": "Live Stream Active",
+        "temperature": 26.4,
+        "time": "03:45:29 pm",
+        "timestamp": 1788948929617,
+        "userId": "global"
+      },
+      {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 77,
+        "motion": 0.21,
+        "sleepHours": 7.5,
+        "sleepQuality": "Light Movement",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 26.3,
+        "time": "03:45:32 pm",
+        "timestamp": 1788948932721,
+        "userId": "global"
       }
     ]
   }

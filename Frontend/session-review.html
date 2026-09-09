@@ -189,11 +189,15 @@
       };
 
       try {
-        const res = await fetch('http://localhost:5000/api/session/submit', {
+        const res = await fetch('/api/session/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
-        });
+        }).catch(() => fetch('http://localhost:5000/api/session/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }));
 
         const data = await res.json();
         if (data.success && data.result) {
@@ -214,7 +218,7 @@
         const fallbackResult = {
           assessmentId: `ASM-${Date.now().toString().slice(-6)}`,
           userId,
-          timestamp: new Date().toISOString(),
+          timestamp: Date.now(),
           dateFormatted: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
           rawScore,
           score,

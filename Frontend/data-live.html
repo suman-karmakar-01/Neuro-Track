@@ -170,6 +170,7 @@
                 <!-- Dynamic Area Fill & Line (Flatline Standby) -->
                 <polygon id="hrPolygon" points="40,160 490,160 490,160 40,160" fill="url(#hrGrad)" fill-opacity="0"/>
                 <polyline id="hrPolyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle id="hrLiveCursor" cx="490" cy="160" r="5" fill="#EF4444" stroke="#FFFFFF" stroke-width="2" style="display:none; filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));"/>
               </svg>
               <!-- X Axis Labels -->
               <div class="chart-x-axis" id="hrXAxisLabels">
@@ -230,6 +231,7 @@
                 <!-- Dynamic Area Fill & Line (Flatline Standby) -->
                 <polygon id="spo2Polygon" points="40,160 490,160 490,160 40,160" fill="url(#spo2Grad)" fill-opacity="0"/>
                 <polyline id="spo2Polyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle id="spo2LiveCursor" cx="490" cy="160" r="5" fill="#0284C7" stroke="#FFFFFF" stroke-width="2" style="display:none; filter: drop-shadow(0 0 6px rgba(2, 132, 199, 0.8));"/>
               </svg>
               <!-- X Axis Labels -->
               <div class="chart-x-axis" id="spo2XAxisLabels">
@@ -449,9 +451,19 @@
     document.getElementById('footerLogoutBtn').addEventListener('click', handleLogout);
 
     let isMonitoring = true;
+    let isHardwareActive = false;
+    let currentHr = 75;
+    let currentSpo2 = 97;
+    let currentTemp = 25.1;
+    let currentSleep = 7.5;
+    let lastTelemetryTime = '';
+    let animOffset = 0;
+    let lastFrameTime = performance.now();
 
     // Set flatline baseline and Not Applicable state
     function setFlatline() {
+      isHardwareActive = false;
+
       // Metric values
       const hrEl = document.getElementById('liveHrValue');
       const spo2El = document.getElementById('liveSpo2Value');
@@ -540,6 +552,12 @@
         spo2PolyG.setAttribute('fill-opacity', '0');
       }
 
+      // Hide live cursor dots
+      const hrCursor = document.getElementById('hrLiveCursor');
+      if (hrCursor) hrCursor.style.display = 'none';
+      const spo2Cursor = document.getElementById('spo2LiveCursor');
+      if (spo2Cursor) spo2Cursor.style.display = 'none';
+
       // Device connection indicator
       const dot = document.getElementById('deviceStatusDot');
       if (dot) {
@@ -572,39 +590,192 @@
       }
     }
 
-    // Refresh button
-    document.getElementById('toggleDeviceBtn').addEventListener('click', () => {
-      fetchTelemetry();
-    });
-
-    // Render SVG path from array of points
-    function renderSvgGraph(dataPoints, metricKey, minVal, maxVal, polylineId, polygonId, strokeColor) {
-      if (!dataPoints || dataPoints.length === 0) return;
-
-      const totalX = 450; // from 40 to 490
-      const startX = 40;
-      const polyline = document.getElementById(polylineId);
-      const polygon = document.getElementById(polygonId);
-
-      const count = dataPoints.length;
-      const pts = dataPoints.map((item, idx) => {
-        const val = item[metricKey] || minVal;
-        const x = count > 1 ? startX + (idx / (count - 1)) * totalX : startX;
-        // Map val to y (y: 20 at maxVal, y: 160 at minVal)
-        const ratio = (val - minVal) / (maxVal - minVal);
-        const y = Math.max(20, Math.min(160, 160 - (ratio * 140)));
-        return { x: Math.round(x), y: Math.round(y) };
+    // Check Status button with interactive feedback
+    const checkBtn = document.getElementById('toggleDeviceBtn');
+    if (checkBtn) {
+      checkBtn.addEventListener('click', async () => {
+        checkBtn.textContent = 'Checking...';
+        checkBtn.style.opacity = '0.7';
+        await fetchTelemetry();
+        setTimeout(() => {
+          checkBtn.textContent = 'Check Status';
+          checkBtn.style.opacity = '1';
+        }, 500);
       });
+    }
 
-      const polylineStr = pts.map(p => `${p.x},${p.y}`).join(' ');
-      polyline.setAttribute('points', polylineStr);
-      if (strokeColor) polyline.setAttribute('stroke', strokeColor);
+    // Physiological ECG waveform generator for Heart Rate
+    function getEcgOffset(phase) {
+      // phase: 0.0 to 1.0 representing one cardiac cycle
+      if (phase < 0.12) return 0;
+      if (phase < 0.22) {
+        // P-wave (atrial depolarization)
+        const p = (phase - 0.12) / 0.10;
+        return -7 * Math.sin(p * Math.PI);
+      }
+      if (phase < 0.28) return 0;
+      if (phase < 0.31) {
+        // Q-wave
+        const q = (phase - 0.28) / 0.03;
+        return 5 * Math.sin(q * Math.PI);
+      }
+      if (phase < 0.36) {
+        // R-peak (dramatic ventricular contraction spike)
+        const r = (phase - 0.31) / 0.05;
+        return -38 * Math.sin(r * Math.PI);
+      }
+      if (phase < 0.39) {
+        // S-wave (late ventricular depolarization dip)
+        const s = (phase - 0.36) / 0.03;
+        return 10 * Math.sin(s * Math.PI);
+      }
+      if (phase < 0.46) return 0;
+      if (phase < 0.62) {
+        // T-wave (ventricular repolarization)
+        const t = (phase - 0.46) / 0.16;
+        return -12 * Math.sin(t * Math.PI);
+      }
+      // Diastolic rest baseline with slight physiological tremor
+      return Math.sin(phase * 16) * 0.35;
+    }
 
-      const firstX = pts[0].x;
-      const lastX = pts[pts.length - 1].x;
-      const polygonStr = `${firstX},160 ${polylineStr} ${lastX},160`;
-      polygon.setAttribute('points', polygonStr);
-      polygon.setAttribute('fill-opacity', '1');
+    // Physiological photoplethysmogram (PPG) pulse wave for SpO2
+    function getPpgOffset(phase) {
+      // phase: 0.0 to 1.0 representing arterial blood volume pulse
+      if (phase < 0.22) {
+        // Rapid systolic ejection upstroke
+        const up = phase / 0.22;
+        return -20 * Math.sin(up * Math.PI * 0.5);
+      }
+      if (phase < 0.38) {
+        // Systolic decline to dicrotic notch
+        const down = (phase - 0.22) / 0.16;
+        return -20 + 11 * down;
+      }
+      if (phase < 0.50) {
+        // Dicrotic notch reflection wave
+        const notch = (phase - 0.38) / 0.12;
+        return -9 - 5 * Math.sin(notch * Math.PI);
+      }
+      // Diastolic runoff decay
+      const decay = (phase - 0.50) / 0.50;
+      return -9 * (1 - decay);
+    }
+
+    // 60FPS continuous moving wave animation loop
+    function renderLiveFrame(now) {
+      const dt = Math.min((now - lastFrameTime) / 1000, 0.1);
+      lastFrameTime = now;
+
+      if (!isMonitoring || !isHardwareActive) {
+        requestAnimationFrame(renderLiveFrame);
+        return;
+      }
+
+      const hasValidHr = typeof currentHr === 'number' && currentHr > 30 && currentHr < 220;
+      const hasValidSpo2 = typeof currentSpo2 === 'number' && currentSpo2 >= 70 && currentSpo2 <= 100;
+
+      const hr = hasValidHr ? currentHr : 75;
+      const spo2 = hasValidSpo2 ? currentSpo2 : 98;
+
+      // Pulse speed calibrated to live heart rate
+      const cycleLen = 110;
+      const hrSpeed = (hr / 60) * cycleLen;
+      animOffset = (animOffset + hrSpeed * dt) % cycleLen;
+
+      const startX = 40;
+      const endX = 490;
+      const step = 4;
+
+      // 1. Heart Rate ECG Waveform
+      const hrPoly = document.getElementById('hrPolyline');
+      const hrPolyG = document.getElementById('hrPolygon');
+      const hrCursor = document.getElementById('hrLiveCursor');
+
+      if (hasValidHr) {
+        const hrRatio = Math.max(0, Math.min(1, (hr - 40) / 80));
+        const hrBaseY = 160 - (hrRatio * 140);
+
+        const hrPoints = [];
+        for (let x = startX; x <= endX; x += step) {
+          const relX = ((endX - x + animOffset) % cycleLen + cycleLen) % cycleLen;
+          const phase = relX / cycleLen;
+          const y = Math.max(20, Math.min(160, hrBaseY + getEcgOffset(phase)));
+          hrPoints.push(`${x},${Math.round(y * 10) / 10}`);
+        }
+
+        const hrPolyStr = hrPoints.join(' ');
+        if (hrPoly) {
+          hrPoly.setAttribute('points', hrPolyStr);
+          hrPoly.setAttribute('stroke', '#EF4444');
+        }
+        if (hrPolyG) {
+          hrPolyG.setAttribute('points', `${startX},160 ${hrPolyStr} ${endX},160`);
+          hrPolyG.setAttribute('fill-opacity', '1');
+        }
+        if (hrCursor) {
+          const leadingPhase = ((animOffset % cycleLen) + cycleLen) % cycleLen / cycleLen;
+          const leadingY = Math.max(20, Math.min(160, hrBaseY + getEcgOffset(leadingPhase)));
+          hrCursor.setAttribute('cy', Math.round(leadingY * 10) / 10);
+          hrCursor.style.display = 'block';
+        }
+      } else {
+        if (hrPoly) {
+          hrPoly.setAttribute('points', `${startX},160 ${endX},160`);
+          hrPoly.setAttribute('stroke', '#94A3B8');
+        }
+        if (hrPolyG) {
+          hrPolyG.setAttribute('points', `${startX},160 ${endX},160 ${endX},160 ${startX},160`);
+          hrPolyG.setAttribute('fill-opacity', '0');
+        }
+        if (hrCursor) hrCursor.style.display = 'none';
+      }
+
+      // 2. SpO2 PPG Waveform
+      const spo2Poly = document.getElementById('spo2Polyline');
+      const spo2PolyG = document.getElementById('spo2Polygon');
+      const spo2Cursor = document.getElementById('spo2LiveCursor');
+
+      if (hasValidSpo2) {
+        const spo2Ratio = Math.max(0, Math.min(1, (spo2 - 80) / 20));
+        const spo2BaseY = Math.max(38, Math.min(145, 160 - (spo2Ratio * 125)));
+
+        const spo2Points = [];
+        for (let x = startX; x <= endX; x += step) {
+          const relX = ((endX - x + animOffset) % cycleLen + cycleLen) % cycleLen;
+          const phase = relX / cycleLen;
+          const y = Math.max(20, Math.min(160, spo2BaseY + getPpgOffset(phase)));
+          spo2Points.push(`${x},${Math.round(y * 10) / 10}`);
+        }
+
+        const spo2PolyStr = spo2Points.join(' ');
+        if (spo2Poly) {
+          spo2Poly.setAttribute('points', spo2PolyStr);
+          spo2Poly.setAttribute('stroke', '#0284C7');
+        }
+        if (spo2PolyG) {
+          spo2PolyG.setAttribute('points', `${startX},160 ${spo2PolyStr} ${endX},160`);
+          spo2PolyG.setAttribute('fill-opacity', '1');
+        }
+        if (spo2Cursor) {
+          const leadingPhase = ((animOffset % cycleLen) + cycleLen) % cycleLen / cycleLen;
+          const leadingY = Math.max(20, Math.min(160, spo2BaseY + getPpgOffset(leadingPhase)));
+          spo2Cursor.setAttribute('cy', Math.round(leadingY * 10) / 10);
+          spo2Cursor.style.display = 'block';
+        }
+      } else {
+        if (spo2Poly) {
+          spo2Poly.setAttribute('points', `${startX},160 ${endX},160`);
+          spo2Poly.setAttribute('stroke', '#94A3B8');
+        }
+        if (spo2PolyG) {
+          spo2PolyG.setAttribute('points', `${startX},160 ${endX},160 ${endX},160 ${startX},160`);
+          spo2PolyG.setAttribute('fill-opacity', '0');
+        }
+        if (spo2Cursor) spo2Cursor.style.display = 'none';
+      }
+
+      requestAnimationFrame(renderLiveFrame);
     }
 
     // Fetch telemetry from backend
@@ -613,65 +784,99 @@
       try {
         const res = await fetch(`/api/wearable/live/${userId}`);
         const data = await res.json();
-        const isHwActive = Boolean(data && data.success && data.isHardwareActive === true && typeof data.telemetry?.heartRate === 'number');
+        const active = Boolean(data && data.success && data.isHardwareActive === true);
 
-        if (!isHwActive) {
+        if (!active) {
           setFlatline();
           return;
         }
 
-        const tel = data.telemetry;
+        isHardwareActive = true;
+        const tel = data.telemetry || {};
 
         // Update live metric displays with active values
         const hrEl = document.getElementById('liveHrValue');
-        hrEl.innerHTML = `${tel.heartRate} <small style="font-size:0.9rem; color:#64748B;">bpm</small>`;
-        hrEl.style.fontSize = '2.2rem';
-        hrEl.style.color = '#0F172A';
+        const hrBadge = document.getElementById('liveHrBadge');
+        if (typeof tel.heartRate === 'number') {
+          currentHr = tel.heartRate;
+          hrEl.innerHTML = `${tel.heartRate} <small style="font-size:0.9rem; color:#64748B;">bpm</small>`;
+          hrEl.style.fontSize = '2.2rem';
+          hrEl.style.color = '#0F172A';
+          hrBadge.textContent = (tel.heartRate >= 60 && tel.heartRate <= 100) ? 'Normal' : (tel.heartRate > 100 ? 'Elevated' : 'Low');
+          hrBadge.className = 'badge badge-normal';
+          hrBadge.style.background = '';
+          hrBadge.style.color = '';
+        } else {
+          currentHr = 'Not Applicable';
+          hrEl.innerHTML = `<span style="font-size:1.35rem; color:#64748B;">${tel.heartRate || 'Not Applicable'}</span>`;
+          hrBadge.textContent = 'Finger Sensor Standby';
+          hrBadge.className = 'badge';
+          hrBadge.style.background = '#F1F5F9';
+          hrBadge.style.color = '#64748B';
+        }
 
         const spo2El = document.getElementById('liveSpo2Value');
-        spo2El.innerHTML = `${tel.spo2} <small style="font-size:0.9rem; color:#64748B;">%</small>`;
-        spo2El.style.fontSize = '2.2rem';
-        spo2El.style.color = '#0F172A';
+        const spo2Badge = document.getElementById('liveSpo2Badge');
+        if (typeof tel.spo2 === 'number') {
+          currentSpo2 = tel.spo2;
+          spo2El.innerHTML = `${tel.spo2} <small style="font-size:0.9rem; color:#64748B;">%</small>`;
+          spo2El.style.fontSize = '2.2rem';
+          spo2El.style.color = '#0F172A';
+          spo2Badge.textContent = tel.spo2 >= 95 ? 'Normal' : 'Low';
+          spo2Badge.className = 'badge badge-normal';
+          spo2Badge.style.background = '';
+          spo2Badge.style.color = '';
+        } else {
+          currentSpo2 = 'Not Applicable';
+          spo2El.innerHTML = `<span style="font-size:1.35rem; color:#64748B;">${tel.spo2 || 'Not Applicable'}</span>`;
+          spo2Badge.textContent = 'Optical Standby';
+          spo2Badge.className = 'badge';
+          spo2Badge.style.background = '#F1F5F9';
+          spo2Badge.style.color = '#64748B';
+        }
 
         const tempEl = document.getElementById('liveTempVal');
-        tempEl.innerHTML = `${tel.temperature || 36.6} <small style="font-size:0.9rem; color:#64748B;">°C</small>`;
-        tempEl.style.fontSize = '2.2rem';
-        tempEl.style.color = '#0F172A';
+        const tempBadge = document.getElementById('liveTempBadge');
+        if (typeof tel.temperature === 'number') {
+          currentTemp = tel.temperature;
+          tempEl.innerHTML = `${tel.temperature} <small style="font-size:0.9rem; color:#64748B;">°C</small>`;
+          tempEl.style.fontSize = '2.2rem';
+          tempEl.style.color = '#0F172A';
+          tempBadge.textContent = (tel.temperature >= 36.1 && tel.temperature <= 37.3) ? 'Normal Range' : (tel.temperature > 37.3 ? 'Elevated Temp' : 'Sub-Normal');
+          tempBadge.className = 'badge badge-normal';
+          tempBadge.style.background = '';
+          tempBadge.style.color = '';
+          document.getElementById('liveAvgTempVal').textContent = `${tel.temperature.toFixed(1)} °C`;
+        } else {
+          tempEl.innerHTML = `<span style="font-size:1.35rem; color:#64748B;">${tel.temperature || 'Not Applicable'}</span>`;
+          tempBadge.textContent = 'Probe Standby';
+          tempBadge.className = 'badge';
+          tempBadge.style.background = '#F1F5F9';
+          tempBadge.style.color = '#64748B';
+          document.getElementById('liveAvgTempVal').textContent = '--';
+        }
 
         const sleepEl = document.getElementById('liveSleepVal');
-        sleepEl.innerHTML = `${tel.sleepHours || 7.5} <small style="font-size:0.9rem; color:#64748B;">hours</small>`;
-        sleepEl.style.fontSize = '2.2rem';
-        sleepEl.style.color = '#0F172A';
-
-        // Badges
-        const hrBadge = document.getElementById('liveHrBadge');
-        hrBadge.textContent = (tel.heartRate >= 60 && tel.heartRate <= 100) ? 'Normal' : (tel.heartRate > 100 ? 'Elevated' : 'Low');
-        hrBadge.className = 'badge badge-normal';
-        hrBadge.style.background = '';
-        hrBadge.style.color = '';
-
-        const spo2Badge = document.getElementById('liveSpo2Badge');
-        spo2Badge.textContent = tel.spo2 >= 95 ? 'Normal' : 'Low';
-        spo2Badge.className = 'badge badge-normal';
-        spo2Badge.style.background = '';
-        spo2Badge.style.color = '';
-
-        const tempBadge = document.getElementById('liveTempBadge');
-        const tempNum = Number(tel.temperature) || 36.6;
-        tempBadge.textContent = (tempNum >= 36.1 && tempNum <= 37.3) ? 'Normal Range' : (tempNum > 37.3 ? 'Elevated Temp' : 'Sub-Normal');
-        tempBadge.className = 'badge badge-normal';
-        tempBadge.style.background = '';
-        tempBadge.style.color = '';
-
         const sleepBadge = document.getElementById('liveSleepBadge');
-        sleepBadge.textContent = (tel.sleepHours >= 7 && tel.sleepHours <= 9) ? 'Target Met' : 'Check Duration';
-        sleepBadge.className = 'badge badge-normal';
-        sleepBadge.style.background = '';
-        sleepBadge.style.color = '';
+        if (typeof tel.sleepHours === 'number') {
+          currentSleep = tel.sleepHours;
+          sleepEl.innerHTML = `${tel.sleepHours} <small style="font-size:0.9rem; color:#64748B;">hours</small>`;
+          sleepEl.style.fontSize = '2.2rem';
+          sleepEl.style.color = '#0F172A';
+          sleepBadge.textContent = (tel.sleepHours >= 7 && tel.sleepHours <= 9) ? 'Target Met' : 'Check Duration';
+          sleepBadge.className = 'badge badge-normal';
+          sleepBadge.style.background = '';
+          sleepBadge.style.color = '';
+        } else {
+          sleepEl.innerHTML = `<span style="font-size:1.35rem; color:#64748B;">${tel.sleepHours || 'Not Applicable'}</span>`;
+          sleepBadge.textContent = 'Standby';
+          sleepBadge.className = 'badge';
+          sleepBadge.style.background = '#F1F5F9';
+          sleepBadge.style.color = '#64748B';
+        }
 
         // Sub-stats
-        document.getElementById('liveAvgTempVal').textContent = `${tempNum.toFixed(1)} °C`;
-        document.getElementById('liveSleepQuality').textContent = tel.sleepQuality || 'Low motion (Restful)';
+        document.getElementById('liveSleepQuality').textContent = tel.sleepQuality || 'Optimal (Restful)';
         document.getElementById('liveSleepEfficiency').textContent = '89%';
 
         // Device status indicator
@@ -679,51 +884,64 @@
         dot.className = 'status-dot online';
         dot.style.background = '';
         document.getElementById('deviceStatusHeading').textContent = 'Live Stream Active';
-        document.getElementById('deviceStatusSub').textContent = 'ESP32 Wi-Fi Node • Serial: NT-ESP32-001';
+        document.getElementById('deviceStatusSub').textContent = 'ESP32 Wi-Fi Node • Firebase Cloud Synced';
         document.getElementById('deviceSpecStatus').innerHTML = '<span class="status-dot-inline green"></span> Live Streaming via Wi-Fi';
-        document.getElementById('deviceBatteryVal').textContent = `${tel.battery || 85}%`;
-        document.getElementById('deviceBatteryFill').style.width = `${tel.battery || 85}%`;
-        document.getElementById('deviceLastUpdated').textContent = new Date().toLocaleTimeString('en-IN');
+        document.getElementById('deviceBatteryVal').textContent = `${tel.battery || 95}%`;
+        document.getElementById('deviceBatteryFill').style.width = `${tel.battery || 95}%`;
+        const timeStr = tel.time || new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' });
+        document.getElementById('deviceLastUpdated').textContent = timeStr;
 
-        // Fetch history data points for graphs
+        // Fetch history data points for table & axis
         const histRes = await fetch(`/api/wearable/history/${userId}`);
         const histData = await histRes.json();
         const history = (histData && histData.success && Array.isArray(histData.history)) ? histData.history : [];
 
         if (history.length > 0 && histData.isHardwareActive === true) {
-          renderSvgGraph(history, 'heartRate', 40, 120, 'hrPolyline', 'hrPolygon', '#EF4444');
-          renderSvgGraph(history, 'spo2', 80, 100, 'spo2Polyline', 'spo2Polygon', '#0284C7');
-
-          const sampleLabels = history.slice(-6).map(h => h.time || '10:00');
+          // Dynamic Rolling X Axis Labels showing live timeline
           const hrLabelsDiv = document.getElementById('hrXAxisLabels');
           const spo2LabelsDiv = document.getElementById('spo2XAxisLabels');
-          if (hrLabelsDiv) hrLabelsDiv.innerHTML = sampleLabels.map(t => `<span>${t}</span>`).join('');
-          if (spo2LabelsDiv) spo2LabelsDiv.innerHTML = sampleLabels.map(t => `<span>${t}</span>`).join('');
+          const axisMarkup = `<span>-10s</span><span>-5s</span><span style="color:#0F172A; font-weight:600;">● Live (${timeStr})</span>`;
+          if (hrLabelsDiv) hrLabelsDiv.innerHTML = axisMarkup;
+          if (spo2LabelsDiv) spo2LabelsDiv.innerHTML = axisMarkup;
 
+          // Recent Telemetry Readings Table
           const tbody = document.getElementById('liveReadingsTbody');
-          tbody.innerHTML = '';
-          const rev = [...history].reverse().slice(0, 5);
-          rev.forEach(r => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-              <td><strong>${r.time || '10:24'}</strong></td>
-              <td>${r.heartRate} bpm</td>
-              <td>${r.spo2}%</td>
-              <td>${r.temperature || 36.6} °C</td>
-              <td><span class="badge badge-normal" style="font-size:0.75rem;">${r.sleepQuality || 'Restful'}</span></td>
-            `;
-            tbody.appendChild(tr);
-          });
-        } else {
-          setFlatline();
+          if (tbody) {
+            tbody.innerHTML = '';
+            const rev = [...history].reverse().slice(0, 6);
+            rev.forEach((r, idx) => {
+              const displayTime = r.timestamp
+                ? new Date(typeof r.timestamp === 'number' ? r.timestamp : new Date(r.timestamp).getTime()).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' })
+                : (r.time || timeStr);
+              const hrDisplay = typeof r.heartRate === 'number' ? `${r.heartRate} bpm` : (r.heartRate || 'Not Applicable');
+              const spo2Display = typeof r.spo2 === 'number' ? `${r.spo2}%` : (r.spo2 || 'Not Applicable');
+              const tempDisplay = typeof r.temperature === 'number' ? `${r.temperature} °C` : (r.temperature || 'Not Applicable');
+              const isFirst = idx === 0;
+
+              const tr = document.createElement('tr');
+              if (isFirst) {
+                tr.style.backgroundColor = 'rgba(239, 246, 255, 0.6)';
+              }
+              tr.innerHTML = `
+                <td><strong>${displayTime}</strong> ${isFirst ? '<span class="badge badge-normal" style="font-size:0.65rem; padding:2px 6px; margin-left:4px;">Latest</span>' : ''}</td>
+                <td><strong style="color:#EF4444;">${hrDisplay}</strong></td>
+                <td><strong style="color:#0284C7;">${spo2Display}</strong></td>
+                <td><strong style="color:#D97706;">${tempDisplay}</strong></td>
+                <td><span class="badge badge-normal" style="font-size:0.75rem;">${r.sleepQuality || 'Restful'}</span></td>
+              `;
+              tbody.appendChild(tr);
+            });
+          }
         }
       } catch (err) {
         setFlatline();
       }
     }
 
+    // Start 60FPS animation and telemetry polling
+    requestAnimationFrame(renderLiveFrame);
     fetchTelemetry();
-    setInterval(fetchTelemetry, 5000);
+    setInterval(fetchTelemetry, 1500);
   </script>
 </body>
 </html>

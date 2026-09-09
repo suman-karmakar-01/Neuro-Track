@@ -185,4 +185,10 @@ const dbHelper = {
   }
 };
 
-module.exports = { admin, db, dbHelper };
+module.exports = {
+  admin,
+  get db() { return db; },
+  get isFirebaseOnline() { return isFirebaseOnline; },
+  databaseURL,
+  dbHelper
+};

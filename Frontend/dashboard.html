@@ -414,9 +414,12 @@
       try {
         const res = await fetch(`/api/wearable/live/${userId}`);
         const data = await res.json();
-        if (data && data.success && data.isHardwareActive === true && typeof data.telemetry?.heartRate === 'number') {
-          const tel = data.telemetry;
-          document.getElementById('wearableHrText').innerHTML = `${tel.heartRate} <small>bpm</small> <span style="color: #CBD5E1; margin: 0 4px;">|</span> ${tel.spo2} <small>%</small> <span style="color: #CBD5E1; margin: 0 4px;">|</span> ${tel.temperature || 36.6} <small>°C</small>`;
+        if (data && data.success && data.isHardwareActive === true) {
+          const tel = data.telemetry || {};
+          const hrPart = typeof tel.heartRate === 'number' ? `${tel.heartRate} <small>bpm</small>` : `HR: NA`;
+          const spo2Part = typeof tel.spo2 === 'number' ? `${tel.spo2} <small>%</small>` : `SpO2: NA`;
+          const tempPart = typeof tel.temperature === 'number' ? `${tel.temperature} <small>°C</small>` : `Temp: NA`;
+          document.getElementById('wearableHrText').innerHTML = `${hrPart} <span style="color: #CBD5E1; margin: 0 4px;">|</span> ${spo2Part} <span style="color: #CBD5E1; margin: 0 4px;">|</span> ${tempPart}`;
           document.getElementById('wearableHrText').style.color = '#0F172A';
           document.getElementById('wearableStatusLabel').textContent = '● Live Stream Active (Wi-Fi)';
           document.getElementById('wearableStatusLabel').style.color = '#10B981';
@@ -438,6 +441,7 @@
     loadLatestSession();
     loadHistory();
     loadWearableData();
+    setInterval(loadWearableData, 2500);
   </script>
 </body>
 </html>

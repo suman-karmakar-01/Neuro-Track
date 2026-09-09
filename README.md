@@ -109,6 +109,10 @@ SIH 26094/
 │   ├── authority-users.html    # Authority console (student management)
 │   └── style.css               # Clean responsive stylesheet
 │
+├── Hardware/                    # Dedicated ESP32 Hardware Firmware
+│   └── NeuroTrack_ESP32_Wearable/
+│       └── NeuroTrack_ESP32_Wearable.ino  # ESP32 firmware with built-in NTP (no extra libs)
+│
 ├── firmware/                    # ESP32 Arduino Sketch
 │   └── esp32_wearable_client.ino  # Code for ESP32 + MAX30102 + DS18B20 + MPU6050
 │
@@ -117,42 +121,76 @@ SIH 26094/
 
 ---
 
-## ⌚ Hardware Setup (Optional ESP32 Band)
+## ⏱️ Timestamp Specification
 
-The wearable band connects over **Wi-Fi** and sends sensor data to the backend every 5 seconds.
+Neuro-Track strictly standardizes on a **Unix Timestamp in Milliseconds** format across all backend APIs, database persistence, and frontend charts:
+
+### 1. Unified Format
+Timestamps are stored and transmitted as **integer numbers** (milliseconds elapsed since January 1, 1970 00:00:00 UTC):
+```json
+{
+  "timestamp": 1788950400000
+}
+```
+*The value is strictly a numeric integer, not a string.*
+
+### 2. Time Conversion Constants
+- **1 second** = `1,000` milliseconds
+- **1 minute** = `60,000` milliseconds
+- **1 hour** = `3,600,000` milliseconds
+- **1 day** = `86,400,000` milliseconds
+
+### 3. Hardware Ingestion Flexibility
+When the ESP32 wearable posts vitals to `POST /api/wearable/data`, the backend automatically handles:
+- **Unix Milliseconds (Number):** e.g., `1788950400000` (synced via built-in ESP32 `<sys/time.h>` and `configTime(0, 0, "pool.ntp.org")` without any external RTC or extra libraries).
+- **Unix Seconds (Number):** e.g., `1788950400` (auto-detected and converted to milliseconds).
+- **Compact Hardware Format (`HHMMSSDDMMYY`):** e.g., `"235959080926"` (representing `23:59:59` on `08-09-2026` in IST, converted automatically to UTC milliseconds `1788892199000`).
+- **Omitted / Offline:** Defaults safely to server `Date.now()`.
+
+### 4. Database Sorting & Frontend Display
+- **Database & Telemetry History:** Records are strictly sorted numerically: `(a, b) => a.timestamp - b.timestamp`.
+- **Frontend Presentation:** The web application keeps timestamps as numbers in state and converts them to human-readable strings (Indian Standard Time `Asia/Kolkata`) **only** at the moment of display.
+
+---
+
+## ⌚ Hardware Setup (ESP32 Wearable Band)
+
+The wearable band connects over **Wi-Fi** and sends sensor data directly to your **Firebase Realtime Database** (`https://neuro-tech-01-default-rtdb.firebaseio.com/sensorHistory.json`) every 3 seconds, synchronized live with your web dashboard.
 
 ### Required Components:
 1. **ESP32 NodeMCU** (Microcontroller with Wi-Fi)
 2. **MAX30102** (Heart rate & Blood Oxygen SpO₂)
 3. **DS18B20** (Waterproof body temperature probe)
 4. **MPU6050** (6-axis gyroscope / accelerometer for sleep & motion tracking)
-5. **4.7 kΩ Resistor** (Pull-up resistor for DS18B20 data line)
+5. **SSD1306 128x64 OLED** (I2C status display)
+6. **4.7 kΩ Resistor** (Pull-up resistor for DS18B20 data line)
 
 ### Pin Connection Diagram:
-| Sensor | Sensor Pin | ESP32 Pin | Notes |
+| Sensor / Peripheral | Sensor Pin | ESP32 Pin | Notes |
 |:---|:---|:---|:---|
-| **All Sensors** | VCC | **3V3** | Connect to 3.3V rail |
-| **All Sensors** | GND | **GND** | Connect to Ground |
-| **MAX30102 & MPU6050** | SDA | **GPIO 21** | I2C Data bus |
-| **MAX30102 & MPU6050** | SCL | **GPIO 22** | I2C Clock bus |
+| **All Modules** | VCC | **3V3** | Connect to 3.3V power rail |
+| **All Modules** | GND | **GND** | Connect to Ground |
+| **MAX30102, MPU6050, OLED** | SDA | **GPIO 21** | Shared I2C Data bus |
+| **MAX30102, MPU6050, OLED** | SCL | **GPIO 22** | Shared I2C Clock bus |
 | **DS18B20** | DATA | **GPIO 4** | OneWire bus (add 4.7kΩ resistor to 3V3) |
 
 ### How to Flash the ESP32:
-1. Open [`firmware/esp32_wearable_client.ino`](firmware/esp32_wearable_client.ino) in the **Arduino IDE**.
-2. Install required libraries from Arduino Library Manager:
+1. Open [`Hardware/NeuroTrack_ESP32_Wearable/NeuroTrack_ESP32_Wearable.ino`](Hardware/NeuroTrack_ESP32_Wearable/NeuroTrack_ESP32_Wearable.ino) in the **Arduino IDE**.
+2. Install the required libraries from Arduino Library Manager:
    - `SparkFun MAX3010x Pulse and Proximity Sensor Library`
    - `DallasTemperature`
    - `OneWire`
-   - `MPU6050` by Electronic Cats
-3. In lines 17–19, enter your Wi-Fi details and computer's local IP address:
+   - `MPU6050_tockn`
+   - `U8g2`
+3. Enter your Wi-Fi credentials in lines 15–16:
    ```cpp
    const char* ssid = "YOUR_WIFI_NAME";
    const char* password = "YOUR_WIFI_PASSWORD";
-   const char* serverEndpoint = "http://192.168.X.X:5000/api/wearable/data";
-   const char* targetUserId = "NT1001";
    ```
 4. Connect your ESP32 via USB and click **Upload**.
-5. Once powered on, it connects to your Wi-Fi and automatically streams vitals to your web dashboard!
+5. Once powered on, the ESP32 displays status on the OLED, connects to Wi-Fi, and streams telemetry directly to Firebase!
+   - When the band is offline or out of range, the website safely displays `"Not Applicable"` with a flatline baseline.
+   - As soon as the band connects to Wi-Fi, all live vitals automatically appear on the dashboard in real time.
 
 ---
 

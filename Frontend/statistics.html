@@ -114,11 +114,11 @@
               <line x1="8" y1="2" x2="8" y2="6"></line>
               <line x1="3" y1="10" x2="21" y2="10"></line>
             </svg>
-            <select class="timeframe-select">
-              <option selected>Last 30 Days</option>
-              <option>Last 7 Days</option>
-              <option>Last 90 Days</option>
-              <option>All Time</option>
+            <select class="timeframe-select" id="statsTimeframeSelect">
+              <option value="30" selected>Last 30 Days</option>
+              <option value="7">Last 7 Days</option>
+              <option value="90">Last 90 Days</option>
+              <option value="ALL">All Time</option>
             </select>
           </div>
         </div>
@@ -508,205 +508,354 @@
     document.getElementById('navLogoutBtn').addEventListener('click', handleLogout);
     document.getElementById('footerLogoutBtn').addEventListener('click', handleLogout);
 
-    // Fetch session data & compute trends
-    async function loadStatistics() {
-      try {
-        const res = await fetch(`/api/session/history/${userId}`);
-        const data = await res.json();
-        const history = (data && data.success && Array.isArray(data.history)) ? data.history : [];
+    let rawSessionHistory = [];
+    let rawWearableHistory = [];
+    let isWearableActive = false;
+    let selectedTimeframe = '30';
 
-        // 1. Top metric cards
-        const total = history.length;
-        document.getElementById('statTotalSessions').textContent = total;
+    // Hook timeframe filter dropdown
+    const tfSelect = document.getElementById('statsTimeframeSelect');
+    if (tfSelect) {
+      tfSelect.addEventListener('change', (e) => {
+        selectedTimeframe = e.target.value;
+        renderAllStats();
+      });
+    }
 
-        if (total > 0) {
-          const sumScore = history.reduce((acc, s) => acc + (s.score || 0), 0);
-          const avgScore = Math.round(sumScore / total);
-          document.getElementById('statAvgRiskScore').innerHTML = `${avgScore} <small>/ 100</small>`;
+    // Filter list by selected timeframe
+    function filterByTimeframe(list) {
+      if (!Array.isArray(list) || list.length === 0) return [];
+      if (selectedTimeframe === 'ALL') return list;
 
-          // Extract average sleep from Q8 answers or default
-          let sleepHoursList = [];
-          history.forEach(s => {
-            if (Array.isArray(s.answers)) {
-              const q8 = s.answers.find(a => a && a.questionNumber === 8);
-              if (q8 && q8.selectedOption) {
-                const match = q8.selectedOption.match(/(\d+(\.\d+)?)/);
-                if (match) sleepHoursList.push(parseFloat(match[1]));
-              }
-            }
-          });
-          const avgSleep = sleepHoursList.length > 0 ? (sleepHoursList.reduce((a, b) => a + b, 0) / sleepHoursList.length).toFixed(1) : '7.2';
-          document.getElementById('statAvgSleep').innerHTML = `${avgSleep} <small>hours</small>`;
+      const days = parseInt(selectedTimeframe, 10) || 30;
+      const cutoff = Date.now() - (days * 24 * 60 * 60 * 1000);
 
-          // 2. Risk Level Trend (chronological)
-          const chronological = [...history].reverse();
-          const riskPoints = chronological.map((s, idx) => {
-            const count = chronological.length;
-            const x = count > 1 ? 50 + (idx / (count - 1)) * 410 : 250;
-            // Map score (0 to 100) to y (170 at 0, 24 at 100)
-            const y = 170 - ((s.score || 0) / 100) * 146;
-            return { x: Math.round(x), y: Math.round(y), score: s.score, date: s.dateFormatted ? s.dateFormatted.split(',')[0] : 'Session ' + (idx + 1) };
-          });
+      return list.filter(item => {
+        const ts = typeof item.timestamp === 'number' 
+          ? item.timestamp 
+          : (item.createdAt ? new Date(item.createdAt).getTime() : (item.date ? new Date(item.date).getTime() : 0));
+        return ts >= cutoff;
+      });
+    }
 
-          const riskPolyStr = riskPoints.map(p => `${p.x},${p.y}`).join(' ');
-          document.getElementById('statRiskPolyline').setAttribute('points', riskPolyStr);
-          document.getElementById('statRiskPolygon').setAttribute('points', `50,170 ${riskPolyStr} 460,170`);
-
-          const dotsGroup = document.getElementById('statRiskDots');
-          dotsGroup.innerHTML = riskPoints.map(p => `<circle cx="${p.x}" cy="${p.y}" r="4" fill="#2563EB"/>`).join('');
-
-          const datesRow = document.getElementById('statRiskDatesRow');
-          datesRow.innerHTML = riskPoints.slice(-6).map(p => `<span>${p.date}</span>`).join('');
-
-          // 3. Sleep Trend
-          const sleepPoints = chronological.map((s, idx) => {
-            const count = chronological.length;
-            const x = count > 1 ? 50 + (idx / (count - 1)) * 410 : 250;
-            const hrs = 7.2; // default
-            // Map hrs (2 to 12) to y (170 at 2, 24 at 12)
-            const y = 170 - ((hrs - 2) / 10) * 146;
-            return { x: Math.round(x), y: Math.round(y), date: s.dateFormatted ? s.dateFormatted.split(',')[0] : 'Session ' + (idx + 1) };
-          });
-          const sleepPolyStr = sleepPoints.map(p => `${p.x},${p.y}`).join(' ');
-          document.getElementById('statSleepPolyline').setAttribute('points', sleepPolyStr);
-          document.getElementById('statSleepPolygon').setAttribute('points', `50,170 ${sleepPolyStr} 460,170`);
-          document.getElementById('statSleepDatesRow').innerHTML = sleepPoints.slice(-6).map(p => `<span>${p.date}</span>`).join('');
-
-          // 4. Donut Breakdown (r=58, circ=364)
-          const circ = 364;
-          const lowCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'LOW').length;
-          const modCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'MODERATE').length;
-          const highCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'HIGH').length;
-
-          document.getElementById('statDonutTotalSessions').textContent = total;
-          document.getElementById('statLegendLowVal').textContent = `${lowCount} (${Math.round((lowCount/total)*100)}%)`;
-          document.getElementById('statLegendModVal').textContent = `${modCount} (${Math.round((modCount/total)*100)}%)`;
-          document.getElementById('statLegendHighVal').textContent = `${highCount} (${Math.round((highCount/total)*100)}%)`;
-
-          const lenLow = (lowCount / total) * circ;
-          const lenMod = (modCount / total) * circ;
-          const lenHigh = (highCount / total) * circ;
-
-          const cLow = document.getElementById('statDonutCircleLow');
-          const cMod = document.getElementById('statDonutCircleMod');
-          const cHigh = document.getElementById('statDonutCircleHigh');
-
-          cLow.setAttribute('stroke-dasharray', `${lenLow} ${circ}`);
-          cLow.setAttribute('stroke-dashoffset', '0');
-
-          cMod.setAttribute('stroke-dasharray', `${lenMod} ${circ}`);
-          cMod.setAttribute('stroke-dashoffset', `${-lenLow}`);
-
-          cHigh.setAttribute('stroke-dasharray', `${lenHigh} ${circ}`);
-          cHigh.setAttribute('stroke-dashoffset', `${-(lenLow + lenMod)}`);
-        }
-      } catch (err) {
-        // Safe fallbacks remain displayed
+    // Extract sleep hours from session assessment answers or vitals
+    function extractSessionSleepHours(s) {
+      if (s.vitals && typeof s.vitals.sleepHours === 'number' && s.vitals.sleepHours > 0) {
+        return Number(s.vitals.sleepHours.toFixed(1));
       }
+      if (Array.isArray(s.answers)) {
+        const q8 = s.answers.find(a => a && (a.questionNumber === 8 || a.questionIndex === 7));
+        if (q8 && q8.selectedOption) {
+          const match = q8.selectedOption.match(/(\d+(\.\d+)?)/);
+          if (match) return parseFloat(match[1]);
+        }
+      }
+      return 7.0;
+    }
 
-      // Load Wearable Telemetry Trend (Handles Hardware Disconnected flatline)
-      try {
-        const wRes = await fetch(`/api/wearable/history/${userId}`);
-        const wData = await wRes.json();
-        const wHist = (wData && wData.success && Array.isArray(wData.history)) ? wData.history : [];
-        const isHwActive = Boolean(wData && wData.isHardwareActive === true && wHist.length > 0 && typeof wHist[0].heartRate === 'number' && wHist[0].heartRate > 0);
+    // Render assessment session statistics (Cards, Risk Trend, Sleep Trend, Donut)
+    function renderSessionStats() {
+      const history = filterByTimeframe(rawSessionHistory);
+      const total = history.length;
+      document.getElementById('statTotalSessions').textContent = total;
 
-        if (isHwActive) {
-          // Average Heart Rate
-          const sumHr = wHist.reduce((acc, r) => acc + (r.heartRate || 72), 0);
-          const avgHr = Math.round(sumHr / wHist.length);
+      if (total > 0) {
+        // Average Risk Score
+        const sumScore = history.reduce((acc, s) => acc + (s.score || 0), 0);
+        const avgScore = Math.round(sumScore / total);
+        document.getElementById('statAvgRiskScore').innerHTML = `${avgScore} <small>/ 100</small>`;
+
+        // Average Sleep from sessions
+        const sleepHoursList = history.map(extractSessionSleepHours);
+        const avgSleep = (sleepHoursList.reduce((a, b) => a + b, 0) / total).toFixed(1);
+        document.getElementById('statAvgSleep').innerHTML = `${avgSleep} <small>hours</small>`;
+
+        // Chronological order for trend charts
+        const chronological = [...history].reverse();
+        const count = chronological.length;
+
+        // 1. Risk Level Trend
+        const riskPoints = chronological.map((s, idx) => {
+          const x = count > 1 ? 50 + (idx / (count - 1)) * 410 : 255;
+          const score = typeof s.score === 'number' ? s.score : 0;
+          const y = Math.max(20, Math.min(170, 170 - (score / 100) * 146));
+          const dateStr = s.dateFormatted ? s.dateFormatted.split(',')[0] : (s.timestamp ? new Date(s.timestamp).toLocaleDateString() : 'Session ' + (idx + 1));
+          return { x: Math.round(x), y: Math.round(y), score, date: dateStr, riskLevel: s.riskLevel || 'LOW' };
+        });
+
+        const riskPolyStr = riskPoints.map(p => `${p.x},${p.y}`).join(' ');
+        const riskPoly = document.getElementById('statRiskPolyline');
+        const riskPolyG = document.getElementById('statRiskPolygon');
+        const riskDots = document.getElementById('statRiskDots');
+        const riskDates = document.getElementById('statRiskDatesRow');
+
+        if (count === 1) {
+          const p = riskPoints[0];
+          riskPoly.setAttribute('points', `50,${p.y} 460,${p.y}`);
+          riskPolyG.setAttribute('points', `50,170 50,${p.y} 460,${p.y} 460,170`);
+        } else {
+          riskPoly.setAttribute('points', riskPolyStr);
+          riskPolyG.setAttribute('points', `50,170 ${riskPolyStr} 460,170`);
+        }
+
+        riskDots.innerHTML = riskPoints.map(p => 
+          `<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.5"><title>${p.date}: Score ${p.score}/100 (${p.riskLevel})</title></circle>`
+        ).join('');
+
+        const displayDates = riskPoints.slice(-6);
+        riskDates.innerHTML = displayDates.map(p => `<span>${p.date}</span>`).join('');
+
+        // 2. Sleep Duration Trend (mapped from 2 to 12 hours)
+        const sleepPoints = chronological.map((s, idx) => {
+          const x = count > 1 ? 50 + (idx / (count - 1)) * 410 : 255;
+          const hrs = extractSessionSleepHours(s);
+          const y = Math.max(20, Math.min(170, 170 - ((Math.max(2, Math.min(12, hrs)) - 2) / 10) * 146));
+          const dateStr = s.dateFormatted ? s.dateFormatted.split(',')[0] : (s.timestamp ? new Date(s.timestamp).toLocaleDateString() : 'Session ' + (idx + 1));
+          return { x: Math.round(x), y: Math.round(y), hrs, date: dateStr };
+        });
+
+        const sleepPolyStr = sleepPoints.map(p => `${p.x},${p.y}`).join(' ');
+        const sleepPoly = document.getElementById('statSleepPolyline');
+        const sleepPolyG = document.getElementById('statSleepPolygon');
+        const sleepDots = document.getElementById('statSleepDots');
+        const sleepDates = document.getElementById('statSleepDatesRow');
+
+        if (count === 1) {
+          const p = sleepPoints[0];
+          sleepPoly.setAttribute('points', `50,${p.y} 460,${p.y}`);
+          sleepPolyG.setAttribute('points', `50,170 50,${p.y} 460,${p.y} 460,170`);
+        } else {
+          sleepPoly.setAttribute('points', sleepPolyStr);
+          sleepPolyG.setAttribute('points', `50,170 ${sleepPolyStr} 460,170`);
+        }
+
+        if (sleepDots) {
+          sleepDots.innerHTML = sleepPoints.map(p => 
+            `<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#7C3AED" stroke="#FFFFFF" stroke-width="1.5"><title>${p.date}: ${p.hrs} hrs sleep</title></circle>`
+          ).join('');
+        }
+
+        sleepDates.innerHTML = sleepPoints.slice(-6).map(p => `<span>${p.date}</span>`).join('');
+
+        // 3. Donut Breakdown (Circumference = 364)
+        const circ = 364;
+        const lowCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'LOW').length;
+        const modCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'MODERATE').length;
+        const highCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'HIGH').length;
+
+        document.getElementById('statDonutTotalSessions').textContent = total;
+        document.getElementById('statLegendLowVal').textContent = `${lowCount} (${Math.round((lowCount / total) * 100)}%)`;
+        document.getElementById('statLegendModVal').textContent = `${modCount} (${Math.round((modCount / total) * 100)}%)`;
+        document.getElementById('statLegendHighVal').textContent = `${highCount} (${Math.round((highCount / total) * 100)}%)`;
+
+        const lenLow = (lowCount / total) * circ;
+        const lenMod = (modCount / total) * circ;
+        const lenHigh = (highCount / total) * circ;
+
+        const cLow = document.getElementById('statDonutCircleLow');
+        const cMod = document.getElementById('statDonutCircleMod');
+        const cHigh = document.getElementById('statDonutCircleHigh');
+
+        cLow.setAttribute('stroke-dasharray', `${lenLow} ${circ}`);
+        cLow.setAttribute('stroke-dashoffset', '0');
+
+        cMod.setAttribute('stroke-dasharray', `${lenMod} ${circ}`);
+        cMod.setAttribute('stroke-dashoffset', `${-lenLow}`);
+
+        cHigh.setAttribute('stroke-dasharray', `${lenHigh} ${circ}`);
+        cHigh.setAttribute('stroke-dashoffset', `${-(lenLow + lenMod)}`);
+      } else {
+        // Zero sessions in this timeframe: graceful empty state
+        document.getElementById('statAvgRiskScore').innerHTML = `-- <small>/ 100</small>`;
+        document.getElementById('statAvgSleep').innerHTML = `-- <small>hours</small>`;
+
+        document.getElementById('statRiskPolyline').setAttribute('points', '50,170 460,170');
+        document.getElementById('statRiskPolygon').setAttribute('points', '50,170 460,170 460,170 50,170');
+        document.getElementById('statRiskDots').innerHTML = '';
+        document.getElementById('statRiskDatesRow').innerHTML = '<span style="color:#94A3B8;">No sessions recorded in this timeframe</span>';
+
+        document.getElementById('statSleepPolyline').setAttribute('points', '50,170 460,170');
+        document.getElementById('statSleepPolygon').setAttribute('points', '50,170 460,170 460,170 50,170');
+        if (document.getElementById('statSleepDots')) document.getElementById('statSleepDots').innerHTML = '';
+        document.getElementById('statSleepDatesRow').innerHTML = '<span style="color:#94A3B8;">No sessions recorded in this timeframe</span>';
+
+        document.getElementById('statDonutTotalSessions').textContent = '0';
+        document.getElementById('statLegendLowVal').textContent = '0 (0%)';
+        document.getElementById('statLegendModVal').textContent = '0 (0%)';
+        document.getElementById('statLegendHighVal').textContent = '0 (0%)';
+
+        document.getElementById('statDonutCircleLow').setAttribute('stroke-dasharray', '0 364');
+        document.getElementById('statDonutCircleMod').setAttribute('stroke-dasharray', '0 364');
+        document.getElementById('statDonutCircleHigh').setAttribute('stroke-dasharray', '0 364');
+      }
+    }
+
+    // Render hardware telemetry (Heart Rate, SpO2, DS18B20 Temp, MPU6050 Sleep)
+    function renderWearableStats() {
+      const wHist = rawWearableHistory;
+
+      if (isWearableActive && wHist.length > 0) {
+        // 1. Average Heart Rate
+        const validHrs = wHist.map(r => Number(r.heartRate)).filter(v => !isNaN(v) && v > 0);
+        if (validHrs.length > 0) {
+          const avgHr = Math.round(validHrs.reduce((a, b) => a + b, 0) / validHrs.length);
           document.getElementById('statAvgHr').innerHTML = `${avgHr} <small>bpm</small>`;
           document.getElementById('statAvgHr').style.color = '#0F172A';
           document.getElementById('statAvgHrTrend').innerHTML = '<span style="color: #10B981;">● Live Telemetry</span>';
           document.getElementById('statHrSubtitle').textContent = 'Wearable baseline (live signal).';
-          document.getElementById('statSpo2Subtitle').textContent = 'Wearable baseline (live signal).';
+        } else {
+          document.getElementById('statAvgHr').innerHTML = `<span style="font-size: 1.35rem; color: #64748B;">Not Applicable</span>`;
+          document.getElementById('statAvgHrTrend').innerHTML = '<span style="color: #64748B;">● Place finger on sensor</span>';
+          document.getElementById('statHrSubtitle').textContent = 'Optical sensor standby (no finger detected).';
+        }
 
-          // Body Temperature (DS18B20)
-          const validTemps = wHist.filter(r => typeof r.temperature === 'number' && r.temperature > 0);
-          const avgTemp = validTemps.length > 0 
-            ? (validTemps.reduce((acc, r) => acc + r.temperature, 0) / validTemps.length).toFixed(1)
-            : '36.6';
-          const lastTemp = validTemps.length > 0 ? validTemps[validTemps.length - 1].temperature : avgTemp;
-          document.getElementById('statAvgTemp').innerHTML = `${avgTemp} <small>°C</small>`;
-          document.getElementById('statAvgTemp').style.color = '#0F172A';
-          document.getElementById('statAvgTempTrend').innerHTML = '<span style="color: #10B981;">● Normothermic (Normal Range)</span>';
-          document.getElementById('statTempLast').textContent = `Last: ${lastTemp} °C`;
+        // 2. Body Temperature (DS18B20)
+        const validTemps = wHist.map(r => Number(r.temperature)).filter(v => !isNaN(v) && v > 0);
+        const avgTemp = validTemps.length > 0 
+          ? (validTemps.reduce((acc, t) => acc + t, 0) / validTemps.length).toFixed(1)
+          : '36.6';
+        const lastTemp = validTemps.length > 0 ? validTemps[validTemps.length - 1].toFixed(1) : avgTemp;
+        document.getElementById('statAvgTemp').innerHTML = `${avgTemp} <small>°C</small>`;
+        document.getElementById('statAvgTemp').style.color = '#0F172A';
+        document.getElementById('statAvgTempTrend').innerHTML = '<span style="color: #10B981;">● Normothermic (Live Sensor)</span>';
+        document.getElementById('statTempLast').textContent = `Last: ${lastTemp} °C`;
 
-          // Sleep Monitoring (Today via MPU6050 actigraphy)
-          const lastPoint = wHist[wHist.length - 1] || {};
-          const sleepHrs = lastPoint.sleepHours || 7.5;
-          document.getElementById('statSleepToday').innerHTML = `${sleepHrs} <small>hours</small>`;
-          document.getElementById('statSleepToday').style.color = '#0F172A';
-          document.getElementById('statSleepTodayTrend').innerHTML = '<span style="color: #10B981;">● Active Sensor Telemetry</span>';
-          document.getElementById('statSleepQuality').textContent = `Quality: ${lastPoint.sleepQuality || 'Good (88%)'}`;
-          document.getElementById('statSleepMotion').textContent = `Motion: ${lastPoint.motion || 'Resting'}`;
+        // 3. Sleep Monitoring (Today via MPU6050 actigraphy)
+        const lastPoint = wHist[wHist.length - 1] || {};
+        const sleepHrs = typeof lastPoint.sleepHours === 'number' ? lastPoint.sleepHours : 7.5;
+        document.getElementById('statSleepToday').innerHTML = `${sleepHrs} <small>hours</small>`;
+        document.getElementById('statSleepToday').style.color = '#0F172A';
+        document.getElementById('statSleepTodayTrend').innerHTML = '<span style="color: #10B981;">● Active Sensor Telemetry</span>';
+        document.getElementById('statSleepQuality').textContent = `Quality: ${lastPoint.sleepQuality || 'Good (88%)'}`;
+        document.getElementById('statSleepMotion').textContent = `Motion: ${typeof lastPoint.motion === 'number' ? lastPoint.motion : 'Resting'}`;
 
-          // Mini HR Graph (y: 110 at 60 bpm, 20 at 120 bpm)
+        // 4. Mini HR Graph (viewBox 0 0 350 140, baseline at Y = 110)
+        const hrLen = wHist.length;
+        const hrPoly = document.getElementById('statHrPolyline');
+        const hrPolyG = document.getElementById('statHrPolygon');
+        if (validHrs.length > 0) {
           const hrPts = wHist.map((r, idx) => {
-            const x = 35 + (idx / (wHist.length - 1)) * 300;
-            const y = 110 - (((r.heartRate || 72) - 60) / 60) * 90;
+            const rawVal = Number(r.heartRate);
+            const val = (!isNaN(rawVal) && rawVal > 0) ? rawVal : 72;
+            const x = hrLen > 1 ? 35 + (idx / (hrLen - 1)) * 300 : 185;
+            const ratio = Math.max(0, Math.min(1, (val - 40) / 80));
+            const y = Math.max(20, Math.min(110, 110 - (ratio * 90)));
             return { x: Math.round(x), y: Math.round(y) };
           });
           const hrStr = hrPts.map(p => `${p.x},${p.y}`).join(' ');
-          const hrPoly = document.getElementById('statHrPolyline');
           hrPoly.setAttribute('points', hrStr);
           hrPoly.setAttribute('stroke', '#EF4444');
-          const hrPolyG = document.getElementById('statHrPolygon');
-          hrPolyG.setAttribute('points', `35,130 ${hrStr} 335,130`);
+          const firstHrX = hrPts[0].x;
+          const lastHrX = hrPts[hrPts.length - 1].x;
+          hrPolyG.setAttribute('points', `${firstHrX},110 ${hrStr} ${lastHrX},110`);
           hrPolyG.setAttribute('fill-opacity', '1');
+        } else {
+          hrPoly.setAttribute('points', '35,110 335,110');
+          hrPoly.setAttribute('stroke', '#94A3B8');
+          hrPolyG.setAttribute('points', '35,110 335,110 335,110 35,110');
+          hrPolyG.setAttribute('fill-opacity', '0');
+        }
 
-          // Mini SpO2 Graph (y: 110 at 85%, 20 at 100%)
+        // 5. Mini SpO2 Graph (viewBox 0 0 350 140, baseline at Y = 110)
+        const validSpo2 = wHist.map(r => Number(r.spo2)).filter(v => !isNaN(v) && v > 0);
+        const spo2Len = wHist.length;
+        const spo2Poly = document.getElementById('statSpo2Polyline');
+        const spo2PolyG = document.getElementById('statSpo2Polygon');
+        if (validSpo2.length > 0) {
+          document.getElementById('statSpo2Subtitle').textContent = 'Wearable baseline (live signal).';
           const spo2Pts = wHist.map((r, idx) => {
-            const x = 35 + (idx / (wHist.length - 1)) * 300;
-            const y = 110 - (((r.spo2 || 98) - 85) / 15) * 90;
+            const rawVal = Number(r.spo2);
+            const val = (!isNaN(rawVal) && rawVal > 0) ? rawVal : 95;
+            const x = spo2Len > 1 ? 35 + (idx / (spo2Len - 1)) * 300 : 185;
+            const ratio = Math.max(0, Math.min(1, (val - 80) / 20));
+            const y = Math.max(20, Math.min(110, 110 - (ratio * 90)));
             return { x: Math.round(x), y: Math.round(y) };
           });
           const spo2Str = spo2Pts.map(p => `${p.x},${p.y}`).join(' ');
-          const spo2Poly = document.getElementById('statSpo2Polyline');
           spo2Poly.setAttribute('points', spo2Str);
           spo2Poly.setAttribute('stroke', '#0284C7');
-          const spo2PolyG = document.getElementById('statSpo2Polygon');
-          spo2PolyG.setAttribute('points', `35,130 ${spo2Str} 335,130`);
+          const firstSpo2X = spo2Pts[0].x;
+          const lastSpo2X = spo2Pts[spo2Pts.length - 1].x;
+          spo2PolyG.setAttribute('points', `${firstSpo2X},110 ${spo2Str} ${lastSpo2X},110`);
           spo2PolyG.setAttribute('fill-opacity', '1');
-
-          const sampleTimes = wHist.slice(-3).map(h => h.time || '10:00');
-          document.getElementById('statHrDatesRow').innerHTML = sampleTimes.map(t => `<span>${t}</span>`).join('');
-          document.getElementById('statSpo2DatesRow').innerHTML = sampleTimes.map(t => `<span>${t}</span>`).join('');
         } else {
-          // Disconnected flatline mode
-          document.getElementById('statAvgHr').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
-          document.getElementById('statAvgHrTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
-          document.getElementById('statHrSubtitle').textContent = 'No hardware connected (flatline baseline).';
-          document.getElementById('statSpo2Subtitle').textContent = 'No hardware connected (flatline baseline).';
-
-          document.getElementById('statAvgTemp').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
-          document.getElementById('statAvgTempTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
-          document.getElementById('statTempLast').textContent = 'Last: Standby';
-
-          document.getElementById('statSleepToday').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
-          document.getElementById('statSleepTodayTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
-          document.getElementById('statSleepQuality').textContent = 'Efficiency: Standby';
-          document.getElementById('statSleepMotion').textContent = 'Rest Index: Standby';
-
-          document.getElementById('statHrPolyline').setAttribute('points', '35,110 335,110');
-          document.getElementById('statHrPolyline').setAttribute('stroke', '#94A3B8');
-          document.getElementById('statHrPolygon').setAttribute('points', '35,110 335,110 335,110 35,110');
-          document.getElementById('statHrPolygon').setAttribute('fill-opacity', '0');
-
-          document.getElementById('statSpo2Polyline').setAttribute('points', '35,110 335,110');
-          document.getElementById('statSpo2Polyline').setAttribute('stroke', '#94A3B8');
-          document.getElementById('statSpo2Polygon').setAttribute('points', '35,110 335,110 335,110 35,110');
-          document.getElementById('statSpo2Polygon').setAttribute('fill-opacity', '0');
-
-          document.getElementById('statHrDatesRow').innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
-          document.getElementById('statSpo2DatesRow').innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
+          document.getElementById('statSpo2Subtitle').textContent = 'Optical sensor standby (no finger detected).';
+          spo2Poly.setAttribute('points', '35,110 335,110');
+          spo2Poly.setAttribute('stroke', '#94A3B8');
+          spo2PolyG.setAttribute('points', '35,110 335,110 335,110 35,110');
+          spo2PolyG.setAttribute('fill-opacity', '0');
         }
-      } catch (err) {
-        // Fallbacks remain in place
+
+        const sampleTimes = wHist.slice(-3).map(h => {
+          if (h.timestamp) {
+            return new Date(h.timestamp).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' });
+          }
+          return h.time || '10:00';
+        });
+        document.getElementById('statHrDatesRow').innerHTML = sampleTimes.map(t => `<span>${t}</span>`).join('');
+        document.getElementById('statSpo2DatesRow').innerHTML = sampleTimes.map(t => `<span>${t}</span>`).join('');
+      } else {
+        // Disconnected flatline mode (hardware > 60s without data)
+        document.getElementById('statAvgHr').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
+        document.getElementById('statAvgHrTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
+        document.getElementById('statHrSubtitle').textContent = 'No hardware connected (flatline baseline).';
+        document.getElementById('statSpo2Subtitle').textContent = 'No hardware connected (flatline baseline).';
+
+        document.getElementById('statAvgTemp').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
+        document.getElementById('statAvgTempTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
+        document.getElementById('statTempLast').textContent = 'Last: Standby';
+
+        document.getElementById('statSleepToday').innerHTML = '<span style="font-size: 1.15rem; color: #64748B;">Not Applicable</span>';
+        document.getElementById('statSleepTodayTrend').innerHTML = '<span style="color: #64748B;">Hardware Disconnected</span>';
+        document.getElementById('statSleepQuality').textContent = 'Efficiency: Standby';
+        document.getElementById('statSleepMotion').textContent = 'Rest Index: Standby';
+
+        document.getElementById('statHrPolyline').setAttribute('points', '35,110 335,110');
+        document.getElementById('statHrPolyline').setAttribute('stroke', '#94A3B8');
+        document.getElementById('statHrPolygon').setAttribute('points', '35,110 335,110 335,110 35,110');
+        document.getElementById('statHrPolygon').setAttribute('fill-opacity', '0');
+
+        document.getElementById('statSpo2Polyline').setAttribute('points', '35,110 335,110');
+        document.getElementById('statSpo2Polyline').setAttribute('stroke', '#94A3B8');
+        document.getElementById('statSpo2Polygon').setAttribute('points', '35,110 335,110 335,110 35,110');
+        document.getElementById('statSpo2Polygon').setAttribute('fill-opacity', '0');
+
+        document.getElementById('statHrDatesRow').innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
+        document.getElementById('statSpo2DatesRow').innerHTML = '<span>Standby</span><span>Standby</span><span>Standby</span>';
       }
     }
 
+    function renderAllStats() {
+      renderSessionStats();
+      renderWearableStats();
+    }
+
+    // Fetch session data and wearable data asynchronously
+    async function loadStatistics() {
+      // 1. Fetch Session Assessment History
+      try {
+        const res = await fetch(`/api/session/history/${userId}`);
+        const data = await res.json();
+        rawSessionHistory = (data && data.success && Array.isArray(data.history)) ? data.history : [];
+      } catch (err) {
+        // preserve previous cache
+      }
+
+      // 2. Fetch Wearable Telemetry History
+      try {
+        const wRes = await fetch(`/api/wearable/history/${userId}`);
+        const wData = await wRes.json();
+        rawWearableHistory = (wData && wData.success && Array.isArray(wData.history)) ? wData.history : [];
+        isWearableActive = Boolean(wData && wData.success && wData.isHardwareActive === true && rawWearableHistory.length > 0);
+      } catch (err) {
+        // preserve previous cache
+      }
+
+      renderAllStats();
+    }
+
     loadStatistics();
+    setInterval(loadStatistics, 2500);
   </script>
 </body>
 </html>
