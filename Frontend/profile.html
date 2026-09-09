@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neuro Tech | Profile</title>
+  <title>Neuro Track | Profile</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
           <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
           <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
         </svg>
-        <span class="brand-name">Neuro Tech</span>
+        <span class="brand-name">Neuro Track</span>
       </div>
 
       <nav class="nav-menu">
@@ -316,7 +316,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-brand">Neuro Track</span>
         <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
       </div>
 
@@ -328,7 +328,7 @@
 
   <script>
     // Verify session
-    const currentUser = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
+    const currentUser = JSON.parse(localStorage.getItem('neurotrack_currentUser') || localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
     if (!currentUser) {
       window.location.href = 'login.html';
     }
@@ -363,8 +363,9 @@
     studentIdInput.value = currentUser.studentId || userId;
 
     // Load preferences
-    const prefsKey = `neurotech_prefs_${userId}`;
-    const savedPrefs = JSON.parse(localStorage.getItem(prefsKey) || '{}');
+    const prefsKey = `neurotrack_prefs_${userId}`;
+    const legacyPrefsKey = `neurotech_prefs_${userId}`;
+    const savedPrefs = JSON.parse(localStorage.getItem(prefsKey) || localStorage.getItem(legacyPrefsKey) || '{}');
     const emailToggle = document.getElementById('prefEmailToggle');
     const darkModeToggle = document.getElementById('prefDarkModeToggle');
     const dataSharingToggle = document.getElementById('prefDataSharingToggle');
@@ -380,6 +381,7 @@
         dataSharing: dataSharingToggle.checked
       };
       localStorage.setItem(prefsKey, JSON.stringify(prefs));
+      localStorage.setItem(legacyPrefsKey, JSON.stringify(prefs));
     }
     emailToggle.addEventListener('change', savePreferences);
     darkModeToggle.addEventListener('change', savePreferences);
@@ -421,6 +423,7 @@
         currentUser.age = updatedAge;
         currentUser.gender = updatedGender;
         currentUser.studentId = updatedStudentId;
+        localStorage.setItem('neurotrack_currentUser', JSON.stringify(currentUser));
         localStorage.setItem('neurotech_currentUser', JSON.stringify(currentUser));
 
         // Call backend API
@@ -506,8 +509,10 @@
     // Logout handler
     function handleLogout(e) {
       if (e) e.preventDefault();
+      localStorage.removeItem('neurotrack_currentUser');
       localStorage.removeItem('neurotech_currentUser');
       localStorage.removeItem('currentUser');
+      sessionStorage.removeItem('neurotrack_latest_result');
       sessionStorage.removeItem('neurotech_latest_result');
       window.location.href = 'login.html';
     }

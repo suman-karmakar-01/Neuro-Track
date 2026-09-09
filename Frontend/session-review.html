@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neuro Tech | Review Assessment</title>
+  <title>Neuro Track | Review Assessment</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
           <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
           <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
         </svg>
-        <span class="brand-name">Neuro Tech</span>
+        <span class="brand-name">Neuro Track</span>
       </div>
 
       <nav class="nav-menu">
@@ -115,7 +115,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-brand">Neuro Track</span>
         <span class="footer-desc">Screening & educational prototype — not a clinical diagnosis.</span>
       </div>
 
@@ -127,7 +127,7 @@
 
   <script>
     // Load answers from sessionStorage
-    const storedAnswers = JSON.parse(sessionStorage.getItem('neurotech_answers') || '[]');
+    const storedAnswers = JSON.parse(sessionStorage.getItem('neurotrack_answers') || sessionStorage.getItem('neurotech_answers') || '[]');
     const reviewList = document.getElementById('reviewList');
     const statusNotice = document.getElementById('statusNotice');
     const submitBtn = document.getElementById('submitAssessmentBtn');
@@ -177,7 +177,11 @@
 
       let user = {};
       try {
-        user = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser')) || {};
+        user = JSON.parse(
+          localStorage.getItem('neurotrack_currentUser') || 
+          localStorage.getItem('neurotech_currentUser') || 
+          localStorage.getItem('currentUser')
+        ) || {};
       } catch (e) {
         user = {};
       }
@@ -201,6 +205,7 @@
 
         const data = await res.json();
         if (data.success && data.result) {
+          sessionStorage.setItem('neurotrack_last_result', JSON.stringify(data.result));
           sessionStorage.setItem('neurotech_last_result', JSON.stringify(data.result));
           window.location.href = 'session-result.html';
         } else {
@@ -234,6 +239,7 @@
           answers: storedAnswers
         };
 
+        sessionStorage.setItem('neurotrack_last_result', JSON.stringify(fallbackResult));
         sessionStorage.setItem('neurotech_last_result', JSON.stringify(fallbackResult));
         window.location.href = 'session-result.html';
       }

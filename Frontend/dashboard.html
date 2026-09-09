@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neuro Tech | Dashboard</title>
+  <title>Neuro Track | Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
           <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
           <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
         </svg>
-        <span class="brand-name">Neuro Tech</span>
+        <span class="brand-name">Neuro Track</span>
       </div>
 
       <nav class="nav-menu">
@@ -269,7 +269,7 @@
           </div>
           <div class="alert-content">
             <strong class="alert-title">Screening & Monitoring Support Tool</strong>
-            <p class="alert-text">Neuro Tech provides algorithmic screening indicators and is not a clinical medical diagnosis. If you experience severe distress, please consult a healthcare professional.</p>
+            <p class="alert-text">Neuro Track provides algorithmic screening indicators and is not a clinical medical diagnosis. If you experience severe distress, please consult a healthcare professional.</p>
           </div>
         </div>
       </section>
@@ -280,7 +280,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-brand">Neuro Track</span>
         <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
       </div>
 
@@ -297,8 +297,13 @@
   </footer>
 
   <script>
-    // Verify session
-    const currentUser = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
+    // Verify session (supports both neurotrack and neurotech storage keys)
+    const currentUser = JSON.parse(
+      localStorage.getItem('neurotrack_currentUser') || 
+      localStorage.getItem('neurotech_currentUser') || 
+      localStorage.getItem('currentUser') || 
+      'null'
+    );
     if (!currentUser) {
       window.location.href = 'login.html';
     }
@@ -315,8 +320,10 @@
     // Logout helpers
     function handleLogout(e) {
       if (e) e.preventDefault();
+      localStorage.removeItem('neurotrack_currentUser');
       localStorage.removeItem('neurotech_currentUser');
       localStorage.removeItem('currentUser');
+      sessionStorage.removeItem('neurotrack_latest_result');
       sessionStorage.removeItem('neurotech_latest_result');
       window.location.href = 'login.html';
     }
@@ -348,6 +355,7 @@
           }
 
           document.getElementById('latestRiskLink').onclick = (e) => {
+            sessionStorage.setItem('neurotrack_latest_result', JSON.stringify(s));
             sessionStorage.setItem('neurotech_latest_result', JSON.stringify(s));
           };
         }
@@ -393,6 +401,7 @@
           `;
 
           tr.querySelector('.view-report-btn').addEventListener('click', () => {
+            sessionStorage.setItem('neurotrack_latest_result', JSON.stringify(s));
             sessionStorage.setItem('neurotech_latest_result', JSON.stringify(s));
           });
 

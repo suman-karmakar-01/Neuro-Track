@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neuro Tech | Authority Panel - Users</title>
+  <title>Neuro Track | Authority Panel - Users</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="authority-body">
@@ -16,7 +16,7 @@
           <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
         </svg>
         <div class="brand-text-stack">
-          <span class="brand-name">Neuro Tech</span>
+          <span class="brand-name">Neuro Track</span>
           <span class="brand-sub">Mental Health. Brighter Tomorrows.</span>
         </div>
       </div>
@@ -221,7 +221,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-brand">Neuro Track</span>
         <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
       </div>
 
@@ -239,7 +239,7 @@
 
     // Update authority name in header
     let auth = null;
-    try { auth = JSON.parse(localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority')); } catch (e) {}
+    try { auth = JSON.parse(localStorage.getItem('neurotrack_currentAuthority') || localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority')); } catch (e) {}
     if (auth && auth.fullName) {
       const adminLabel = document.querySelector('.admin-label');
       if (adminLabel) adminLabel.textContent = auth.fullName;

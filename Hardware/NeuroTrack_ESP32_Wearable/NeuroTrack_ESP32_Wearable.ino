@@ -78,7 +78,7 @@ void setup()
   oled.setFont(u8g2_font_6x10_tf);
 
   oled.clearBuffer();
-  oled.drawStr(0, 15, "Neuro Tech");
+  oled.drawStr(0, 15, "Neuro Track");
   oled.drawStr(0, 30, "Connecting...");
   oled.sendBuffer();
 

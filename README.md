@@ -74,7 +74,7 @@ You don't need to create accounts from scratch to test the system. Use these pre
 - *Features: View your dashboard, take the 10-question health assessment, check past reports, and monitor live wearable vitals.*
 
 ### 🛡️ Authority / Counselor Login
-- **Email:** `admin@neurotech.com`
+- **Email:** `admin@neurotrack.com` *(or `admin@neurotech.com`)*
 - **Password:** `admin123`
 - *Features: Review newly registered students, generate their unique User IDs and PINs, and view student risk levels.*
 

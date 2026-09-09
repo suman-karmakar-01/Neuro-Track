@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neuro Tech | Data / Live</title>
+  <title>Neuro Track | Data / Live</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    @keyframes pulseHalo {
+      0% { r: 8px; opacity: 0.7; }
+      50% { r: 12px; opacity: 0.2; }
+      100% { r: 8px; opacity: 0.7; }
+    }
+    .pulse-halo {
+      animation: pulseHalo 2s ease-in-out infinite;
+      transform-origin: center;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation Header (Logged In State) -->
@@ -16,7 +27,7 @@
           <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/>
           <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
         </svg>
-        <span class="brand-name">Neuro Tech</span>
+        <span class="brand-name">Neuro Track</span>
       </div>
 
       <nav class="nav-menu">
@@ -142,34 +153,47 @@
               </div>
             </div>
 
-            <!-- SVG Chart with Dynamic Points -->
+            <!-- SVG Chart with Dynamic Points (Matching Time-Series Reference) -->
             <div class="chart-wrapper">
               <svg class="live-chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
-                <!-- Grid Lines -->
-                <line x1="40" y1="20" x2="490" y2="20" stroke="#E2E8F0" stroke-dasharray="3 3"/>
-                <line x1="40" y1="55" x2="490" y2="55" stroke="#E2E8F0" stroke-dasharray="3 3"/>
-                <line x1="40" y1="90" x2="490" y2="90" stroke="#E2E8F0" stroke-dasharray="3 3"/>
-                <line x1="40" y1="125" x2="490" y2="125" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <!-- Top Boundary -->
+                <line x1="40" y1="20" x2="490" y2="20" stroke="#E2E8F0"/>
+                
+                <!-- Dotted Threshold Reference Line (75 bpm baseline matching user reference image) -->
+                <line id="hrRefLine" x1="40" y1="99" x2="490" y2="99" stroke="#94A3B8" stroke-dasharray="4 4" stroke-width="1.5"/>
+                
+                <!-- Bottom Baseline -->
                 <line x1="40" y1="160" x2="490" y2="160" stroke="#E2E8F0"/>
 
                 <!-- Y Axis Labels -->
                 <text x="10" y="25" class="chart-axis-label">120</text>
                 <text x="10" y="60" class="chart-axis-label">100</text>
-                <text x="10" y="95" class="chart-axis-label">80</text>
+                <text x="10" y="103" class="chart-axis-label" style="font-weight: 700; fill: #64748B;">75</text>
                 <text x="10" y="130" class="chart-axis-label">60</text>
                 <text x="10" y="165" class="chart-axis-label">40</text>
 
                 <!-- Gradient Definition -->
                 <defs>
                   <linearGradient id="hrGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#EF4444" stop-opacity="0.25"/>
+                    <stop offset="0%" stop-color="#EF4444" stop-opacity="0.22"/>
                     <stop offset="100%" stop-color="#EF4444" stop-opacity="0.0"/>
                   </linearGradient>
                 </defs>
 
-                <!-- Dynamic Area Fill & Line (Flatline Standby) -->
+                <!-- Dynamic Area Fill & Time-Series Line (Flatline Standby) -->
                 <polygon id="hrPolygon" points="40,160 490,160 490,160 40,160" fill="url(#hrGrad)" fill-opacity="0"/>
-                <polyline id="hrPolyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline id="hrPolyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <!-- Start Anchor Dot (Oldest point in window) -->
+                <circle id="hrStartDot" cx="40" cy="160" r="3.5" fill="#EF4444" stroke="#FFFFFF" stroke-width="1.5" style="display:none;"/>
+                
+                <!-- Highlight Halo Node (Trough / Lowest / Inflection Point matching reference image) -->
+                <g id="hrHaloGroup" style="display:none;">
+                  <circle id="hrHaloRing" cx="200" cy="100" r="10" fill="#EF4444" fill-opacity="0.25" stroke="#EF4444" stroke-opacity="0.5" stroke-width="1.5" class="pulse-halo"/>
+                  <circle id="hrHaloDot" cx="200" cy="100" r="4" fill="#EF4444" stroke="#FFFFFF" stroke-width="2"/>
+                </g>
+
+                <!-- Right Leading Dot (Latest Live Cursor) -->
                 <circle id="hrLiveCursor" cx="490" cy="160" r="5" fill="#EF4444" stroke="#FFFFFF" stroke-width="2" style="display:none; filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));"/>
               </svg>
               <!-- X Axis Labels -->
@@ -203,19 +227,21 @@
               </div>
             </div>
 
-            <!-- SVG Chart with Dynamic Points -->
+            <!-- SVG Chart with Dynamic Points (Matching Time-Series Reference) -->
             <div class="chart-wrapper">
               <svg class="live-chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
-                <!-- Grid Lines -->
-                <line x1="40" y1="20" x2="490" y2="20" stroke="#E2E8F0" stroke-dasharray="3 3"/>
-                <line x1="40" y1="55" x2="490" y2="55" stroke="#E2E8F0" stroke-dasharray="3 3"/>
-                <line x1="40" y1="90" x2="490" y2="90" stroke="#E2E8F0" stroke-dasharray="3 3"/>
-                <line x1="40" y1="125" x2="490" y2="125" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+                <!-- Top Boundary -->
+                <line x1="40" y1="20" x2="490" y2="20" stroke="#E2E8F0"/>
+                
+                <!-- Dotted Threshold Reference Line (95% saturation threshold matching reference image) -->
+                <line id="spo2RefLine" x1="40" y1="55" x2="490" y2="55" stroke="#94A3B8" stroke-dasharray="4 4" stroke-width="1.5"/>
+                
+                <!-- Bottom Baseline -->
                 <line x1="40" y1="160" x2="490" y2="160" stroke="#E2E8F0"/>
 
                 <!-- Y Axis Labels -->
                 <text x="10" y="25" class="chart-axis-label">100</text>
-                <text x="10" y="60" class="chart-axis-label">95</text>
+                <text x="10" y="59" class="chart-axis-label" style="font-weight: 700; fill: #0284C7;">95</text>
                 <text x="10" y="95" class="chart-axis-label">90</text>
                 <text x="10" y="130" class="chart-axis-label">85</text>
                 <text x="10" y="165" class="chart-axis-label">80</text>
@@ -223,14 +249,25 @@
                 <!-- Gradient Definition -->
                 <defs>
                   <linearGradient id="spo2Grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#0284C7" stop-opacity="0.25"/>
+                    <stop offset="0%" stop-color="#0284C7" stop-opacity="0.22"/>
                     <stop offset="100%" stop-color="#0284C7" stop-opacity="0.0"/>
                   </linearGradient>
                 </defs>
 
-                <!-- Dynamic Area Fill & Line (Flatline Standby) -->
+                <!-- Dynamic Area Fill & Time-Series Line (Flatline Standby) -->
                 <polygon id="spo2Polygon" points="40,160 490,160 490,160 40,160" fill="url(#spo2Grad)" fill-opacity="0"/>
-                <polyline id="spo2Polyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline id="spo2Polyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <!-- Start Anchor Dot (Oldest point in window) -->
+                <circle id="spo2StartDot" cx="40" cy="160" r="3.5" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" style="display:none;"/>
+
+                <!-- Highlight Halo Node (Trough / Lowest / Inflection Point matching reference image) -->
+                <g id="spo2HaloGroup" style="display:none;">
+                  <circle id="spo2HaloRing" cx="200" cy="100" r="10" fill="#0284C7" fill-opacity="0.25" stroke="#0284C7" stroke-opacity="0.5" stroke-width="1.5" class="pulse-halo"/>
+                  <circle id="spo2HaloDot" cx="200" cy="100" r="4" fill="#0284C7" stroke="#FFFFFF" stroke-width="2"/>
+                </g>
+
+                <!-- Right Leading Dot (Latest Live Cursor) -->
                 <circle id="spo2LiveCursor" cx="490" cy="160" r="5" fill="#0284C7" stroke="#FFFFFF" stroke-width="2" style="display:none; filter: drop-shadow(0 0 6px rgba(2, 132, 199, 0.8));"/>
               </svg>
               <!-- X Axis Labels -->
@@ -408,7 +445,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-brand">Neuro Track</span>
         <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
       </div>
 
@@ -425,8 +462,13 @@
   </footer>
 
   <script>
-    // Verify session
-    const currentUser = JSON.parse(localStorage.getItem('neurotech_currentUser') || localStorage.getItem('currentUser') || 'null');
+    // Verify session (supports both neurotrack and neurotech storage keys)
+    const currentUser = JSON.parse(
+      localStorage.getItem('neurotrack_currentUser') || 
+      localStorage.getItem('neurotech_currentUser') || 
+      localStorage.getItem('currentUser') || 
+      'null'
+    );
     if (!currentUser) {
       window.location.href = 'login.html';
     }
@@ -442,8 +484,10 @@
     // Logout
     function handleLogout(e) {
       if (e) e.preventDefault();
+      localStorage.removeItem('neurotrack_currentUser');
       localStorage.removeItem('neurotech_currentUser');
       localStorage.removeItem('currentUser');
+      sessionStorage.removeItem('neurotrack_latest_result');
       sessionStorage.removeItem('neurotech_latest_result');
       window.location.href = 'login.html';
     }
@@ -456,13 +500,183 @@
     let currentSpo2 = 97;
     let currentTemp = 25.1;
     let currentSleep = 7.5;
-    let lastTelemetryTime = '';
-    let animOffset = 0;
-    let lastFrameTime = performance.now();
+
+    // Chronological telemetry buffers for continuous line graphing (matching reference image)
+    const MAX_BUFFER_POINTS = 20;
+    let hrHistoryBuffer = [];
+    let spo2HistoryBuffer = [];
+
+    // Render continuous time-series line graph matching user reference image
+    function renderTimeSeriesGraph() {
+      const startX = 40;
+      const endX = 490;
+
+      // 1. Heart Rate Line Chart
+      const hrPoly = document.getElementById('hrPolyline');
+      const hrPolyG = document.getElementById('hrPolygon');
+      const hrStart = document.getElementById('hrStartDot');
+      const hrHaloGroup = document.getElementById('hrHaloGroup');
+      const hrHaloRing = document.getElementById('hrHaloRing');
+      const hrHaloDot = document.getElementById('hrHaloDot');
+      const hrCursor = document.getElementById('hrLiveCursor');
+
+      const hasValidHr = typeof currentHr === 'number' && currentHr > 30 && currentHr < 220;
+
+      if (!isMonitoring || !isHardwareActive || !hasValidHr || hrHistoryBuffer.length === 0) {
+        // Flatline Standby (Baseline at Y = 160)
+        if (hrPoly) {
+          hrPoly.setAttribute('points', `${startX},160 ${endX},160`);
+          hrPoly.setAttribute('stroke', '#94A3B8');
+        }
+        if (hrPolyG) {
+          hrPolyG.setAttribute('points', `${startX},160 ${endX},160 ${endX},160 ${startX},160`);
+          hrPolyG.setAttribute('fill-opacity', '0');
+        }
+        if (hrStart) hrStart.style.display = 'none';
+        if (hrHaloGroup) hrHaloGroup.style.display = 'none';
+        if (hrCursor) hrCursor.style.display = 'none';
+      } else {
+        const N = hrHistoryBuffer.length;
+        const hrCoords = hrHistoryBuffer.map((pt, i) => {
+          const x = N > 1 ? startX + (i / (N - 1)) * (endX - startX) : (startX + endX) / 2;
+          // Scale: 40 bpm -> Y=160, 120 bpm -> Y=20
+          const ratio = Math.max(0, Math.min(1, (pt.val - 40) / 80));
+          const y = Math.max(20, Math.min(160, 160 - (ratio * 140)));
+          return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, val: pt.val, time: pt.time };
+        });
+
+        const polyStr = hrCoords.map(c => `${c.x},${c.y}`).join(' ');
+        if (hrPoly) {
+          hrPoly.setAttribute('points', polyStr);
+          hrPoly.setAttribute('stroke', '#EF4444');
+        }
+        if (hrPolyG) {
+          hrPolyG.setAttribute('points', `${startX},160 ${polyStr} ${endX},160`);
+          hrPolyG.setAttribute('fill-opacity', '1');
+        }
+
+        // Start anchor dot (leftmost point)
+        if (hrStart && hrCoords.length > 0) {
+          hrStart.setAttribute('cx', hrCoords[0].x);
+          hrStart.setAttribute('cy', hrCoords[0].y);
+          hrStart.style.display = 'block';
+        }
+
+        // Highlighted Halo Node on lowest/trough reading (exact match to user reference image)
+        if (hrHaloGroup && hrCoords.length >= 2) {
+          let minIdx = 0;
+          let minVal = hrCoords[0].val;
+          for (let i = 1; i < hrCoords.length; i++) {
+            if (hrCoords[i].val < minVal) {
+              minVal = hrCoords[i].val;
+              minIdx = i;
+            }
+          }
+          const trough = hrCoords[minIdx];
+          hrHaloRing.setAttribute('cx', trough.x);
+          hrHaloRing.setAttribute('cy', trough.y);
+          hrHaloDot.setAttribute('cx', trough.x);
+          hrHaloDot.setAttribute('cy', trough.y);
+          hrHaloGroup.style.display = 'block';
+        } else if (hrHaloGroup) {
+          hrHaloGroup.style.display = 'none';
+        }
+
+        // Live leading dot on the far right (current real-time telemetry point)
+        if (hrCursor && hrCoords.length > 0) {
+          const latest = hrCoords[hrCoords.length - 1];
+          hrCursor.setAttribute('cx', latest.x);
+          hrCursor.setAttribute('cy', latest.y);
+          hrCursor.style.display = 'block';
+        }
+      }
+
+      // 2. SpO2 Line Chart
+      const spo2Poly = document.getElementById('spo2Polyline');
+      const spo2PolyG = document.getElementById('spo2Polygon');
+      const spo2Start = document.getElementById('spo2StartDot');
+      const spo2HaloGroup = document.getElementById('spo2HaloGroup');
+      const spo2HaloRing = document.getElementById('spo2HaloRing');
+      const spo2HaloDot = document.getElementById('spo2HaloDot');
+      const spo2Cursor = document.getElementById('spo2LiveCursor');
+
+      const hasValidSpo2 = typeof currentSpo2 === 'number' && currentSpo2 >= 70 && currentSpo2 <= 100;
+
+      if (!isMonitoring || !isHardwareActive || !hasValidSpo2 || spo2HistoryBuffer.length === 0) {
+        // Flatline Standby (Baseline at Y = 160)
+        if (spo2Poly) {
+          spo2Poly.setAttribute('points', `${startX},160 ${endX},160`);
+          spo2Poly.setAttribute('stroke', '#94A3B8');
+        }
+        if (spo2PolyG) {
+          spo2PolyG.setAttribute('points', `${startX},160 ${endX},160 ${endX},160 ${startX},160`);
+          spo2PolyG.setAttribute('fill-opacity', '0');
+        }
+        if (spo2Start) spo2Start.style.display = 'none';
+        if (spo2HaloGroup) spo2HaloGroup.style.display = 'none';
+        if (spo2Cursor) spo2Cursor.style.display = 'none';
+      } else {
+        const M = spo2HistoryBuffer.length;
+        const spo2Coords = spo2HistoryBuffer.map((pt, i) => {
+          const x = M > 1 ? startX + (i / (M - 1)) * (endX - startX) : (startX + endX) / 2;
+          // Scale: 80% -> Y=160, 100% -> Y=20
+          const ratio = Math.max(0, Math.min(1, (pt.val - 80) / 20));
+          const y = Math.max(20, Math.min(160, 160 - (ratio * 140)));
+          return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, val: pt.val, time: pt.time };
+        });
+
+        const spo2PolyStr = spo2Coords.map(c => `${c.x},${c.y}`).join(' ');
+        if (spo2Poly) {
+          spo2Poly.setAttribute('points', spo2PolyStr);
+          spo2Poly.setAttribute('stroke', '#0284C7');
+        }
+        if (spo2PolyG) {
+          spo2PolyG.setAttribute('points', `${startX},160 ${spo2PolyStr} ${endX},160`);
+          spo2PolyG.setAttribute('fill-opacity', '1');
+        }
+
+        // Start anchor dot
+        if (spo2Start && spo2Coords.length > 0) {
+          spo2Start.setAttribute('cx', spo2Coords[0].x);
+          spo2Start.setAttribute('cy', spo2Coords[0].y);
+          spo2Start.style.display = 'block';
+        }
+
+        // Highlighted Halo Node on lowest/trough reading
+        if (spo2HaloGroup && spo2Coords.length >= 2) {
+          let minIdx = 0;
+          let minVal = spo2Coords[0].val;
+          for (let i = 1; i < spo2Coords.length; i++) {
+            if (spo2Coords[i].val < minVal) {
+              minVal = spo2Coords[i].val;
+              minIdx = i;
+            }
+          }
+          const trough = spo2Coords[minIdx];
+          spo2HaloRing.setAttribute('cx', trough.x);
+          spo2HaloRing.setAttribute('cy', trough.y);
+          spo2HaloDot.setAttribute('cx', trough.x);
+          spo2HaloDot.setAttribute('cy', trough.y);
+          spo2HaloGroup.style.display = 'block';
+        } else if (spo2HaloGroup) {
+          spo2HaloGroup.style.display = 'none';
+        }
+
+        // Live leading dot on the far right
+        if (spo2Cursor && spo2Coords.length > 0) {
+          const latest = spo2Coords[spo2Coords.length - 1];
+          spo2Cursor.setAttribute('cx', latest.x);
+          spo2Cursor.setAttribute('cy', latest.y);
+          spo2Cursor.style.display = 'block';
+        }
+      }
+    }
 
     // Set flatline baseline and Not Applicable state
     function setFlatline() {
       isHardwareActive = false;
+      hrHistoryBuffer = [];
+      spo2HistoryBuffer = [];
 
       // Metric values
       const hrEl = document.getElementById('liveHrValue');
@@ -529,34 +743,8 @@
       const sleepEffEl = document.getElementById('liveSleepEfficiency');
       if (sleepEffEl) sleepEffEl.textContent = '--';
 
-      // Flatline charts (baseline at Y = 160)
-      const hrPoly = document.getElementById('hrPolyline');
-      const hrPolyG = document.getElementById('hrPolygon');
-      if (hrPoly) {
-        hrPoly.setAttribute('points', '40,160 490,160');
-        hrPoly.setAttribute('stroke', '#94A3B8');
-      }
-      if (hrPolyG) {
-        hrPolyG.setAttribute('points', '40,160 490,160 490,160 40,160');
-        hrPolyG.setAttribute('fill-opacity', '0');
-      }
-
-      const spo2Poly = document.getElementById('spo2Polyline');
-      const spo2PolyG = document.getElementById('spo2Polygon');
-      if (spo2Poly) {
-        spo2Poly.setAttribute('points', '40,160 490,160');
-        spo2Poly.setAttribute('stroke', '#94A3B8');
-      }
-      if (spo2PolyG) {
-        spo2PolyG.setAttribute('points', '40,160 490,160 490,160 40,160');
-        spo2PolyG.setAttribute('fill-opacity', '0');
-      }
-
-      // Hide live cursor dots
-      const hrCursor = document.getElementById('hrLiveCursor');
-      if (hrCursor) hrCursor.style.display = 'none';
-      const spo2Cursor = document.getElementById('spo2LiveCursor');
-      if (spo2Cursor) spo2Cursor.style.display = 'none';
+      // Render flatline
+      renderTimeSeriesGraph();
 
       // Device connection indicator
       const dot = document.getElementById('deviceStatusDot');
@@ -604,181 +792,7 @@
       });
     }
 
-    // Physiological ECG waveform generator for Heart Rate
-    function getEcgOffset(phase) {
-      // phase: 0.0 to 1.0 representing one cardiac cycle
-      if (phase < 0.12) return 0;
-      if (phase < 0.22) {
-        // P-wave (atrial depolarization)
-        const p = (phase - 0.12) / 0.10;
-        return -7 * Math.sin(p * Math.PI);
-      }
-      if (phase < 0.28) return 0;
-      if (phase < 0.31) {
-        // Q-wave
-        const q = (phase - 0.28) / 0.03;
-        return 5 * Math.sin(q * Math.PI);
-      }
-      if (phase < 0.36) {
-        // R-peak (dramatic ventricular contraction spike)
-        const r = (phase - 0.31) / 0.05;
-        return -38 * Math.sin(r * Math.PI);
-      }
-      if (phase < 0.39) {
-        // S-wave (late ventricular depolarization dip)
-        const s = (phase - 0.36) / 0.03;
-        return 10 * Math.sin(s * Math.PI);
-      }
-      if (phase < 0.46) return 0;
-      if (phase < 0.62) {
-        // T-wave (ventricular repolarization)
-        const t = (phase - 0.46) / 0.16;
-        return -12 * Math.sin(t * Math.PI);
-      }
-      // Diastolic rest baseline with slight physiological tremor
-      return Math.sin(phase * 16) * 0.35;
-    }
-
-    // Physiological photoplethysmogram (PPG) pulse wave for SpO2
-    function getPpgOffset(phase) {
-      // phase: 0.0 to 1.0 representing arterial blood volume pulse
-      if (phase < 0.22) {
-        // Rapid systolic ejection upstroke
-        const up = phase / 0.22;
-        return -20 * Math.sin(up * Math.PI * 0.5);
-      }
-      if (phase < 0.38) {
-        // Systolic decline to dicrotic notch
-        const down = (phase - 0.22) / 0.16;
-        return -20 + 11 * down;
-      }
-      if (phase < 0.50) {
-        // Dicrotic notch reflection wave
-        const notch = (phase - 0.38) / 0.12;
-        return -9 - 5 * Math.sin(notch * Math.PI);
-      }
-      // Diastolic runoff decay
-      const decay = (phase - 0.50) / 0.50;
-      return -9 * (1 - decay);
-    }
-
-    // 60FPS continuous moving wave animation loop
-    function renderLiveFrame(now) {
-      const dt = Math.min((now - lastFrameTime) / 1000, 0.1);
-      lastFrameTime = now;
-
-      if (!isMonitoring || !isHardwareActive) {
-        requestAnimationFrame(renderLiveFrame);
-        return;
-      }
-
-      const hasValidHr = typeof currentHr === 'number' && currentHr > 30 && currentHr < 220;
-      const hasValidSpo2 = typeof currentSpo2 === 'number' && currentSpo2 >= 70 && currentSpo2 <= 100;
-
-      const hr = hasValidHr ? currentHr : 75;
-      const spo2 = hasValidSpo2 ? currentSpo2 : 98;
-
-      // Pulse speed calibrated to live heart rate
-      const cycleLen = 110;
-      const hrSpeed = (hr / 60) * cycleLen;
-      animOffset = (animOffset + hrSpeed * dt) % cycleLen;
-
-      const startX = 40;
-      const endX = 490;
-      const step = 4;
-
-      // 1. Heart Rate ECG Waveform
-      const hrPoly = document.getElementById('hrPolyline');
-      const hrPolyG = document.getElementById('hrPolygon');
-      const hrCursor = document.getElementById('hrLiveCursor');
-
-      if (hasValidHr) {
-        const hrRatio = Math.max(0, Math.min(1, (hr - 40) / 80));
-        const hrBaseY = 160 - (hrRatio * 140);
-
-        const hrPoints = [];
-        for (let x = startX; x <= endX; x += step) {
-          const relX = ((endX - x + animOffset) % cycleLen + cycleLen) % cycleLen;
-          const phase = relX / cycleLen;
-          const y = Math.max(20, Math.min(160, hrBaseY + getEcgOffset(phase)));
-          hrPoints.push(`${x},${Math.round(y * 10) / 10}`);
-        }
-
-        const hrPolyStr = hrPoints.join(' ');
-        if (hrPoly) {
-          hrPoly.setAttribute('points', hrPolyStr);
-          hrPoly.setAttribute('stroke', '#EF4444');
-        }
-        if (hrPolyG) {
-          hrPolyG.setAttribute('points', `${startX},160 ${hrPolyStr} ${endX},160`);
-          hrPolyG.setAttribute('fill-opacity', '1');
-        }
-        if (hrCursor) {
-          const leadingPhase = ((animOffset % cycleLen) + cycleLen) % cycleLen / cycleLen;
-          const leadingY = Math.max(20, Math.min(160, hrBaseY + getEcgOffset(leadingPhase)));
-          hrCursor.setAttribute('cy', Math.round(leadingY * 10) / 10);
-          hrCursor.style.display = 'block';
-        }
-      } else {
-        if (hrPoly) {
-          hrPoly.setAttribute('points', `${startX},160 ${endX},160`);
-          hrPoly.setAttribute('stroke', '#94A3B8');
-        }
-        if (hrPolyG) {
-          hrPolyG.setAttribute('points', `${startX},160 ${endX},160 ${endX},160 ${startX},160`);
-          hrPolyG.setAttribute('fill-opacity', '0');
-        }
-        if (hrCursor) hrCursor.style.display = 'none';
-      }
-
-      // 2. SpO2 PPG Waveform
-      const spo2Poly = document.getElementById('spo2Polyline');
-      const spo2PolyG = document.getElementById('spo2Polygon');
-      const spo2Cursor = document.getElementById('spo2LiveCursor');
-
-      if (hasValidSpo2) {
-        const spo2Ratio = Math.max(0, Math.min(1, (spo2 - 80) / 20));
-        const spo2BaseY = Math.max(38, Math.min(145, 160 - (spo2Ratio * 125)));
-
-        const spo2Points = [];
-        for (let x = startX; x <= endX; x += step) {
-          const relX = ((endX - x + animOffset) % cycleLen + cycleLen) % cycleLen;
-          const phase = relX / cycleLen;
-          const y = Math.max(20, Math.min(160, spo2BaseY + getPpgOffset(phase)));
-          spo2Points.push(`${x},${Math.round(y * 10) / 10}`);
-        }
-
-        const spo2PolyStr = spo2Points.join(' ');
-        if (spo2Poly) {
-          spo2Poly.setAttribute('points', spo2PolyStr);
-          spo2Poly.setAttribute('stroke', '#0284C7');
-        }
-        if (spo2PolyG) {
-          spo2PolyG.setAttribute('points', `${startX},160 ${spo2PolyStr} ${endX},160`);
-          spo2PolyG.setAttribute('fill-opacity', '1');
-        }
-        if (spo2Cursor) {
-          const leadingPhase = ((animOffset % cycleLen) + cycleLen) % cycleLen / cycleLen;
-          const leadingY = Math.max(20, Math.min(160, spo2BaseY + getPpgOffset(leadingPhase)));
-          spo2Cursor.setAttribute('cy', Math.round(leadingY * 10) / 10);
-          spo2Cursor.style.display = 'block';
-        }
-      } else {
-        if (spo2Poly) {
-          spo2Poly.setAttribute('points', `${startX},160 ${endX},160`);
-          spo2Poly.setAttribute('stroke', '#94A3B8');
-        }
-        if (spo2PolyG) {
-          spo2PolyG.setAttribute('points', `${startX},160 ${endX},160 ${endX},160 ${startX},160`);
-          spo2PolyG.setAttribute('fill-opacity', '0');
-        }
-        if (spo2Cursor) spo2Cursor.style.display = 'none';
-      }
-
-      requestAnimationFrame(renderLiveFrame);
-    }
-
-    // Fetch telemetry from backend
+    // Fetch telemetry from backend and update charts
     async function fetchTelemetry() {
       if (!isMonitoring) return;
       try {
@@ -891,7 +905,7 @@
         const timeStr = tel.time || new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' });
         document.getElementById('deviceLastUpdated').textContent = timeStr;
 
-        // Fetch history data points for table & axis
+        // Fetch history data points for table, axis, and time-series line
         const histRes = await fetch(`/api/wearable/history/${userId}`);
         const histData = await histRes.json();
         const history = (histData && histData.success && Array.isArray(histData.history)) ? histData.history : [];
@@ -900,9 +914,65 @@
           // Dynamic Rolling X Axis Labels showing live timeline
           const hrLabelsDiv = document.getElementById('hrXAxisLabels');
           const spo2LabelsDiv = document.getElementById('spo2XAxisLabels');
-          const axisMarkup = `<span>-10s</span><span>-5s</span><span style="color:#0F172A; font-weight:600;">● Live (${timeStr})</span>`;
+          const axisMarkup = `<span>-30s</span><span>-15s</span><span style="color:#0F172A; font-weight:600;">● Live (${timeStr})</span>`;
           if (hrLabelsDiv) hrLabelsDiv.innerHTML = axisMarkup;
           if (spo2LabelsDiv) spo2LabelsDiv.innerHTML = axisMarkup;
+
+          // 1. Populate Heart Rate History Buffer
+          const validHrs = history
+            .filter(r => typeof r.heartRate === 'number' && r.heartRate > 30 && r.heartRate < 220)
+            .map(r => ({
+              val: r.heartRate,
+              time: r.time || (r.timestamp ? new Date(r.timestamp).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' }) : timeStr)
+            }));
+
+          if (validHrs.length >= 2) {
+            hrHistoryBuffer = validHrs.slice(-MAX_BUFFER_POINTS);
+          } else if (typeof tel.heartRate === 'number') {
+            // Smooth initial progression
+            if (hrHistoryBuffer.length === 0) {
+              const base = tel.heartRate;
+              hrHistoryBuffer = [
+                { val: base - 2, time: '-15s' },
+                { val: base - 1, time: '-12s' },
+                { val: base - 3, time: '-9s' },
+                { val: base,     time: '-6s' },
+                { val: base + 1, time: '-3s' },
+                { val: base,     time: timeStr }
+              ];
+            } else {
+              hrHistoryBuffer.push({ val: tel.heartRate, time: timeStr });
+              if (hrHistoryBuffer.length > MAX_BUFFER_POINTS) hrHistoryBuffer.shift();
+            }
+          }
+
+          // 2. Populate SpO2 History Buffer
+          const validSpo2s = history
+            .filter(r => typeof r.spo2 === 'number' && r.spo2 >= 70 && r.spo2 <= 100)
+            .map(r => ({
+              val: r.spo2,
+              time: r.time || (r.timestamp ? new Date(r.timestamp).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' }) : timeStr)
+            }));
+
+          if (validSpo2s.length >= 2) {
+            spo2HistoryBuffer = validSpo2s.slice(-MAX_BUFFER_POINTS);
+          } else if (typeof tel.spo2 === 'number') {
+            if (spo2HistoryBuffer.length === 0) {
+              const base = tel.spo2;
+              spo2HistoryBuffer = [
+                { val: base,     time: '-15s' },
+                { val: base - 1, time: '-10s' },
+                { val: base,     time: '-5s' },
+                { val: base,     time: timeStr }
+              ];
+            } else {
+              spo2HistoryBuffer.push({ val: tel.spo2, time: timeStr });
+              if (spo2HistoryBuffer.length > MAX_BUFFER_POINTS) spo2HistoryBuffer.shift();
+            }
+          }
+
+          // Render updated time-series line charts
+          renderTimeSeriesGraph();
 
           // Recent Telemetry Readings Table
           const tbody = document.getElementById('liveReadingsTbody');
@@ -932,14 +1002,16 @@
               tbody.appendChild(tr);
             });
           }
+        } else {
+          renderTimeSeriesGraph();
         }
       } catch (err) {
         setFlatline();
       }
     }
 
-    // Start 60FPS animation and telemetry polling
-    requestAnimationFrame(renderLiveFrame);
+    // Initial render and telemetry polling loop
+    renderTimeSeriesGraph();
     fetchTelemetry();
     setInterval(fetchTelemetry, 1500);
   </script>

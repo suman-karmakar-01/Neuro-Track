@@ -1,7 +1,7 @@
 {
-  "name": "neuro-tech-backend",
+  "name": "neuro-track-backend",
   "version": "1.0.0",
-  "description": "Backend for Neuro Tech using Express and Firebase",
+  "description": "Backend for Neuro Track using Express and Firebase",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

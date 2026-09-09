@@ -20,7 +20,7 @@ const defaultStore = {
     auth_01: {
       id: 'auth_01',
       fullName: 'Dr. Admin Counselor',
-      email: 'admin@neurotech.com',
+      email: 'admin@neurotrack.com',
       phone: '9876543210',
       password: 'admin123',
       role: 'authority',

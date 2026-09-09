@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neuro Tech | User Details - Aarav Sharma</title>
+  <title>Neuro Track | User Details</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="authority-body">
@@ -16,7 +16,7 @@
           <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/>
         </svg>
         <div class="brand-text-stack">
-          <span class="brand-name">Neuro Tech</span>
+          <span class="brand-name">Neuro Track</span>
           <span class="brand-sub">Mental Health. Brighter Tomorrows.</span>
         </div>
       </div>
@@ -373,7 +373,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <span class="footer-brand">Neuro Tech</span>
+        <span class="footer-brand">Neuro Track</span>
         <span class="footer-desc">A student initiative for a healthier tomorrow.</span>
       </div>
 
@@ -385,7 +385,7 @@
 
   <script>
     // Verify authority
-    const currentAuthority = JSON.parse(localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority') || 'null');
+    const currentAuthority = JSON.parse(localStorage.getItem('neurotrack_currentAuthority') || localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority') || 'null');
     if (!currentAuthority) {
       window.location.href = 'login.html';
     }
@@ -393,6 +393,7 @@
     // Logout
     document.getElementById('authorityLogoutBtn').addEventListener('click', (e) => {
       e.preventDefault();
+      localStorage.removeItem('neurotrack_currentAuthority');
       localStorage.removeItem('neurotech_currentAuthority');
       localStorage.removeItem('currentAuthority');
       window.location.href = 'login.html';
@@ -463,6 +464,7 @@
               <td><a href="session-result.html" class="btn-sub-action view-btn">View</a></td>
             `;
             tr.querySelector('.view-btn').onclick = () => {
+              sessionStorage.setItem('neurotrack_latest_result', JSON.stringify(s));
               sessionStorage.setItem('neurotech_latest_result', JSON.stringify(s));
             };
             tbody.appendChild(tr);

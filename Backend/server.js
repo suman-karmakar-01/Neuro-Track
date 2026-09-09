@@ -28,7 +28,7 @@ app.use('/api/users', usersRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Neuro Tech backend is running' });
+  res.json({ status: 'ok', message: 'Neuro Track backend is running' });
 });
 
 // Root fallback to frontend index
