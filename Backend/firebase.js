@@ -91,9 +91,10 @@ function probeFirebase(urlStr) {
         hostname: parsed.hostname,
         port: parsed.port || 443,
         path: '/.json?shallow=true',
-        method: 'HEAD',
-        timeout: 1500
+        method: 'GET',
+        timeout: 2000
       }, (res) => {
+        res.resume(); // Discard data to free socket
         // Status 200, 401 (auth), 403 (security rules) indicate an active database instance
         if (res.statusCode === 200 || res.statusCode === 401 || res.statusCode === 403) {
           resolve(true);
@@ -111,12 +112,23 @@ function probeFirebase(urlStr) {
 }
 
 // Perform safe non-blocking probe on boot
-probeFirebase(databaseURL).then((exists) => {
+probeFirebase(databaseURL).then(async (exists) => {
   if (exists) {
     try {
       db = admin.app().database(databaseURL);
       isFirebaseOnline = true;
-      console.log('Database: Connected to Firebase Realtime Database (Online)');
+      console.log('Firebase: Connected to Realtime Database (' + databaseURL + ')');
+
+      // Auto-populate cloud database if freshly initialized
+      try {
+        const snap = await db.ref('users').once('value');
+        if (!snap.exists() || !snap.val()) {
+          if (memoryStore.authorities) await db.ref('authorities').set(memoryStore.authorities);
+          if (memoryStore.users) await db.ref('users').set(memoryStore.users);
+          if (memoryStore.assessments) await db.ref('assessments').set(memoryStore.assessments);
+          console.log('Firebase: Synced baseline users and authorities to cloud.');
+        }
+      } catch (syncErr) {}
     } catch (e) {
       isFirebaseOnline = false;
       console.log('Database: Local Persistent Storage active (local_db.json)');

@@ -5,6 +5,7 @@ import { getDatabase } from "https://www.gstatic.com/firebasejs/12.18.0/firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCjQ6Ebt8nDX1K96HsBVkj21DPteU78g0I",
   authDomain: "neuro-tech-01.firebaseapp.com",
+  databaseURL: "https://neuro-tech-01-default-rtdb.firebaseio.com",
   projectId: "neuro-tech-01",
   storageBucket: "neuro-tech-01.firebasestorage.app",
   messagingSenderId: "1073828205384",
@@ -14,4 +15,4 @@ const firebaseConfig = {
 
 // Initialize Firebase & Realtime Database instance
 export const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+export const db = getDatabase(app, "https://neuro-tech-01-default-rtdb.firebaseio.com");
