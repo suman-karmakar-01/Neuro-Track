@@ -203,8 +203,8 @@ The wearable band connects over **Wi-Fi** and sends sensor data directly to your
 
 This project was developed and maintained by:
 
-- **Suman Karmakar** — [@suman-karmakar-01](https://github.com/suman-karmakar-01)
 - **Anwesha Mondal** — [@AnweshaArc](https://github.com/AnweshaArc)
+- **Suman Karmakar** — [@suman-karmakar-01](https://github.com/suman-karmakar-01)
 - **Avik Mallick** — [@Avikmallick27](https://github.com/Avikmallick27)
 - **Arkajit Roy** — [@arkajit-roy](https://github.com/arkajit-roy)
 - **Monali De** — [@Mavisha1](https://github.com/Mavisha1)
