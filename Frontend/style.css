@@ -121,9 +121,13 @@ button {
 }
 
 .brand-icon {
-  width: 32px;
-  height: 32px;
-  color: #38BDF8;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .brand-name {

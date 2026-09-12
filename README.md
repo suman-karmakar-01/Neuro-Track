@@ -1,7 +1,13 @@
-# Neuro-Track 🧠🩺
-### Student Health & Wellness Telemetry System
+<div align="center">
+  <img src="Frontend/assets/logo.png" alt="Neuro Track Logo" width="130" style="border-radius: 20px;">
+  <h1>Neuro Track</h1>
+  <p><strong>Student Health & Wellness Telemetry System</strong></p>
+  <p><em>Early Awareness. Stronger Tomorrows.</em></p>
+</div>
 
-**Neuro-Track** is a smart digital health platform designed for secondary school and college students. It helps track emotional well-being and stress levels by combining **simple self-assessment questionnaires** with **real-time wearable health telemetry** (Heart Rate, Blood Oxygen SpO₂, Body Temperature, and Sleep Monitoring).
+---
+
+**Neuro Track** is a smart digital health platform designed for secondary school and college students. It helps track emotional well-being and stress levels by combining **simple self-assessment questionnaires** with **real-time wearable health telemetry** (Heart Rate, Blood Oxygen SpO₂, Body Temperature, and Sleep Monitoring).
 
 > **Note:** The platform works **100% out of the box with or without hardware**. If no wearable band is connected, the website safely displays `"Not Applicable"` with a flatline baseline — no errors or crashes.
 
