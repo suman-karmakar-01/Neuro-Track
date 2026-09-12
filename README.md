@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="Frontend/assets/logo.png" alt="Neuro Track Logo" width="130" style="border-radius: 20px;">
+  <img src="Frontend/assets/logo.png" alt="Neuro Track Logo" width="160" style="border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
   <h1>Neuro Track</h1>
-  <p><strong>Student Health & Wellness Telemetry System</strong></p>
-  <p><em>Early Awareness. Stronger Tomorrows.</em></p>
+  <p><strong>MIND TODAY. BRIGHTER TOMORROWS.</strong></p>
+  <p><em>Student Health & Wellness Telemetry System</em></p>
 </div>
 
 ---

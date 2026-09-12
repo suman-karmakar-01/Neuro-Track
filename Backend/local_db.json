@@ -17,7 +17,7 @@
       "email": "aarav.sharma@college.edu",
       "fullName": "Aarav Sharma",
       "gender": "Male",
-      "lastAssessmentDate": "12 Sept 2026, 9:18 am",
+      "lastAssessmentDate": "12 Sept 2026, 10:00 am",
       "latestRiskLevel": "LOW",
       "latestScore": 2,
       "phone": "9123456780",
@@ -587,6 +587,45 @@
           "sleepQuality": "Good (88%)",
           "status": "Live Stream Active"
         }
+      },
+      "ASM-401271": {
+        "assessmentId": "ASM-401271",
+        "userId": "NT1001",
+        "timestamp": 1789187401271,
+        "dateFormatted": "12 Sept 2026, 10:00 am",
+        "rawScore": 1,
+        "score": 2,
+        "maxRawScore": 60,
+        "riskLevel": "LOW",
+        "explanation": "Your responses suggest minimal or mild indications of stress and emotional distress at this time.",
+        "recommendations": [
+          "Maintain regular sleep and daily routines.",
+          "Continue healthy social connections.",
+          "Practice relaxation or breathing exercises.",
+          "Continue monitoring your well-being."
+        ],
+        "disclaimer": "Screening/educational result — not a clinical diagnosis.",
+        "answers": [
+          {
+            "questionNumber": 1,
+            "selectedOption": "Sometimes",
+            "score": 1
+          },
+          {
+            "questionNumber": 8,
+            "selectedOption": "7-8 hours",
+            "score": 0
+          }
+        ],
+        "vitals": {
+          "isHardwareActive": true,
+          "heartRate": 78,
+          "spo2": 98,
+          "temperature": 36.7,
+          "sleepHours": 7.5,
+          "sleepQuality": "Good (88%)",
+          "status": "Live Stream Active"
+        }
       }
     },
     "NT1004": {
@@ -694,8 +733,8 @@
       "sleepQuality": "Optimal (Restful)",
       "battery": 95,
       "status": "Live Stream Active",
-      "time": "09:18:59 am",
-      "timestamp": 1789184939116
+      "time": "10:00:02 am",
+      "timestamp": 1789187402973
     },
     "NT1001": {
       "deviceId": "NT-ESP32-001",
@@ -708,8 +747,8 @@
       "sleepQuality": "Optimal (Restful)",
       "battery": 95,
       "status": "Live Stream Active",
-      "time": "09:18:59 am",
-      "timestamp": 1789184939116
+      "time": "10:00:02 am",
+      "timestamp": 1789187402973
     },
     "NT1002": {
       "deviceId": "NT-ESP32-001",
@@ -731,34 +770,6 @@
       {
         "battery": 95,
         "deviceId": "NT-ESP32-001",
-        "heartRate": 76,
-        "motion": 0.22,
-        "sleepHours": 7.5,
-        "sleepQuality": "Light Movement",
-        "spo2": 97,
-        "status": "Live Stream Active",
-        "temperature": 25.1,
-        "time": "03:43:53 pm",
-        "timestamp": 1788948833609,
-        "userId": "global"
-      },
-      {
-        "battery": 95,
-        "deviceId": "NT-ESP32-001",
-        "heartRate": 73,
-        "motion": 0.22,
-        "sleepHours": 7.5,
-        "sleepQuality": "Light Movement",
-        "spo2": 98,
-        "status": "Live Stream Active",
-        "temperature": 25.1,
-        "time": "03:43:56 pm",
-        "timestamp": 1788948836612,
-        "userId": "global"
-      },
-      {
-        "battery": 95,
-        "deviceId": "NT-ESP32-001",
         "heartRate": 72,
         "motion": 0.25,
         "sleepHours": 7.5,
@@ -1415,6 +1426,34 @@
         "userId": "NT1001"
       },
       {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.02,
+        "sleepHours": 7.5,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 96,
+        "status": "Live Stream Active",
+        "temperature": 36.8,
+        "time": "09:18:57 am",
+        "timestamp": 1789184937953,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 36.7,
+        "time": "09:59:59 am",
+        "timestamp": 1789187399200,
+        "userId": "NT1001"
+      },
+      {
         "deviceId": "NT-ESP32-001",
         "userId": "NT1001",
         "heartRate": 78,
@@ -1425,42 +1464,14 @@
         "sleepQuality": "Optimal (Restful)",
         "battery": 95,
         "status": "Live Stream Active",
-        "time": "09:18:57 am",
-        "timestamp": 1789184937953
+        "time": "10:00:02 am",
+        "timestamp": 1789187402004
       }
     ],
     "NT1001": [
       {
         "battery": 95,
         "deviceId": "NT-ESP32-001",
-        "heartRate": 76,
-        "motion": 0.22,
-        "sleepHours": 7.5,
-        "sleepQuality": "Light Movement",
-        "spo2": 97,
-        "status": "Live Stream Active",
-        "temperature": 25.1,
-        "time": "03:43:53 pm",
-        "timestamp": 1788948833609,
-        "userId": "global"
-      },
-      {
-        "battery": 95,
-        "deviceId": "NT-ESP32-001",
-        "heartRate": 73,
-        "motion": 0.22,
-        "sleepHours": 7.5,
-        "sleepQuality": "Light Movement",
-        "spo2": 98,
-        "status": "Live Stream Active",
-        "temperature": 25.1,
-        "time": "03:43:56 pm",
-        "timestamp": 1788948836612,
-        "userId": "global"
-      },
-      {
-        "battery": 95,
-        "deviceId": "NT-ESP32-001",
         "heartRate": 72,
         "motion": 0.25,
         "sleepHours": 7.5,
@@ -2117,6 +2128,34 @@
         "userId": "NT1001"
       },
       {
+        "battery": 95,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.02,
+        "sleepHours": 7.5,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 96,
+        "status": "Live Stream Active",
+        "temperature": 36.8,
+        "time": "09:18:57 am",
+        "timestamp": 1789184937953,
+        "userId": "NT1001"
+      },
+      {
+        "battery": 92,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 78,
+        "motion": 0.03,
+        "sleepHours": 7.5,
+        "sleepQuality": "Good (88%)",
+        "spo2": 98,
+        "status": "Live Stream Active",
+        "temperature": 36.7,
+        "time": "09:59:59 am",
+        "timestamp": 1789187399200,
+        "userId": "NT1001"
+      },
+      {
         "deviceId": "NT-ESP32-001",
         "userId": "NT1001",
         "heartRate": 78,
@@ -2127,11 +2166,25 @@
         "sleepQuality": "Optimal (Restful)",
         "battery": 95,
         "status": "Live Stream Active",
-        "time": "09:18:57 am",
-        "timestamp": 1789184937953
+        "time": "10:00:02 am",
+        "timestamp": 1789187402004
       }
     ],
     "NT1002": [
+      {
+        "battery": 88,
+        "deviceId": "NT-ESP32-001",
+        "heartRate": 72,
+        "motion": 0.03,
+        "sleepHours": 8,
+        "sleepQuality": "Optimal (Restful)",
+        "spo2": 99,
+        "status": "Live Stream Active",
+        "temperature": 36.5,
+        "time": "11:59:59 pm",
+        "timestamp": 1788892199000,
+        "userId": "NT1002"
+      },
       {
         "battery": 88,
         "deviceId": "NT-ESP32-001",
