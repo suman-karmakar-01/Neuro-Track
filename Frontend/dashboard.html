@@ -256,8 +256,7 @@
           </table>
         </div>
 
-        <!-- Non-Clinical Screening Disclaimer -->
-        <div class="info-alert-banner">
+                <div class="info-alert-banner">
           <div class="alert-icon-wrapper">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
@@ -295,7 +294,7 @@
   </footer>
 
   <script>
-    // Verify session (supports both neurotrack and neurotech storage keys)
+    // Verify session
     const currentUser = JSON.parse(
       localStorage.getItem('neurotrack_currentUser') || 
       localStorage.getItem('neurotech_currentUser') || 
@@ -315,7 +314,7 @@
     const avatarLetter = (userName || 'U')[0].toUpperCase();
     document.getElementById('navUserAvatar').textContent = avatarLetter;
 
-    // Logout helpers
+    // Logout
     function handleLogout(e) {
       if (e) e.preventDefault();
       localStorage.removeItem('neurotrack_currentUser');
@@ -345,8 +344,7 @@
           badgeEl.textContent = `${s.riskLevel} Risk`;
           dateEl.textContent = `Completed on ${s.dateFormatted || new Date(s.timestamp).toLocaleDateString()}`;
 
-          // Color accents
-          const lvl = (s.riskLevel || 'LOW').toUpperCase();
+                    const lvl = (s.riskLevel || 'LOW').toUpperCase();
           badgeEl.className = 'badge ' + (lvl === 'HIGH' ? 'badge-high' : (lvl === 'MODERATE' ? 'badge-moderate' : 'badge-low'));
           if (circleEl) {
             circleEl.className = 'stat-icon-circle ' + (lvl === 'HIGH' ? 'red-tint' : (lvl === 'MODERATE' ? 'yellow-tint' : 'green-tint'));

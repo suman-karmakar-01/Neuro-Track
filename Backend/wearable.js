@@ -10,8 +10,7 @@ function parseTimestampToUnixMs(rawTimestamp) {
     return Date.now();
   }
 
-  // 1. Direct number input (milliseconds or seconds)
-  if (typeof rawTimestamp === 'number' && Number.isFinite(rawTimestamp)) {
+    if (typeof rawTimestamp === 'number' && Number.isFinite(rawTimestamp)) {
     let val = rawTimestamp;
     if (val < 10000000000) {
       val = Math.round(val * 1000);
@@ -27,8 +26,7 @@ function parseTimestampToUnixMs(rawTimestamp) {
 
   const str = String(rawTimestamp).trim();
 
-  // 2. Numeric string of Unix milliseconds (13 digits) or seconds (10 digits)
-  if (/^\d{13}$/.test(str)) {
+    if (/^\d{13}$/.test(str)) {
     let val = parseInt(str, 10);
     const now = Date.now();
     if (val - now > 18000000 && val - now < 21600000) {
@@ -45,8 +43,7 @@ function parseTimestampToUnixMs(rawTimestamp) {
     return val;
   }
 
-  // 3. Compact hardware timestamp "HHMMSSDDMMYY" (12 digits)
-  if (/^\d{12}$/.test(str)) {
+    if (/^\d{12}$/.test(str)) {
     const hh = parseInt(str.substring(0, 2), 10);
     const min = parseInt(str.substring(2, 4), 10);
     const ss = parseInt(str.substring(4, 6), 10);
@@ -61,8 +58,7 @@ function parseTimestampToUnixMs(rawTimestamp) {
     }
   }
 
-  // 4. Standard parseable date string
-  const parsed = new Date(str);
+    const parsed = new Date(str);
   if (!isNaN(parsed.getTime())) {
     return parsed.getTime();
   }
@@ -118,7 +114,7 @@ function parseRawHardwarePacket(raw, fallbackUserId = 'global') {
   const parsedTimestamp = parseTimestampToUnixMs(raw.timestamp);
   const d = new Date(parsedTimestamp);
 
-  // 1. Temperature from DS18B20 (temp1) or MAX30102 (temp2)
+  // Temperature probe
   let tempVal = 36.6;
   if (raw.temperature === 'Not Applicable' || raw.temp1 === 'Not Applicable') {
     tempVal = 'Not Applicable';
@@ -132,7 +128,7 @@ function parseRawHardwarePacket(raw, fallbackUserId = 'global') {
     tempVal = Number(raw.temp.toFixed(1));
   }
 
-  // 2. Optical Sensor (MAX30102) - Heart Rate & SpO2
+  // Optical sensor (HR & SpO2)
   const max30102 = raw.max30102 || {};
   const irVal = typeof max30102.ir !== 'undefined' ? Number(max30102.ir) : (Number(raw.ir) || 0);
   const redVal = typeof max30102.red !== 'undefined' ? Number(max30102.red) : (Number(raw.red) || 0);
@@ -174,7 +170,7 @@ function parseRawHardwarePacket(raw, fallbackUserId = 'global') {
     spo2Val = 'Not Applicable';
   }
 
-  // 3. Motion & Sleep from MPU6050
+  // Motion and sleep tracking (MPU6050)
   const mpu = raw.mpu6050 || {};
   let motionVal = 0.03;
   let restStatus = 'Optimal (Restful)';

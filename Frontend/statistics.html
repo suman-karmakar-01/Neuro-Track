@@ -157,8 +157,7 @@
             </div>
           </div>
 
-          <!-- Average Sleep -->
-          <div class="stat-summary-card">
+                    <div class="stat-summary-card">
             <div class="stat-header">
               <div class="stat-icon-circle purple-tint">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -201,8 +200,7 @@
               </div>
             </div>
 
-            <!-- Risk SVG Line Chart -->
-            <div class="svg-chart-container">
+                        <div class="svg-chart-container">
               <svg class="chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
                 <!-- Grid Lines -->
                 <line x1="40" y1="20" x2="490" y2="20" stroke="#F1F5F9"/>
@@ -211,8 +209,7 @@
                 <line x1="40" y1="110" x2="490" y2="110" stroke="#F1F5F9"/>
                 <line x1="40" y1="140" x2="490" y2="140" stroke="#F1F5F9"/>
 
-                <!-- Y Axis Labels -->
-                <text x="15" y="24" class="axis-label">100</text>
+                                <text x="15" y="24" class="axis-label">100</text>
                 <text x="15" y="54" class="axis-label">80</text>
                 <text x="15" y="84" class="axis-label">60</text>
                 <text x="15" y="114" class="axis-label">40</text>
@@ -232,8 +229,7 @@
                 <polyline id="statRiskPolyline" points="50,130 460,130" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <g id="statRiskDots"></g>
               </svg>
-              <!-- X Axis Labels -->
-              <div class="chart-dates-row" id="statRiskDatesRow">
+                            <div class="chart-dates-row" id="statRiskDatesRow">
                 <span>Recent Assessments</span>
               </div>
             </div>
@@ -248,8 +244,7 @@
               </div>
             </div>
 
-            <!-- Sleep SVG Line Chart -->
-            <div class="svg-chart-container">
+                        <div class="svg-chart-container">
               <svg class="chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
                 <!-- Grid Lines -->
                 <line x1="40" y1="20" x2="490" y2="20" stroke="#F1F5F9"/>
@@ -258,8 +253,7 @@
                 <line x1="40" y1="110" x2="490" y2="110" stroke="#F1F5F9"/>
                 <line x1="40" y1="140" x2="490" y2="140" stroke="#F1F5F9"/>
 
-                <!-- Y Axis Labels -->
-                <text x="15" y="24" class="axis-label">12</text>
+                                <text x="15" y="24" class="axis-label">12</text>
                 <text x="15" y="54" class="axis-label">10</text>
                 <text x="20" y="84" class="axis-label">8</text>
                 <text x="20" y="114" class="axis-label">6</text>
@@ -279,8 +273,7 @@
                 <polyline id="statSleepPolyline" points="50,90 460,90" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <g id="statSleepDots"></g>
               </svg>
-              <!-- X Axis Labels -->
-              <div class="chart-dates-row" id="statSleepDatesRow">
+                            <div class="chart-dates-row" id="statSleepDatesRow">
                 <span>Recent Assessments</span>
               </div>
             </div>
@@ -378,8 +371,7 @@
             </div>
           </div>
 
-          <!-- Heart Rate Trend Mini Card -->
-          <div class="chart-box-card">
+                    <div class="chart-box-card">
             <div class="chart-box-header">
               <div>
                 <h3 class="chart-box-title">Heart Rate Trend</h3>
@@ -417,8 +409,7 @@
             </div>
           </div>
 
-          <!-- SpO2 Trend Mini Card -->
-          <div class="chart-box-card">
+                    <div class="chart-box-card">
             <div class="chart-box-header">
               <div>
                 <h3 class="chart-box-title">SpO<sub>2</sub> Trend</h3>
@@ -481,7 +472,7 @@
   </footer>
 
   <script>
-    // Verify session (supports both neurotrack and neurotech storage keys)
+    // Verify session
     const currentUser = JSON.parse(
       localStorage.getItem('neurotrack_currentUser') || 
       localStorage.getItem('neurotech_currentUser') || 

@@ -28,8 +28,7 @@
   <!-- Registration Main Content -->
   <main class="login-page-section">
     <div class="login-layout-container" style="max-width: 1040px;">
-      <!-- Left Side Presentation -->
-      <div class="login-intro-column">
+            <div class="login-intro-column">
         <span class="tagline">AUTHORITY & COUNSELOR PORTAL</span>
         <div class="accent-line"></div>
         <h1 class="intro-title" style="font-size: 2.3rem; line-height: 1.2;">Empower<br>Student<br>Wellness</h1>
@@ -260,8 +259,7 @@
           successBox.innerHTML = `<strong>Registration Successful!</strong> Welcome, ${data.user.fullName}. Redirecting to authority portal...`;
           successBox.style.display = 'block';
 
-          // Save credentials to local storage
-          localStorage.setItem('currentAuthority', JSON.stringify(data.user));
+                    localStorage.setItem('currentAuthority', JSON.stringify(data.user));
           localStorage.setItem('neurotrack_currentAuthority', JSON.stringify(data.user));
           localStorage.setItem('neurotech_currentAuthority', JSON.stringify(data.user));
 

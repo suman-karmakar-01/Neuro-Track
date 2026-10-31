@@ -383,8 +383,7 @@
   </footer>
 
   <script>
-    // Verify authority
-    const currentAuthority = JSON.parse(localStorage.getItem('neurotrack_currentAuthority') || localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority') || 'null');
+        const currentAuthority = JSON.parse(localStorage.getItem('neurotrack_currentAuthority') || localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority') || 'null');
     if (!currentAuthority) {
       window.location.href = 'login.html';
     }
@@ -448,8 +447,7 @@
           document.getElementById('detailAvgScore').innerHTML = `${avgScore} <small>/ 100</small>`;
           document.getElementById('detailLatestStatus').textContent = `${history[0].riskLevel} (${history[0].score}/100)`;
 
-          // Table
-          tbody.innerHTML = '';
+                    tbody.innerHTML = '';
           history.forEach((s, idx) => {
             const tr = document.createElement('tr');
             const lvl = (s.riskLevel || 'LOW').toUpperCase();
@@ -469,8 +467,7 @@
             tbody.appendChild(tr);
           });
 
-          // Donut
-          const lowCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'LOW').length;
+                    const lowCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'LOW').length;
           const modCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'MODERATE').length;
           const highCount = history.filter(s => (s.riskLevel || '').toUpperCase() === 'HIGH').length;
 
@@ -493,8 +490,7 @@
           document.getElementById('detailDonutHigh').setAttribute('stroke-dasharray', `${lenHigh} ${circ}`);
           document.getElementById('detailDonutHigh').setAttribute('stroke-dashoffset', `${-(lenLow + lenMod)}`);
 
-          // Risk Trend Polyline
-          const chronological = [...history].reverse();
+                    const chronological = [...history].reverse();
           const pts = chronological.map((s, idx) => {
             const count = chronological.length;
             const x = count > 1 ? 40 + (idx / (count - 1)) * 300 : 190;

@@ -85,8 +85,7 @@
         <div class="form-layout-split-grid">
           <!-- Left Column: Registration Form -->
           <form class="new-user-form-card" id="createUserForm" onsubmit="return false;">
-            <!-- Section 1: User Information -->
-            <div class="form-section-block">
+                        <div class="form-section-block">
               <div class="form-section-header">
                 <h3 class="form-section-heading">User Information</h3>
                 <p class="form-section-sub">Basic details of the user</p>
@@ -235,8 +234,7 @@
   </div>
 
   <script>
-    // Check authority login
-    let auth = null;
+        let auth = null;
     try {
       auth = JSON.parse(localStorage.getItem('neurotrack_currentAuthority') || localStorage.getItem('neurotech_currentAuthority') || localStorage.getItem('currentAuthority'));
     } catch (e) {}
