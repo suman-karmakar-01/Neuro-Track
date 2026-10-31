@@ -3848,3 +3848,102 @@ input:checked + .slider-round:before {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   Language Switcher & Bilingual UI Styles
+   ========================================================================== */
+.lang-switcher-wrapper {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.lang-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #E2E8F0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  backdrop-filter: blur(4px);
+  outline: none;
+}
+
+.lang-switch-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.lang-switch-btn .lang-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.lang-switch-btn .lang-code {
+  transition: all 0.15s ease;
+  letter-spacing: 0.02em;
+}
+
+.lang-switch-btn .lang-code.active {
+  color: #38BDF8;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+.lang-switch-btn .lang-code.inactive {
+  color: #94A3B8;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.lang-switch-btn .lang-divider {
+  color: #475569;
+  font-size: 0.75rem;
+  margin: 0 1px;
+}
+
+/* ==========================================================================
+   Medical Lead II ECG Monitor Styles
+   ========================================================================== */
+.ecg-monitor-wrapper {
+  background: #0B1120;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+  border: 1px solid #1E293B;
+}
+
+.ecg-chart-svg {
+  background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.98) 100%);
+  display: block;
+}
+
+.ecg-chart-svg .chart-axis-label {
+  fill: #64748B;
+  font-size: 9px;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.ecg-monitor-wrapper .chart-x-axis {
+  color: #64748B;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  background: #070D1A;
+  border-top: 1px solid #1E293B;
+}

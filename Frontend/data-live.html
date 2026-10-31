@@ -6,6 +6,7 @@
   <title>Neuro Track | Data / Live</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
   <style>
     @keyframes pulseHalo {
       0% { r: 8px; opacity: 0.7; }
@@ -128,7 +129,7 @@
 
         <!-- Real-Time Metrics & Charts Grid (2 Cards) -->
         <div class="live-charts-grid">
-          <!-- Heart Rate Chart Card -->
+          <!-- ECG Rhythm / Heart Rate Chart Card -->
           <div class="live-card">
             <div class="live-card-header">
               <div class="metric-title-group">
@@ -138,66 +139,85 @@
                   </svg>
                 </div>
                 <div>
-                  <span class="live-metric-name">Heart Rate</span>
+                  <span class="live-metric-name" data-i18n="ecg_rhythm_hr">ECG Rhythm / Heart Rate</span>
                   <div class="live-metric-value">
-                    <strong id="liveHrValue" style="color: #64748B;">Not Applicable</strong>
+                    <strong id="liveHrValue" style="color: #64748B;" data-i18n="not_applicable">Not Applicable</strong>
                   </div>
                 </div>
               </div>
               <div class="metric-status-group">
-                <span class="badge" id="liveHrBadge" style="background: #F1F5F9; color: #64748B;">Not Connected</span>
-                <span class="metric-range">60 – 100 bpm</span>
+                <span class="badge" id="liveHrBadge" style="background: #F1F5F9; color: #64748B;" data-i18n="not_connected">Not Connected</span>
+                <span class="metric-range">Lead II &bull; 60 – 100 bpm</span>
               </div>
             </div>
 
-            <!-- SVG Chart with Dynamic Points (Matching Time-Series Reference) -->
-            <div class="chart-wrapper">
-              <svg class="live-chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
-                <!-- Top Boundary -->
-                <line x1="40" y1="20" x2="490" y2="20" stroke="#E2E8F0"/>
-                
-                <!-- Dotted Threshold Reference Line (75 bpm baseline matching user reference image) -->
-                <line id="hrRefLine" x1="40" y1="99" x2="490" y2="99" stroke="#94A3B8" stroke-dasharray="4 4" stroke-width="1.5"/>
-                
-                <!-- Bottom Baseline -->
-                <line x1="40" y1="160" x2="490" y2="160" stroke="#E2E8F0"/>
-
-                <!-- Y Axis Labels -->
-                <text x="10" y="25" class="chart-axis-label">120</text>
-                <text x="10" y="60" class="chart-axis-label">100</text>
-                <text x="10" y="103" class="chart-axis-label" style="font-weight: 700; fill: #64748B;">75</text>
-                <text x="10" y="130" class="chart-axis-label">60</text>
-                <text x="10" y="165" class="chart-axis-label">40</text>
-
-                <!-- Gradient Definition -->
+            <!-- SVG ECG Monitor Display -->
+            <div class="chart-wrapper ecg-monitor-wrapper">
+              <svg class="live-chart-svg ecg-chart-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
                 <defs>
-                  <linearGradient id="hrGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#EF4444" stop-opacity="0.22"/>
+                  <!-- Medical Lead II Grid Pattern -->
+                  <pattern id="ecgGridSmall" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#1E293B" stroke-width="0.5" stroke-opacity="0.6"/>
+                  </pattern>
+                  <pattern id="ecgGridLarge" width="50" height="50" patternUnits="userSpaceOnUse">
+                    <rect width="50" height="50" fill="url(#ecgGridSmall)"/>
+                    <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#334155" stroke-width="1" stroke-opacity="0.7"/>
+                  </pattern>
+
+                  <!-- Neon ECG Gradient -->
+                  <linearGradient id="ecgGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#EF4444" stop-opacity="0.25"/>
                     <stop offset="100%" stop-color="#EF4444" stop-opacity="0.0"/>
                   </linearGradient>
+
+                  <!-- Glow filter for live cursor -->
+                  <filter id="ecgGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
                 </defs>
 
-                <!-- Dynamic Area Fill & Time-Series Line (Flatline Standby) -->
-                <polygon id="hrPolygon" points="40,160 490,160 490,160 40,160" fill="url(#hrGrad)" fill-opacity="0"/>
-                <polyline id="hrPolyline" points="40,160 490,160" fill="none" stroke="#94A3B8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-                
-                <!-- Start Anchor Dot (Oldest point in window) -->
-                <circle id="hrStartDot" cx="40" cy="160" r="3.5" fill="#EF4444" stroke="#FFFFFF" stroke-width="1.5" style="display:none;"/>
-                
-                <!-- Highlight Halo Node (Trough / Lowest / Inflection Point matching reference image) -->
+                <!-- Medical Grid Background -->
+                <rect x="40" y="20" width="450" height="140" fill="url(#ecgGridLarge)"/>
+
+                <!-- Millivolt Reference Grid Lines -->
+                <line x1="40" y1="35" x2="490" y2="35" stroke="#1E293B" stroke-width="1" stroke-dasharray="2 3"/>
+                <line x1="40" y1="70" x2="490" y2="70" stroke="#334155" stroke-width="1" stroke-dasharray="2 3"/>
+                <!-- Isoelectric Baseline (0.0 mV at Y=105) -->
+                <line id="hrRefLine" x1="40" y1="105" x2="490" y2="105" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <line x1="40" y1="140" x2="490" y2="140" stroke="#1E293B" stroke-width="1" stroke-dasharray="2 3"/>
+
+                <!-- Y Axis Labels -->
+                <text x="8" y="38" class="chart-axis-label">+1.0</text>
+                <text x="8" y="73" class="chart-axis-label">+0.5</text>
+                <text x="8" y="108" class="chart-axis-label" style="font-weight: 700; fill: #94A3B8;">0.0</text>
+                <text x="8" y="143" class="chart-axis-label">-0.5</text>
+                <text x="10" y="162" class="chart-axis-label" style="font-size: 8px; fill: #64748B;">mV</text>
+
+                <!-- Dynamic Area Fill & ECG Rhythm Line -->
+                <polygon id="hrPolygon" points="40,105 490,105 490,105 40,105" fill="url(#ecgGrad)" fill-opacity="0"/>
+                <polyline id="hrPolyline" points="40,105 490,105" fill="none" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <!-- Start Anchor Dot -->
+                <circle id="hrStartDot" cx="40" cy="105" r="3" fill="#EF4444" stroke="#FFFFFF" stroke-width="1.5" style="display:none;"/>
+
+                <!-- Highlight R-Peak Halo Node -->
                 <g id="hrHaloGroup" style="display:none;">
-                  <circle id="hrHaloRing" cx="200" cy="100" r="10" fill="#EF4444" fill-opacity="0.25" stroke="#EF4444" stroke-opacity="0.5" stroke-width="1.5" class="pulse-halo"/>
-                  <circle id="hrHaloDot" cx="200" cy="100" r="4" fill="#EF4444" stroke="#FFFFFF" stroke-width="2"/>
+                  <circle id="hrHaloRing" cx="200" cy="35" r="12" fill="#EF4444" fill-opacity="0.2" stroke="#EF4444" stroke-opacity="0.6" stroke-width="1.5" class="pulse-halo"/>
+                  <circle id="hrHaloDot" cx="200" cy="35" r="4" fill="#EF4444" stroke="#FFFFFF" stroke-width="2"/>
                 </g>
 
-                <!-- Right Leading Dot (Latest Live Cursor) -->
-                <circle id="hrLiveCursor" cx="490" cy="160" r="5" fill="#EF4444" stroke="#FFFFFF" stroke-width="2" style="display:none; filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));"/>
+                <!-- Live Sweeping Cursor -->
+                <circle id="hrLiveCursor" cx="490" cy="105" r="5" fill="#EF4444" stroke="#FFFFFF" stroke-width="2" style="display:none; filter: url(#ecgGlow);"/>
               </svg>
               <!-- X Axis Labels -->
               <div class="chart-x-axis" id="hrXAxisLabels">
-                <span>Standby</span>
-                <span>Standby</span>
-                <span>Standby</span>
+                <span>-2.0s</span>
+                <span>-1.0s</span>
+                <span style="color: #EF4444; font-weight: 600;">Live Lead II</span>
               </div>
             </div>
           </div>
@@ -503,12 +523,54 @@
     let hrHistoryBuffer = [];
     let spo2HistoryBuffer = [];
 
-    // Render continuous time-series line graph matching user reference image
-    function renderTimeSeriesGraph() {
+    // Physiological Lead II P-Q-R-S-T wave generator
+    let ecgAnimOffset = 0;
+    let lastEcgFrameTime = performance.now();
+
+    function getEcgOffset(phase) {
+      // Normalized phase: 0.0 to 1.0 representing one cardiac cycle
+      if (phase < 0.10) return 0;
+      if (phase < 0.20) {
+        // P-wave (atrial depolarization: gentle rounded upward wave)
+        const p = (phase - 0.10) / 0.10;
+        return -14 * Math.sin(p * Math.PI);
+      }
+      if (phase < 0.26) return 0;
+      if (phase < 0.29) {
+        // Q-wave (septal depolarization: sharp downward dip)
+        const q = (phase - 0.26) / 0.03;
+        return 8 * Math.sin(q * Math.PI);
+      }
+      if (phase < 0.35) {
+        // R-peak (ventricular depolarization: dramatic sharp spike)
+        const r = (phase - 0.29) / 0.06;
+        return -70 * Math.sin(r * Math.PI);
+      }
+      if (phase < 0.39) {
+        // S-wave (late ventricular depolarization dip)
+        const s = (phase - 0.35) / 0.04;
+        return 18 * Math.sin(s * Math.PI);
+      }
+      if (phase < 0.46) return 0;
+      if (phase < 0.62) {
+        // T-wave (ventricular repolarization: rounded dome)
+        const t = (phase - 0.46) / 0.16;
+        return -20 * Math.sin(t * Math.PI);
+      }
+      // Diastolic rest baseline with subtle physiological micro-variation
+      return Math.sin(phase * 24) * 0.4;
+    }
+
+    // 60FPS continuous moving ECG Lead II waveform render loop
+    function renderLiveEcgFrame(now) {
+      const dt = Math.min((now - lastEcgFrameTime) / 1000, 0.1);
+      lastEcgFrameTime = now;
+
       const startX = 40;
       const endX = 490;
+      const isoelectricY = 105;
+      const step = 4;
 
-      // 1. Heart Rate Line Chart
       const hrPoly = document.getElementById('hrPolyline');
       const hrPolyG = document.getElementById('hrPolygon');
       const hrStart = document.getElementById('hrStartDot');
@@ -517,78 +579,89 @@
       const hrHaloDot = document.getElementById('hrHaloDot');
       const hrCursor = document.getElementById('hrLiveCursor');
 
-      const hasValidHr = typeof currentHr === 'number' && currentHr > 30 && currentHr < 220;
+      const hasValidHr = isMonitoring && isHardwareActive && typeof currentHr === 'number' && currentHr >= 35 && currentHr <= 220;
 
-      if (!isMonitoring || !isHardwareActive || !hasValidHr || hrHistoryBuffer.length === 0) {
-        // Flatline Standby (Baseline at Y = 160)
+      if (!hasValidHr) {
+        // Isoelectric Flatline Standby (Baseline at Y = 105)
         if (hrPoly) {
-          hrPoly.setAttribute('points', `${startX},160 ${endX},160`);
+          hrPoly.setAttribute('points', `${startX},${isoelectricY} ${endX},${isoelectricY}`);
           hrPoly.setAttribute('stroke', '#94A3B8');
         }
         if (hrPolyG) {
-          hrPolyG.setAttribute('points', `${startX},160 ${endX},160 ${endX},160 ${startX},160`);
+          hrPolyG.setAttribute('points', `${startX},${isoelectricY} ${endX},${isoelectricY} ${endX},${isoelectricY} ${startX},${isoelectricY}`);
           hrPolyG.setAttribute('fill-opacity', '0');
         }
         if (hrStart) hrStart.style.display = 'none';
         if (hrHaloGroup) hrHaloGroup.style.display = 'none';
         if (hrCursor) hrCursor.style.display = 'none';
       } else {
-        const N = hrHistoryBuffer.length;
-        const hrCoords = hrHistoryBuffer.map((pt, i) => {
-          const x = N > 1 ? startX + (i / (N - 1)) * (endX - startX) : (startX + endX) / 2;
-          // Scale: 40 bpm -> Y=160, 120 bpm -> Y=20
-          const ratio = Math.max(0, Math.min(1, (pt.val - 40) / 80));
-          const y = Math.max(20, Math.min(160, 160 - (ratio * 140)));
-          return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, val: pt.val, time: pt.time };
-        });
+        // Frequency and sweep speed modulated by live BPM
+        const pxPerSec = 180;
+        const cycleLen = (60 / currentHr) * pxPerSec;
+        ecgAnimOffset = (ecgAnimOffset + pxPerSec * dt) % cycleLen;
 
-        const polyStr = hrCoords.map(c => `${c.x},${c.y}`).join(' ');
+        const hrPoints = [];
+        let rPeakNode = null;
+        let minDiffToR = 999;
+
+        for (let x = startX; x <= endX; x += step) {
+          const relX = ((endX - x + ecgAnimOffset) % cycleLen + cycleLen) % cycleLen;
+          const phase = relX / cycleLen;
+          const y = isoelectricY + getEcgOffset(phase);
+          hrPoints.push(`${x},${Math.round(y * 10) / 10}`);
+
+          const diff = Math.abs(phase - 0.32);
+          if (diff < minDiffToR) {
+            minDiffToR = diff;
+            rPeakNode = { x, y: isoelectricY - 70 };
+          }
+        }
+
+        const polyStr = hrPoints.join(' ');
         if (hrPoly) {
           hrPoly.setAttribute('points', polyStr);
           hrPoly.setAttribute('stroke', '#EF4444');
         }
         if (hrPolyG) {
-          hrPolyG.setAttribute('points', `${startX},160 ${polyStr} ${endX},160`);
+          hrPolyG.setAttribute('points', `${startX},${isoelectricY} ${polyStr} ${endX},${isoelectricY}`);
           hrPolyG.setAttribute('fill-opacity', '1');
         }
 
-        // Start anchor dot (leftmost point)
-        if (hrStart && hrCoords.length > 0) {
-          hrStart.setAttribute('cx', hrCoords[0].x);
-          hrStart.setAttribute('cy', hrCoords[0].y);
+        if (hrStart) {
+          hrStart.setAttribute('cx', startX);
+          hrStart.setAttribute('cy', isoelectricY);
           hrStart.style.display = 'block';
         }
 
-        // Highlighted Halo Node on lowest/trough reading (exact match to user reference image)
-        if (hrHaloGroup && hrCoords.length >= 2) {
-          let minIdx = 0;
-          let minVal = hrCoords[0].val;
-          for (let i = 1; i < hrCoords.length; i++) {
-            if (hrCoords[i].val < minVal) {
-              minVal = hrCoords[i].val;
-              minIdx = i;
-            }
-          }
-          const trough = hrCoords[minIdx];
-          hrHaloRing.setAttribute('cx', trough.x);
-          hrHaloRing.setAttribute('cy', trough.y);
-          hrHaloDot.setAttribute('cx', trough.x);
-          hrHaloDot.setAttribute('cy', trough.y);
+        if (hrHaloGroup && rPeakNode && minDiffToR < 0.05) {
+          hrHaloRing.setAttribute('cx', rPeakNode.x);
+          hrHaloRing.setAttribute('cy', rPeakNode.y);
+          hrHaloDot.setAttribute('cx', rPeakNode.x);
+          hrHaloDot.setAttribute('cy', rPeakNode.y);
           hrHaloGroup.style.display = 'block';
         } else if (hrHaloGroup) {
           hrHaloGroup.style.display = 'none';
         }
 
-        // Live leading dot on the far right (current real-time telemetry point)
-        if (hrCursor && hrCoords.length > 0) {
-          const latest = hrCoords[hrCoords.length - 1];
-          hrCursor.setAttribute('cx', latest.x);
-          hrCursor.setAttribute('cy', latest.y);
+        if (hrCursor) {
+          const leadingPhase = (((ecgAnimOffset) % cycleLen + cycleLen) % cycleLen) / cycleLen;
+          const leadingY = isoelectricY + getEcgOffset(leadingPhase);
+          hrCursor.setAttribute('cx', endX);
+          hrCursor.setAttribute('cy', Math.round(leadingY * 10) / 10);
           hrCursor.style.display = 'block';
         }
       }
 
-      // 2. SpO2 Line Chart
+      requestAnimationFrame(renderLiveEcgFrame);
+    }
+    requestAnimationFrame(renderLiveEcgFrame);
+
+    // Render continuous time-series line graph for SpO2
+    function renderTimeSeriesGraph() {
+      const startX = 40;
+      const endX = 490;
+
+      // SpO2 Line Chart
       const spo2Poly = document.getElementById('spo2Polyline');
       const spo2PolyG = document.getElementById('spo2Polygon');
       const spo2Start = document.getElementById('spo2StartDot');
@@ -682,22 +755,25 @@
       const sleepEl = document.getElementById('liveSleepVal');
 
       if (hrEl) {
-        hrEl.textContent = 'Not Applicable';
+        const isHi = (window.NeuroTrackI18n && window.NeuroTrackI18n.getLang() === 'hi');
+      const naText = isHi ? 'लागू नहीं' : 'Not Applicable';
+      const ncText = isHi ? 'कनेक्टेड नहीं' : 'Not Connected';
+      hrEl.textContent = naText;
         hrEl.style.fontSize = '1.35rem';
         hrEl.style.color = '#64748B';
       }
       if (spo2El) {
-        spo2El.textContent = 'Not Applicable';
+        spo2El.textContent = naText;
         spo2El.style.fontSize = '1.35rem';
         spo2El.style.color = '#64748B';
       }
       if (tempEl) {
-        tempEl.textContent = 'Not Applicable';
+        tempEl.textContent = naText;
         tempEl.style.fontSize = '1.35rem';
         tempEl.style.color = '#64748B';
       }
       if (sleepEl) {
-        sleepEl.textContent = 'Not Applicable';
+        sleepEl.textContent = naText;
         sleepEl.style.fontSize = '1.35rem';
         sleepEl.style.color = '#64748B';
       }
@@ -705,28 +781,28 @@
       // Badges
       const hrBadge = document.getElementById('liveHrBadge');
       if (hrBadge) {
-        hrBadge.textContent = 'Not Connected';
+        hrBadge.textContent = ncText;
         hrBadge.className = 'badge';
         hrBadge.style.background = '#F1F5F9';
         hrBadge.style.color = '#64748B';
       }
       const spo2Badge = document.getElementById('liveSpo2Badge');
       if (spo2Badge) {
-        spo2Badge.textContent = 'Not Connected';
+        spo2Badge.textContent = ncText;
         spo2Badge.className = 'badge';
         spo2Badge.style.background = '#F1F5F9';
         spo2Badge.style.color = '#64748B';
       }
       const tempBadge = document.getElementById('liveTempBadge');
       if (tempBadge) {
-        tempBadge.textContent = 'Not Connected';
+        tempBadge.textContent = ncText;
         tempBadge.className = 'badge';
         tempBadge.style.background = '#F1F5F9';
         tempBadge.style.color = '#64748B';
       }
       const sleepBadge = document.getElementById('liveSleepBadge');
       if (sleepBadge) {
-        sleepBadge.textContent = 'Not Connected';
+        sleepBadge.textContent = ncText;
         sleepBadge.className = 'badge';
         sleepBadge.style.background = '#F1F5F9';
         sleepBadge.style.color = '#64748B';

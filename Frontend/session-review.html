@@ -6,6 +6,7 @@
   <title>Neuro Track | Review Assessment</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
 </head>
 <body>
   <!-- Navigation Header (Logged In State) -->
@@ -129,42 +130,65 @@
     const statusNotice = document.getElementById('statusNotice');
     const submitBtn = document.getElementById('submitAssessmentBtn');
 
-    // Filter valid answered questions
-    const validAnswers = storedAnswers.filter(a => a && a.questionNumber);
+    function renderReview() {
+      const isHi = (window.NeuroTrackI18n && window.NeuroTrackI18n.getLang() === 'hi');
+      const qList = (window.NeuroTrackI18n && typeof window.NeuroTrackI18n.getQuestions === 'function') 
+        ? window.NeuroTrackI18n.getQuestions() 
+        : null;
 
-    statusNotice.textContent = `Completed ${validAnswers.length} of 20 questions`;
-    if (validAnswers.length < 20) {
-      statusNotice.style.color = '#DC2626';
-      statusNotice.textContent = `⚠️ You have answered ${validAnswers.length} of 20 questions. Please complete all questions before submitting.`;
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.6';
-    } else {
-      statusNotice.style.color = '#10B981';
-      statusNotice.textContent = `✓ All 20 questions answered and ready for evaluation.`;
+      // Filter valid answered questions
+      const validAnswers = storedAnswers.filter(a => a && a.questionNumber);
+
+      if (validAnswers.length < 20) {
+        statusNotice.style.color = '#DC2626';
+        statusNotice.textContent = isHi 
+          ? `⚠️ आपने 20 में से केवल ${validAnswers.length} प्रश्नों के उत्तर दिए हैं। कृपया सभी प्रश्न पूरे करें।`
+          : `⚠️ You have answered ${validAnswers.length} of 20 questions. Please complete all questions before submitting.`;
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.6';
+      } else {
+        statusNotice.style.color = '#10B981';
+        statusNotice.textContent = isHi 
+          ? `✓ सभी 20 प्रश्नों के उत्तर पूरे हो गए हैं। मूल्यांकन के लिए तैयार।`
+          : `✓ All 20 questions answered and ready for evaluation.`;
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      }
+
+      // Render list
+      reviewList.innerHTML = '';
+      storedAnswers.forEach((ans, idx) => {
+        if (!ans) return;
+        const q = qList ? qList[ans.questionNumber - 1] : null;
+        const opt = q ? q.options.find(o => o.score === ans.score) : null;
+        const qText = q ? q.text : ans.questionText;
+        const ansText = opt ? opt.text : ans.selectedOption;
+
+        const card = document.createElement('div');
+        card.className = 'review-item-card';
+
+        card.innerHTML = `
+          <div class="question-badge">${isHi ? 'प्रश्न ' : 'Q'}${ans.questionNumber}</div>
+          <div class="review-question-content">
+            <p class="review-question-text">${qText}</p>
+            <span class="review-answer-text">${ansText}</span>
+          </div>
+          <a href="session-question.html" class="btn-edit" aria-label="Edit Question ${ans.questionNumber}">
+            <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            <span>${isHi ? 'बदलें' : 'Edit'}</span>
+          </a>
+        `;
+        reviewList.appendChild(card);
+      });
     }
 
-    // Render list
-    reviewList.innerHTML = '';
-    storedAnswers.forEach((ans, idx) => {
-      if (!ans) return;
-      const card = document.createElement('div');
-      card.className = 'review-item-card';
+    renderReview();
 
-      card.innerHTML = `
-        <div class="question-badge">Q${ans.questionNumber}</div>
-        <div class="review-question-content">
-          <p class="review-question-text">${ans.questionText}</p>
-          <span class="review-answer-text">${ans.selectedOption}</span>
-        </div>
-        <a href="session-question.html" class="btn-edit" aria-label="Edit Question ${ans.questionNumber}">
-          <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-          </svg>
-          <span>Edit</span>
-        </a>
-      `;
-      reviewList.appendChild(card);
+    window.addEventListener('neurotrack_language_changed', () => {
+      renderReview();
     });
 
     // Handle Submission

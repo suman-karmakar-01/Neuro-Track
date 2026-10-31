@@ -6,6 +6,7 @@
   <title>Neuro Track | Screening Assessment</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
 </head>
 <body>
   <!-- Navigation Header (Logged In State) -->
@@ -394,15 +395,24 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
+    function getActiveQuestions() {
+      if (window.NeuroTrackI18n && typeof window.NeuroTrackI18n.getQuestions === 'function') {
+        return window.NeuroTrackI18n.getQuestions();
+      }
+      return QUESTIONS;
+    }
+
     function renderQuestion(index) {
       validationNotice.style.display = 'none';
-      const q = QUESTIONS[index];
+      const qList = getActiveQuestions();
+      const q = qList[index];
+      const isHi = (window.NeuroTrackI18n && window.NeuroTrackI18n.getLang() === 'hi');
 
       // Update headers & progress
-      questionTitle.textContent = `Q${q.id}. ${q.text}`;
+      questionTitle.textContent = isHi ? `प्रश्न ${q.id}. ${q.text}` : `Q${q.id}. ${q.text}`;
       questionSubtitle.textContent = q.subtitle;
-      const pct = Math.round(((index + 1) / QUESTIONS.length) * 100);
-      progressText.textContent = `Question ${index + 1} of ${QUESTIONS.length}`;
+      const pct = Math.round(((index + 1) / qList.length) * 100);
+      progressText.textContent = isHi ? `प्रश्न ${index + 1} / ${qList.length}` : `Question ${index + 1} of ${qList.length}`;
       progressPercentage.textContent = `${pct}%`;
       progressBarFill.style.width = `${pct}%`;
 
@@ -411,7 +421,7 @@
       const prevAnswer = storedAnswers[index];
 
       q.options.forEach((opt, optIdx) => {
-        const isSelected = prevAnswer && prevAnswer.selectedOption === opt.text;
+        const isSelected = prevAnswer && prevAnswer.score === opt.score;
 
         const label = document.createElement('label');
         label.className = `option-card ${isSelected ? 'selected' : ''}`;
@@ -419,7 +429,7 @@
         const input = document.createElement('input');
         input.type = 'radio';
         input.name = `question_${q.id}`;
-        input.value = opt.text;
+        input.value = opt.score;
         input.className = 'option-radio';
         input.checked = isSelected;
 
@@ -428,7 +438,7 @@
           label.classList.add('selected');
           validationNotice.style.display = 'none';
 
-          // Save answer
+          // Save answer with score preserved
           storedAnswers[index] = {
             questionNumber: q.id,
             questionText: q.text,
@@ -444,7 +454,7 @@
             else if (opt.score === 1) sleepSlider.value = 7;
             else if (opt.score === 2) sleepSlider.value = 5;
             else if (opt.score === 3) sleepSlider.value = 3;
-            sliderValueDisplay.textContent = sleepSlider.value + ' hours';
+            sliderValueDisplay.textContent = sleepSlider.value + (isHi ? ' घंटे' : ' hours');
           }
         });
 
@@ -461,39 +471,46 @@
       if (q.isSleepDuration) {
         sliderWrapper.style.display = 'block';
         if (prevAnswer) {
-          const matched = q.options.find(o => o.text === prevAnswer.selectedOption);
+          const matched = q.options.find(o => o.score === prevAnswer.score);
           if (matched) {
             sleepSlider.value = matched.minHr || 7;
-            sliderValueDisplay.textContent = sleepSlider.value + ' hours';
+            sliderValueDisplay.textContent = sleepSlider.value + (isHi ? ' घंटे' : ' hours');
           }
         }
       } else {
         sliderWrapper.style.display = 'none';
       }
 
-      // Button states
-      if (index === QUESTIONS.length - 1) {
-        nextBtn.innerHTML = `Review Answers
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>`;
-      } else {
-        nextBtn.innerHTML = `Next
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>`;
-      }
+      // Button labels
+      const prevLabel = isHi ? 'पिछला' : 'Previous';
+      const nextLabel = (index === qList.length - 1) ? (isHi ? 'उत्तरों की समीक्षा करें' : 'Review Answers') : (isHi ? 'अगला' : 'Next');
+
+      prevBtn.innerHTML = `
+        <svg class="btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        ${prevLabel}
+      `;
+
+      nextBtn.innerHTML = `
+        ${nextLabel}
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      `;
     }
 
     // Slider input handler for Question 8
     sleepSlider.addEventListener('input', (e) => {
+      const isHi = (window.NeuroTrackI18n && window.NeuroTrackI18n.getLang() === 'hi');
       const hours = Number(e.target.value);
-      sliderValueDisplay.textContent = hours + ' hours';
+      sliderValueDisplay.textContent = hours + (isHi ? ' घंटे' : ' hours');
 
       // Auto-select corresponding radio option
-      const q = QUESTIONS[currentIndex];
+      const qList = getActiveQuestions();
+      const q = qList[currentIndex];
       if (q && q.isSleepDuration) {
         let matchedScore = 0;
         if (hours >= 8) matchedScore = 0;
@@ -520,14 +537,18 @@
               c.querySelector('input').checked = true;
             } else {
               c.classList.remove('selected');
+              c.querySelector('input').checked = false;
             }
           });
-          validationNotice.style.display = 'none';
         }
       }
     });
 
-    // Next button
+    // Listen for language toggle event
+    window.addEventListener('neurotrack_language_changed', () => {
+      renderQuestion(currentIndex);
+    });
+
     nextBtn.addEventListener('click', () => {
       if (!storedAnswers[currentIndex]) {
         validationNotice.style.display = 'block';
