@@ -292,7 +292,8 @@
       brand_sub: "Mind Today. Brighter Tomorrows.",
 
       // Metrics & Live Telemetry
-      ecg_rhythm_hr: "ECG Rhythm / Heart Rate",
+      ppg_pulse_hr: "Heart Rate (PPG)",
+      ecg_rhythm_hr: "Heart Rate (PPG)",
       heart_rate: "Heart Rate",
       spo2_metric: "SpO2",
       blood_oxygen: "Blood Oxygen",
@@ -322,7 +323,7 @@
       take_assessment: "Take Assessment",
       take_assessment_desc: "Standard 20-question PTSD & emotional well-being questionnaire.",
       live_health_stream: "Live Health Stream",
-      live_health_stream_desc: "Real-time biometric telemetry: ECG rhythm, SpO2, and skin temperature.",
+      live_health_stream_desc: "Real-time biometric telemetry: PPG heart rate, SpO2, and skin temperature.",
       trend_analytics: "Trend Analytics",
       trend_analytics_desc: "Historical charts for assessment scores, sleep, and physical vitals.",
       manage_profile: "Manage Profile",
@@ -407,7 +408,8 @@
       brand_sub: "माइंड टुडे। ब्राइटर टुमॉरोज।",
 
       // Metrics & Live Telemetry
-      ecg_rhythm_hr: "ईसीजी ताल / हृदय गति",
+      ppg_pulse_hr: "हृदय गति (PPG)",
+      ecg_rhythm_hr: "हृदय गति (PPG)",
       heart_rate: "हृदय गति",
       spo2_metric: "रक्त ऑक्सीजन (SpO2)",
       blood_oxygen: "रक्त ऑक्सीजन",
@@ -437,7 +439,7 @@
       take_assessment: "मूल्यांकन शुरू करें",
       take_assessment_desc: "20-प्रश्नों वाली मानक PTSD एवं भावनात्मक स्वास्थ्य प्रश्नावली।",
       live_health_stream: "लाइव स्वास्थ्य स्ट्रीम",
-      live_health_stream_desc: "रीयल-टाइम बायोमेट्रिक डेटा: ईसीजी ताल, SpO2, और त्वचा का तापमान।",
+      live_health_stream_desc: "रीयल-टाइम बायोमेट्रिक डेटा: PPG हृदय गति, SpO2, और त्वचा का तापमान।",
       trend_analytics: "ट्रेंड विश्लेषण",
       trend_analytics_desc: "मूल्यांकन स्कोर, नींद और शारीरिक स्वास्थ्य का ऐतिहासिक रिकॉर्ड।",
       manage_profile: "प्रोफाइल प्रबंधन",
