@@ -348,40 +348,29 @@ async function syncBatchFromFirebase(recordsMap) {
   }
 }
 
-// Poll Firebase Realtime Database for new telemetry pushed by ESP32 to /sensorHistory.json
-function fetchLatestFromFirebase() {
-  return new Promise((resolve) => {
-    try {
-      const targetUrl = 'https://neuro-tech-01-default-rtdb.firebaseio.com/sensorHistory.json?orderBy=%22%24key%22&endAt=%22-%7E%22&limitToLast=35';
-      const req = https.get(targetUrl, { timeout: 2500 }, (res) => {
-        let rawData = '';
-        res.on('data', chunk => rawData += chunk);
-        res.on('end', async () => {
-          try {
-            if (res.statusCode === 200 && rawData) {
-              const parsed = JSON.parse(rawData);
-              await syncBatchFromFirebase(parsed);
-            }
-          } catch (e) {}
-          resolve(true);
-        });
-      });
-      req.on('error', () => resolve(false));
-      req.on('timeout', () => { req.destroy(); resolve(false); });
-    } catch (e) {
-      resolve(false);
+// Fetch latest telemetry pushed by ESP32 to Firebase /sensorHistory via authenticated Admin SDK
+async function fetchLatestFromFirebase() {
+  try {
+    if (!db || typeof db.ref !== 'function') return false;
+    const snap = await Promise.race([
+      db.ref('sensorHistory').limitToLast(35).once('value'),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('Firebase query timeout')), 3000))
+    ]);
+    if (snap && snap.exists()) {
+      await syncBatchFromFirebase(snap.val());
+      return true;
     }
-  });
+  } catch (e) {}
+  return false;
 }
 
-// Attach Firebase Admin listener when SDK connects
+// Attach Firebase Admin listener for real-time ESP32 packet streaming
 let firebaseListenerAttached = false;
 function tryAttachFirebaseListener() {
   if (firebaseListenerAttached) return;
   try {
-    const activeDb = db;
-    if (activeDb && typeof activeDb.ref === 'function') {
-      activeDb.ref('sensorHistory').limitToLast(1).on('child_added', (snap) => {
+    if (db && typeof db.ref === 'function') {
+      db.ref('sensorHistory').limitToLast(1).on('child_added', (snap) => {
         const key = snap.key;
         if (key && key.startsWith('-')) {
           const val = snap.val();
@@ -401,6 +390,10 @@ function tryAttachFirebaseListener() {
     }
   } catch (e) {}
 }
+
+// Attach listener and fetch immediately on startup
+tryAttachFirebaseListener();
+fetchLatestFromFirebase();
 
 // Background sync loop running every 1.5 seconds
 setInterval(() => {

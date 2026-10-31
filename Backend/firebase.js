@@ -1,9 +1,8 @@
-// firebase.js - Resilient database manager with local persistence and automatic cloud sync
+// firebase.js - Primary Firebase Realtime Database Manager with Offline Emergency Fallback
 const admin = require('firebase-admin');
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
-require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const serviceAccountPath = path.join(__dirname, 'serviceAccountKey.json');
 let serviceAccount = { project_id: 'neuro-tech-01' };
@@ -12,9 +11,12 @@ if (fs.existsSync(serviceAccountPath)) {
     serviceAccount = require('./serviceAccountKey.json');
   } catch (e) {}
 }
+
+const rawUrl = process.env.FIREBASE_DATABASE_URL || `https://${serviceAccount.project_id}-default-rtdb.firebaseio.com`;
+const databaseURL = rawUrl.replace(/\/+$/, '');
 const dbFile = path.join(__dirname, 'local_db.json');
 
-// Default seed data for immediate offline functionality
+// Default seed data used strictly as emergency offline fallback
 const defaultStore = {
   authorities: {
     auth_01: {
@@ -47,7 +49,7 @@ const defaultStore = {
   sensorHistory: {}
 };
 
-// Load persistent local database file so data survives restarts
+// Emergency offline fallback memory store
 let memoryStore = defaultStore;
 try {
   if (fs.existsSync(dbFile)) {
@@ -55,8 +57,6 @@ try {
     memoryStore = JSON.parse(raw);
     if (!memoryStore.users) memoryStore.users = defaultStore.users;
     if (!memoryStore.authorities) memoryStore.authorities = defaultStore.authorities;
-  } else {
-    fs.writeFileSync(dbFile, JSON.stringify(defaultStore, null, 2));
   }
 } catch (e) {
   memoryStore = defaultStore;
@@ -68,126 +68,121 @@ function persistLocal() {
   } catch (e) {}
 }
 
-// Initialize Firebase Admin if credentials are present
-if (!admin.apps.length && serviceAccount.private_key) {
+function updateLocalCache(pathStr, data) {
   try {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount)
-    });
-  } catch (e) {}
-}
-
-let db = null;
-let isFirebaseOnline = false;
-
-const databaseURL = process.env.FIREBASE_DATABASE_URL || `https://${serviceAccount.project_id}-default-rtdb.firebaseio.com`;
-
-// Probes the database URL before attaching the SDK client
-function probeFirebase(urlStr) {
-  return new Promise((resolve) => {
-    try {
-      const parsed = new URL(urlStr);
-      const req = https.request({
-        hostname: parsed.hostname,
-        port: parsed.port || 443,
-        path: '/.json?shallow=true',
-        method: 'GET',
-        timeout: 2000
-      }, (res) => {
-        res.resume(); // Discard data to free socket
-        // Status 200, 401 (auth), 403 (security rules) indicate an active database instance
-        if (res.statusCode === 200 || res.statusCode === 401 || res.statusCode === 403) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
-      req.on('error', () => resolve(false));
-      req.on('timeout', () => { req.destroy(); resolve(false); });
-      req.end();
-    } catch (e) {
-      resolve(false);
-    }
-  });
-}
-
-// Perform safe non-blocking probe on boot
-probeFirebase(databaseURL).then(async (exists) => {
-  if (exists) {
-    try {
-      db = admin.app().database(databaseURL);
-      isFirebaseOnline = true;
-      console.log('Firebase: Connected to Realtime Database (' + databaseURL + ')');
-
-      // Auto-populate cloud database if freshly initialized
-      try {
-        const snap = await db.ref('users').once('value');
-        if (!snap.exists() || !snap.val()) {
-          if (memoryStore.authorities) await db.ref('authorities').set(memoryStore.authorities);
-          if (memoryStore.users) await db.ref('users').set(memoryStore.users);
-          if (memoryStore.assessments) await db.ref('assessments').set(memoryStore.assessments);
-          console.log('Firebase: Synced baseline users and authorities to cloud.');
-        }
-      } catch (syncErr) {}
-    } catch (e) {
-      isFirebaseOnline = false;
-      console.log('Database: Local Persistent Storage active (local_db.json)');
-    }
-  } else {
-    isFirebaseOnline = false;
-    console.log('Database: Local Persistent Storage active (local_db.json)');
-  }
-});
-
-// Resilient DB helper providing transparent get/set for both local and cloud stores
-const dbHelper = {
-  // Get data at path
-  async get(path) {
-    if (isFirebaseOnline && db) {
-      try {
-        const snap = await Promise.race([
-          db.ref(path).once('value'),
-          new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 1500))
-        ]);
-        if (snap && snap.exists()) return snap.val();
-      } catch (e) {
-        // Fallback to local store
-      }
-    }
-    const parts = path.split('/').filter(Boolean);
-    let curr = memoryStore;
-    for (const p of parts) {
-      if (!curr || typeof curr !== 'object') return null;
-      curr = curr[p];
-    }
-    return curr || null;
-  },
-
-  // Set data at path
-  async set(path, data) {
-    // Save to local cache immediately
-    const parts = path.split('/').filter(Boolean);
+    const parts = pathStr.split('/').filter(Boolean);
     let curr = memoryStore;
     for (let i = 0; i < parts.length - 1; i++) {
-      if (!curr[parts[i]]) curr[parts[i]] = {};
+      if (!curr[parts[i]] || typeof curr[parts[i]] !== 'object') curr[parts[i]] = {};
       curr = curr[parts[i]];
     }
     curr[parts[parts.length - 1]] = data;
-    persistLocal();
+  } catch (e) {}
+}
 
-    // Sync with Firebase in background if online
-    if (isFirebaseOnline && db) {
-      try {
-        db.ref(path).set(data).catch(() => {});
-      } catch (e) {}
+function readLocalCache(pathStr) {
+  const parts = pathStr.split('/').filter(Boolean);
+  let curr = memoryStore;
+  for (const p of parts) {
+    if (!curr || typeof curr !== 'object') return null;
+    curr = curr[p];
+  }
+  return curr !== undefined ? curr : null;
+}
+
+// Initialize Firebase Admin SDK as PRIMARY database
+let db = null;
+let isFirebaseOnline = false;
+
+if (serviceAccount.private_key) {
+  try {
+    if (!admin.apps.length) {
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        databaseURL: databaseURL
+      });
     }
+    db = admin.database();
+  } catch (err) {
+    console.error('Firebase initialization error:', err.message);
+  }
+}
+
+// Authenticate and verify live cloud connection on startup
+if (db) {
+  db.ref('.info/connected').on('value', (snap) => {
+    isFirebaseOnline = (snap.val() === true);
+  });
+
+  // Verify authenticated read/write against Firebase
+  db.ref('users').limitToFirst(1).once('value')
+    .then(async (snap) => {
+      isFirebaseOnline = true;
+      console.log(`Firebase: Connected to Realtime Database (${databaseURL})`);
+      console.log('Database: Firebase Realtime Database is PRIMARY (Cloud Connected)');
+
+      // If cloud database is empty, seed initial baseline
+      if (!snap.exists() || !snap.val()) {
+        try {
+          if (memoryStore.authorities) await db.ref('authorities').set(memoryStore.authorities);
+          if (memoryStore.users) await db.ref('users').set(memoryStore.users);
+          console.log('Firebase: Synced baseline users and authorities to cloud.');
+        } catch (syncErr) {}
+      }
+    })
+    .catch((err) => {
+      isFirebaseOnline = false;
+      console.warn(`[WARNING] Could not reach Firebase Realtime Database (${err.message}).`);
+      console.warn('Database: Using Local Storage fallback (worst-case offline only).');
+    });
+} else {
+  console.warn('Database: No Firebase credentials found. Running in offline fallback mode.');
+}
+
+// Resilient DB helper prioritizing Firebase as Primary and Local DB strictly as worst-case offline fallback
+const dbHelper = {
+  // Get data at path (Firebase Primary -> Local Fallback)
+  async get(pathStr) {
+    if (db && isFirebaseOnline !== false) {
+      try {
+        const snap = await Promise.race([
+          db.ref(pathStr).once('value'),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Firebase timeout')), 3500))
+        ]);
+        if (snap && snap.exists()) {
+          const val = snap.val();
+          updateLocalCache(pathStr, val);
+          return val;
+        }
+      } catch (err) {
+        // Fall through to local fallback only on network error/timeout
+      }
+    }
+    // Worst-case offline fallback
+    return readLocalCache(pathStr);
+  },
+
+  // Set data at path (Firebase Primary -> Local Backup)
+  async set(pathStr, data) {
+    // Primary: Write directly to Firebase
+    if (db) {
+      try {
+        await db.ref(pathStr).set(data);
+      } catch (err) {
+        console.warn(`[Firebase Write Fallback] ${pathStr}:`, err.message);
+      }
+    }
+
+    // Keep local cache updated as backup
+    updateLocalCache(pathStr, data);
+    persistLocal();
     return true;
   }
 };
 
 module.exports = {
   admin,
-  get db() { return db; },
+  db,
   get isFirebaseOnline() { return isFirebaseOnline; },
   databaseURL,
   dbHelper
